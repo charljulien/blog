@@ -12,4 +12,6 @@ we are on the blogpostDetailPage of a random article
 hence we have bodyAuthor and bodyLoggedUser jsps that we can include in the blogpostDetailPage
 we would obiously need one blogpostDetailPage for each combo
 so:
-blogpostDetailPage
+blogpostDetailPageAuthorVersion
+blogpostDetailPageLoggedUserVersion
+and blogPostDetailPageUserVersion

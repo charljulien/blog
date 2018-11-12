@@ -11,11 +11,21 @@
 </head>
 <body>
 <header>
-<%@ include file="/WEB-INF/theBlog/parts/header.jsp" %>
-        </header>
-        <sidebar>
-<%@ include file="/WEB-INF/theBlog/parts/sidebar.jsp" %>
-        </sidebar>
-        </body>
-        </html>
+    <div class="title"> The Blog</div>
+    <div class="nav-bar">
+        <%@ include file="/WEB-INF/theBlog/parts/header.jsp" %>
+    </div>
+</header>
+<div class="main">
+    <h2> Title </h2>
+    <p> text </p>
+
+</div>
+<sidebar class="sidebar">
+    <div>
+        <%@ include file="/WEB-INF/theBlog/parts/sidebar.jsp" %>
+    </div>
+</sidebar>
+</body>
+</html>
 
