@@ -11,10 +11,10 @@
 </head>
 <body>
 <header>
-<%@ include file="/WEB-INF/header.jsp"%>
+<%@ include file="/WEB-INF/theBlog/parts/header.jsp" %>
         </header>
         <sidebar>
-<%@ include file="/WEB-INF/sidebar.jsp"%>
+<%@ include file="/WEB-INF/theBlog/parts/sidebar.jsp" %>
         </sidebar>
         </body>
         </html>

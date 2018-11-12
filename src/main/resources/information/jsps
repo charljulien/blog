@@ -1,0 +1,15 @@
+our jsps should be all the smart parts AND the different possibilities of wholes we can make with them
+
+so basically, take this example
+
+we are on the blogpostDetailPage of a random article
+> author of said blog post gets extra rights shown in the central area of body of the article page
+( nothing changes for sidebar - sidebar gebruiker, logged in user and author user is zelfde!)
+( the version of the header we use is : logged in user header )
+
+> so does logged in user, but less than author
+
+hence we have bodyAuthor and bodyLoggedUser jsps that we can include in the blogpostDetailPage
+we would obiously need one blogpostDetailPage for each combo
+so:
+blogpostDetailPage
