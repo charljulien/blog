@@ -4,12 +4,21 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>/theblog/*</url-pattern>
+            <include-prelude>/WEB-INF/theBlog/parts/header.jsp</include-prelude>
+            <include-prelude>/WEB-INF/theBlog/parts/sidebar.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
+    
+    
     <servlet>
-        <servlet-name>Any servlet</servlet-name>
-        <jsp-file>/jspfile.jsp</jsp-file>
+        <servlet-name>Anyservlet</servlet-name>
+        <jsp-file>/header.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Any servlet</servlet-name>
+        <servlet-name>Anyservlet</servlet-name>
         <url-pattern>/blogcentral</url-pattern>
     </servlet-mapping>
 
