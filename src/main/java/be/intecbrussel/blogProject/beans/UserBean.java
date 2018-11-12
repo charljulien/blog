@@ -1,18 +1,45 @@
 package be.intecbrussel.blogProject.beans;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "User_Blog")
 public class UserBean {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private long id;
+    @Column(name = "FirstName")
     private String firstname;
-    private String name;
+    @Column(name = "LastName")
+    private String lastName;
+    @Column(name = "UserName")
     private String userName;
+    @Column(name = "Email")
     private String email;
+    @Column(name = "Street")
     private String street;
-    private int houseNr;
+    @Column(name = "House_no")
+    private String houseNr;
+    @Column(name = "City")
     private String city;
-    private int zipCode;
+    @Column(name = "Zip")
+    private String zipCode;
+    @Column(name = "Password")
     private String password;
 
-
+    public UserBean(String firstname, String lastName, String userName, String email, String street, String houseNr, String city, String zipCode, String password) {
+        this.firstname = firstname;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.email = email;
+        this.street = street;
+        this.houseNr = houseNr;
+        this.city = city;
+        this.zipCode = zipCode;
+        this.password = password;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -22,12 +49,12 @@ public class UserBean {
         this.firstname = firstname;
     }
 
-    public String getName() {
-        return name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastName(String name) {
+        this.lastName = name;
     }
 
     public String getUserName() {
@@ -54,11 +81,11 @@ public class UserBean {
         this.street = street;
     }
 
-    public int getHouseNr() {
+    public String getHouseNr() {
         return houseNr;
     }
 
-    public void setHouseNr(int houseNr) {
+    public void setHouseNr(String houseNr) {
         this.houseNr = houseNr;
     }
 
@@ -70,11 +97,11 @@ public class UserBean {
         this.city = city;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
@@ -86,4 +113,19 @@ public class UserBean {
         this.password = password;
     }
 
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", name='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNr=" + houseNr +
+                ", city='" + city + '\'' +
+                ", zipCode=" + zipCode +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

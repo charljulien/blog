@@ -5,10 +5,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Date;
 
+/**
+ * Singleton EntityManagerFactory && EntityManager
+ */
 public class EMProvidor {
 
     // Variables
-    private static final String DB_SCHEMA = "TheBlog";
+    private static final String DB_SCHEMA = "theblog";
     private static final boolean DEBUG = true;
     private static EMProvidor ourInstance = new EMProvidor();
     private static EntityManagerFactory emf;
