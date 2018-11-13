@@ -5,6 +5,13 @@ import be.intecbrussel.blogProject.beans.CommentBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+/**
+ * Represents dataLayer of CommentBean class
+ *
+ * @author Mr. Black
+ * @see CommentBean
+ * @see be.intecbrussel.blogProject.service.interfaces.CommentServiceInterface
+ */
 public class CommentDAO {
 
     // Variables
@@ -12,8 +19,10 @@ public class CommentDAO {
     private EntityTransaction et = em.getTransaction();
 
 
-    // Safe
-    public void safeComment(CommentBean comment){
+    /**
+     * Saves a comment to the DB
+     */
+    public void safeComment(CommentBean comment) {
         System.out.println("Saving Comment DAO...");
         et.begin();
         em.persist(comment);

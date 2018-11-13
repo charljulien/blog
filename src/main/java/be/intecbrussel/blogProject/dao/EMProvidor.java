@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Singleton EntityManagerFactory && EntityManager
+ * @author Mr. Black
  */
 public class EMProvidor {
 

@@ -1,10 +1,12 @@
 package be.intecbrussel.blogProject.beans;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "Comments")
-public class CommentBean {
+public class CommentBean implements Serializable {
 
     // Variables
     @Id
@@ -19,9 +21,9 @@ public class CommentBean {
     public CommentBean() {
     }
 
-    public CommentBean(String comment){
+    public CommentBean(String comment) {
         this.comment = comment;
-       setDate(LocalDate.now());
+        setDate(LocalDate.now());
     }
 
     public String getComment() {

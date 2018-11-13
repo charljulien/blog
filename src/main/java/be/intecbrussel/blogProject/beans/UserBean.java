@@ -1,10 +1,11 @@
 package be.intecbrussel.blogProject.beans;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "User_Blog")
-public class UserBean {
+public class UserBean implements Serializable {
 
     // Variables
     @Id
@@ -29,6 +30,9 @@ public class UserBean {
     private String zipCode;
     @Column(name = "Password")
     private String password;
+    @ManyToOne
+    @JoinColumn(name = "AccessRight")
+    private MemberAccess memberAccess;
 
     // Constructor
     public UserBean() {
@@ -49,6 +53,14 @@ public class UserBean {
     }
 
     // Methods
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -119,6 +131,14 @@ public class UserBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public MemberAccess getMemberAccess() {
+        return memberAccess;
+    }
+
+    public void setMemberAccess(MemberAccess memberAccess) {
+        this.memberAccess = memberAccess;
     }
 
     @Override

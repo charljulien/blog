@@ -1,9 +1,11 @@
 package infernalWhaler;
 
 import be.intecbrussel.blogProject.beans.CommentBean;
+import be.intecbrussel.blogProject.beans.MemberAccess;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.dao.EMProvidor;
 import be.intecbrussel.blogProject.service.implementations.CommentService;
+import be.intecbrussel.blogProject.service.implementations.MemberAccessService;
 import be.intecbrussel.blogProject.service.implementations.UserService;
 
 import javax.persistence.EntityManager;
@@ -19,12 +21,14 @@ public class BetaTesterExileNoir {
     // Variables
     private UserService userService;
     private CommentService commentService;
+    private MemberAccessService memberAccessService;
     private Scanner kbd;
     private EntityManager em = EMProvidor.getEntityManager();
     // Constructor
     BetaTesterExileNoir(){
         userService = new UserService();
         commentService = new CommentService();
+        memberAccessService = new MemberAccessService();
         kbd = new Scanner(System.in);
     }
     // Test One
@@ -41,6 +45,7 @@ public class BetaTesterExileNoir {
         String pass = kbd.nextLine();
         UserBean userBean = new UserBean(fname,lname,user,mail,street,no,city,zip,pass);
 
+        memberAccessService.setReaderAccessLevel(userBean);
         userService.saveUserToDB(userBean);
     }
     // Test Two
@@ -51,9 +56,17 @@ public class BetaTesterExileNoir {
         commentService.saveCommentToDB(commentBean);
     }
 
+    private void saveAccessLevel(){
+        System.out.println("Give level");
+        String level = kbd.nextLine();
+        MemberAccess access = new MemberAccess(level);
+        memberAccessService.saveAccessLevelToDB(access);
+
+    }
+
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.saveComment();
+        beta.saveUser();
     }
 }
