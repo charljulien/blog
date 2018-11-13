@@ -17,6 +17,7 @@ public class UserService implements UserServiceInterface {
     // Methods
     @Override
     public void saveUserToDB(UserBean user) {
+        System.out.println("Saving user SERVICE");
         userDAO.saveUser(user);
     }
 }

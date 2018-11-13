@@ -15,7 +15,7 @@ public class UserDAO {
 
     // Safe
     public void saveUser(UserBean user){
-        System.out.println("Saving user...");
+        System.out.println("Saving user DAO...");
         et.begin();
         em.persist(user);
         et.commit();

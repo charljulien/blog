@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "User_Blog")
 public class UserBean {
 
+    // Variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -29,7 +30,13 @@ public class UserBean {
     @Column(name = "Password")
     private String password;
 
-    public UserBean(String firstname, String lastName, String userName, String email, String street, String houseNr, String city, String zipCode, String password) {
+    // Constructor
+    public UserBean() {
+    }
+
+    public UserBean(String firstname, String lastName, String userName,
+                    String email, String street, String houseNr, String city,
+                    String zipCode, String password) {
         this.firstname = firstname;
         this.lastName = lastName;
         this.userName = userName;
@@ -41,6 +48,7 @@ public class UserBean {
         this.password = password;
     }
 
+    // Methods
     public String getFirstname() {
         return firstname;
     }
