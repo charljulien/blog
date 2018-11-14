@@ -1,10 +1,13 @@
 package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.UserBean;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,6 +18,10 @@ import java.util.List;
  * @see be.intecbrussel.blogProject.service.interfaces.UserServiceInterface
  */
 public class UserDAO {
+
+    Connection connection = null;
+    private static final String UPDATE = "UPDATE users SET FirstName=?, LastName=?, UserName=?, Email=?, Street=?, House_no=?, City=?, Zip=?, Password=? WHERE id=?";
+    private static final String DELETE = "DELETE FROM users WHERE id=?";
 
     // Variables
     private EntityManager em;
@@ -34,11 +41,69 @@ public class UserDAO {
         et.commit();
     }
 
+    /**
+     * Update user in DB
+     * Mr.Brown
+     * @param user
+     */
+
+    //Update
+
+    public void updateUser(UserBean user){
+
+
+            try {
+                PreparedStatement p = (PreparedStatement) connection.prepareStatement(UPDATE);
+                p.setString(1,user.getFirstname());
+                p.setString(2,user.getLastName());
+                p.setString(3,user.getUserName());
+                p.setString(4,user.getEmail());
+                p.setString(5,user.getStreet());
+                p.setString(6,user.getHouseNr());
+                p.setString(7,user.getCity());
+                p.setString(8,user.getZipCode());
+                p.setString(9,user.getPassword());
+
+                p.executeUpdate();
+                p.close();
+
+                System.out.println("User " + user.getId() + "was updated");
+
+            }catch ( SQLException e){
+                throw new RuntimeException(e);
+            }
+
+    }
 
     // Read
 
-
+    /**
+     * Delete User in DB
+     * Mr.Brown
+     * @param id
+     */
     // Delete
+
+    public void delete(int id){
+
+
+        try {
+            PreparedStatement p = (PreparedStatement) connection.prepareStatement(DELETE);
+
+            p.setInt(1,id);
+
+            p.executeUpdate();
+            p.close();
+
+            System.out.println("User " + id + "was deleted");
+
+        }catch ( SQLException e){
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
 
 
     /**
