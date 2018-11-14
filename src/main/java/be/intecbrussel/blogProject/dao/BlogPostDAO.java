@@ -1,21 +1,21 @@
 package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
-<<<<<<< HEAD
+
 import com.mysql.jdbc.PreparedStatement;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.sql.Connection;
 import java.sql.SQLException;
-=======
+
 import be.intecbrussel.blogProject.beans.UserBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
->>>>>>> 647e11ec528a76a5e45f0c517ae0c283527c0771
+
 
 /**
  * Represents the dataLayer of BlogPostBean class
