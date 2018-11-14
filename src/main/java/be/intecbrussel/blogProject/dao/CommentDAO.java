@@ -1,9 +1,12 @@
 package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.CommentBean;
+import be.intecbrussel.blogProject.beans.UserBean;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 /**
  * Represents dataLayer of CommentBean class
@@ -31,4 +34,16 @@ public class CommentDAO {
         et.commit();
     }
 
+
+    // Queries << NOT TESTED!! >>
+    // Find comments by name
+    private TypedQuery<CommentBean> getCommentsByNameQuery(UserBean user) {
+        TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean as comment where comment.userComment.lastName=:name", CommentBean.class);
+        query.setParameter("name", user.getLastName());
+        return query;
+    }
+
+    public List<CommentBean> getCommentsByName(UserBean user) {
+        return getCommentsByNameQuery(user).getResultList();
+    }
 }
