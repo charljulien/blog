@@ -22,7 +22,7 @@ public class MemberAccess implements Serializable {
     private long id;
     @Column(name = "Access_Level")
     private String memberAccessLevel;
-    @OneToMany(mappedBy = "memberAccess", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "memberAccess", cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<UserBean> users;
 
     // Constructor

@@ -32,6 +32,8 @@ public class MemberAccessService implements MemberAccessServiceInterface {
         memberAccessDAO.createAccessLevel(memberAccess);
     }
 
+    // OUT OF USE << WAIT TILL DELETE >>
+    // Direct via M.A.DAO implemented in UserService.saveUserToDB
     /**
      * @see MemberAccessDAO#setReaderAccessLevel(UserBean)
      * */

@@ -1,9 +1,11 @@
 package infernalWhaler;
 
+import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.CommentBean;
 import be.intecbrussel.blogProject.beans.MemberAccess;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.dao.EMProvidor;
+import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.implementations.CommentService;
 import be.intecbrussel.blogProject.service.implementations.MemberAccessService;
 import be.intecbrussel.blogProject.service.implementations.UserService;
@@ -22,6 +24,7 @@ public class BetaTesterExileNoir {
     private UserService userService;
     private CommentService commentService;
     private MemberAccessService memberAccessService;
+    private BlogPostService blogPostService;
     private Scanner kbd;
     private EntityManager em = EMProvidor.getEntityManager();
     // Constructor
@@ -29,6 +32,7 @@ public class BetaTesterExileNoir {
         userService = new UserService();
         commentService = new CommentService();
         memberAccessService = new MemberAccessService();
+        blogPostService = new BlogPostService();
         kbd = new Scanner(System.in);
     }
     // Test One
@@ -45,7 +49,6 @@ public class BetaTesterExileNoir {
         String pass = kbd.nextLine();
         UserBean userBean = new UserBean(fname,lname,user,mail,street,no,city,zip,pass);
 
-        memberAccessService.setReaderAccessLevel(userBean);
         userService.saveUserToDB(userBean);
     }
     // Test Two
@@ -64,9 +67,15 @@ public class BetaTesterExileNoir {
 
     }
 
+    private void saveBlogPost(){
+        System.out.println("Give message");
+        blogPostService.saveBlogPostToDB(new BlogPostBean(kbd.nextLine()));
+
+    }
+
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.saveUser();
+        beta.saveBlogPost();
     }
 }

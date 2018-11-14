@@ -19,8 +19,8 @@ import java.util.List;
 public class MemberAccessDAO {
 
     // Variables
-    private EntityManager em = EMProvidor.getEntityManager();
-    private EntityTransaction et = em.getTransaction();
+    private EntityManager em;
+    private EntityTransaction et;
 
     /**
      * Creates an Access Level
@@ -29,6 +29,8 @@ public class MemberAccessDAO {
      */
     public void createAccessLevel(MemberAccess memberAccess) {
         System.out.println("Saving Access Level DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
         et.begin();
         em.persist(memberAccess);
         et.commit();
@@ -43,11 +45,15 @@ public class MemberAccessDAO {
      */
     public void setReaderAccessLevel(UserBean user) {
         System.out.println("Setting Access Level to no defined Users DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
         et.begin();
         List<MemberAccess> defaultAccess = getReaderAccess();
         for (MemberAccess level : defaultAccess) {
             level.addMember(user);
+            em.persist(level);
         }
+        et.commit();
 
     }
 

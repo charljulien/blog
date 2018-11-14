@@ -2,6 +2,8 @@ package be.intecbrussel.blogProject.beans;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "User_Blog")
@@ -30,12 +32,15 @@ public class UserBean implements Serializable {
     private String zipCode;
     @Column(name = "Password")
     private String password;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AccessRight")
     private MemberAccess memberAccess;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BlogPostBean> blogs;
 
     // Constructor
     public UserBean() {
+        this.blogs = new ArrayList<>();
     }
 
     public UserBean(String firstname, String lastName, String userName,
@@ -50,6 +55,7 @@ public class UserBean implements Serializable {
         this.city = city;
         this.zipCode = zipCode;
         this.password = password;
+        this.blogs = new ArrayList<>();
     }
 
     // Methods
@@ -139,6 +145,21 @@ public class UserBean implements Serializable {
 
     public void setMemberAccess(MemberAccess memberAccess) {
         this.memberAccess = memberAccess;
+    }
+
+    public void addBlog(BlogPostBean blog){
+        if(blogs != null){
+            blogs.add(blog);
+            blog.setUser(this);
+        }
+    }
+
+    public List<BlogPostBean> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<BlogPostBean> blogs) {
+        this.blogs = blogs;
     }
 
     @Override

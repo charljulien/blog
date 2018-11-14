@@ -15,8 +15,8 @@ import javax.persistence.EntityTransaction;
 public class CommentDAO {
 
     // Variables
-    private EntityManager em = EMProvidor.getEntityManager();
-    private EntityTransaction et = em.getTransaction();
+    private EntityManager em;
+    private EntityTransaction et;
 
 
     /**
@@ -24,6 +24,8 @@ public class CommentDAO {
      */
     public void safeComment(CommentBean comment) {
         System.out.println("Saving Comment DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
         et.begin();
         em.persist(comment);
         et.commit();

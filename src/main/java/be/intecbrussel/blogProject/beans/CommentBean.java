@@ -19,6 +19,7 @@ public class CommentBean implements Serializable {
 
     // Constructor
     public CommentBean() {
+        setDate(LocalDate.now());
     }
 
     public CommentBean(String comment) {

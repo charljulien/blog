@@ -17,8 +17,8 @@ import java.util.List;
 public class UserDAO {
 
     // Variables
-    private EntityManager em = EMProvidor.getEntityManager();
-    private EntityTransaction et = em.getTransaction();
+    private EntityManager em;
+    private EntityTransaction et;
 
     /**
      * Saves a User to DB
@@ -27,8 +27,10 @@ public class UserDAO {
      */
     public void saveUser(UserBean user) {
         System.out.println("Saving user DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
         et.begin();
-        em.persist(user);
+        em.merge(user);
         et.commit();
     }
 
