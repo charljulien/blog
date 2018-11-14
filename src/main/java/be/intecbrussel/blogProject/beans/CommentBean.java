@@ -16,6 +16,9 @@ public class CommentBean implements Serializable {
     private String comment;
     @Column(name = "Date")
     private LocalDate date;
+    @ManyToOne
+    @Column(name = "User_Comment")
+    private UserBean userComment;
 
     // Constructor
     public CommentBean() {
@@ -25,6 +28,15 @@ public class CommentBean implements Serializable {
     public CommentBean(String comment) {
         this.comment = comment;
         setDate(LocalDate.now());
+    }
+
+    // Methods
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getComment() {
@@ -41,6 +53,14 @@ public class CommentBean implements Serializable {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public UserBean getUser() {
+        return userComment;
+    }
+
+    public void setUser(UserBean user) {
+        this.userComment = user;
     }
 
     @Override

@@ -37,10 +37,13 @@ public class UserBean implements Serializable {
     private MemberAccess memberAccess;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BlogPostBean> blogs;
+    @OneToMany(mappedBy = "userComment",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentBean> comments;
 
     // Constructor
     public UserBean() {
         this.blogs = new ArrayList<>();
+        this.comments = new ArrayList<>();
     }
 
     public UserBean(String firstname, String lastName, String userName,
@@ -56,6 +59,7 @@ public class UserBean implements Serializable {
         this.zipCode = zipCode;
         this.password = password;
         this.blogs = new ArrayList<>();
+        this.comments = new ArrayList<>();
     }
 
     // Methods
@@ -160,6 +164,21 @@ public class UserBean implements Serializable {
 
     public void setBlogs(List<BlogPostBean> blogs) {
         this.blogs = blogs;
+    }
+
+    public void addComment(CommentBean comment){
+        if(comments != null){
+            comments.add(comment);
+            comment.setUser(this);
+        }
+    }
+
+    public List<CommentBean> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentBean> comments) {
+        this.comments = comments;
     }
 
     @Override

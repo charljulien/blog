@@ -40,7 +40,7 @@ public class MemberAccessDAO {
      * Sets a default Access Level << READER >> to new user
      * This Methods should be used when creating a new UserBean to set default Reader Access
      *
-     * @param user by creation of new user
+     * @param user by creation of new user object
      * @see be.intecbrussel.blogProject.service.interfaces.MemberAccessServiceInterface#setReaderAccessLevel(UserBean)
      */
     public void setReaderAccessLevel(UserBean user) {
