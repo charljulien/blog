@@ -12,7 +12,6 @@ import java.time.LocalDate;
  * @author Mr. Black
  * @see be.intecbrussel.blogProject.dao.BlogPostDAO
  */
-
 @Entity
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {
@@ -28,8 +27,9 @@ public class BlogPostBean implements Serializable {
     private int likeBlogCounter;
     @Column(name = "Date")
     private LocalDate date;
-    @ManyToOne
-    @Column(name = "User")
+
+    @ManyToOne //why is this not added as FK in table?
+    @JoinColumn(name = "User")
     private UserBean user;
 
     // Constructor

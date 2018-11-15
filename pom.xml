@@ -13,12 +13,12 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
     </properties>
-
 
     <build>
         <finalName>theBlog</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -54,6 +54,11 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>

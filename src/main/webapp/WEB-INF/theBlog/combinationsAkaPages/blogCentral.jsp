@@ -1,6 +1,6 @@
 <!-- url for this page is: localhost:8080 or host(www.theblog.com)/theblog/blogcentral -->
 
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

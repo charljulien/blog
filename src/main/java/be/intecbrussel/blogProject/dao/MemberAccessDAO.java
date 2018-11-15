@@ -15,7 +15,6 @@ import java.util.List;
  * @see MemberAccess
  * @see be.intecbrussel.blogProject.service.interfaces.MemberAccessServiceInterface
  */
-
 public class MemberAccessDAO {
 
     // Variables
