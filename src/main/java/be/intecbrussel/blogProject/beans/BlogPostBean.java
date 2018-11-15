@@ -28,7 +28,7 @@ public class BlogPostBean implements Serializable {
     @Column(name = "Date")
     private LocalDate date;
     @ManyToOne
-    @Column(name = "User")
+    @JoinColumn(name = "User")
     private UserBean user;
 
     // Constructor
