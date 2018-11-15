@@ -17,7 +17,7 @@ public class CommentBean implements Serializable {
     @Column(name = "Date")
     private LocalDate date;
     @ManyToOne
-    @JoinColumn(name = "User_Comment")
+    @JoinColumn(name = "User")
     private UserBean userComment;
 
     // Constructor

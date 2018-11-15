@@ -38,6 +38,7 @@ public class BlogPostDAO {
         et.begin();
         em.persist(blogPost);
         et.commit();
+        EMProvidor.closeEmf();
     }
 
     /**
@@ -59,6 +60,7 @@ public class BlogPostDAO {
             em.merge(post);
         }
         et.commit();
+        EMProvidor.closeEmf();
     }
 
     /**
@@ -78,6 +80,7 @@ public class BlogPostDAO {
             em.remove(blog);
         }
         et.commit();
+        EMProvidor.closeEmf();
     }
 
 

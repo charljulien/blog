@@ -68,4 +68,9 @@ public class MemberAccess implements Serializable {
     public void setUsers(List<UserBean> users) {
         this.users = users;
     }
+
+    @Override
+    public String toString() {
+        return getMemberAccessLevel();
+    }
 }
