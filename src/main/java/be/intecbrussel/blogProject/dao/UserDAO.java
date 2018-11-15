@@ -1,13 +1,10 @@
 package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.UserBean;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -45,8 +42,8 @@ public class UserDAO {
                 eMailExists = true;
             }
         }
-        for (UserBean username : userName){
-            if(user.getUserName().equalsIgnoreCase(username.getUserName())){
+        for (UserBean username : userName) {
+            if (user.getUserName().equalsIgnoreCase(username.getUserName())) {
                 System.out.println("UserName already exists");
                 userNameExists = true;
             }
@@ -60,9 +57,9 @@ public class UserDAO {
 
     /**
      * Update user in DB
-     * @author Mr.Brown
      *
      * @param user
+     * @author Mr.Brown
      */
     public void updateUser(long id, String text) {
         System.out.println("Updating user DAO...");
