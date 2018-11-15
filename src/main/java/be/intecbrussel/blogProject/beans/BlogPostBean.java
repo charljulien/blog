@@ -12,7 +12,6 @@ import java.time.LocalDate;
  * @author Mr. Black
  * @see be.intecbrussel.blogProject.dao.BlogPostDAO
  */
-
 @Entity
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {

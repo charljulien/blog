@@ -50,8 +50,6 @@ public class UserDAO {
     //Update
 
     public void updateUser(UserBean user){
-
-
             try {
                 PreparedStatement p = (PreparedStatement) connection.prepareStatement(UPDATE);
                 p.setString(1,user.getFirstname());
@@ -72,7 +70,6 @@ public class UserDAO {
             }catch ( SQLException e){
                 throw new RuntimeException(e);
             }
-
     }
 
     // Read

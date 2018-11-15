@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class BlogPostDAO {
 
-    Connection connection=null;
+    Connection connection = null;
     private static final String UPDATE = "UPDATE BlogPost SET blogMessage=?, likeBlogCounter=?, date=?, WHERE id=?";
     private static final String DELETE = "DELETE FROM BlogPost WHERE id=?";
     // Variables
@@ -49,51 +49,49 @@ public class BlogPostDAO {
 
     /**
      * Update blog message in DB
-     * Mr.Brown
+     *
      * @param blogPost
+     * @author Mr. Brown
      */
 
     //Update
-    public void updateBlogPost(BlogPostBean blogPost){
-
-
-        try {
-            PreparedStatement p = (PreparedStatement) connection.prepareStatement(UPDATE);
-            p.setString(1,blogPost.getBlogMessage());
-
-
-            p.executeUpdate();
-            p.close();
-
-            System.out.println("Blog message " + blogPost.getId() + "was updated");
-
-        }catch ( SQLException e){
-            throw new RuntimeException(e);
-        }
-
+    public void updateBlogPost(BlogPostBean blogPost) {
+        System.out.println("Updating User DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
+//        try {
+//            PreparedStatement p = (PreparedStatement) connection.prepareStatement(UPDATE);
+//            p.setString(1, blogPost.getBlogMessage());
+//
+//            p.executeUpdate();
+//            p.close();
+//
+//            System.out.println("Blog message " + blogPost.getId() + "was updated");
+//
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     /**
      * Delete blog message in DB
      * Mr.Brown
+     *
      * @param id
      */
     // Delete
-
-    public void delete(int id){
-
-
+    public void delete(int id) {
         try {
             PreparedStatement p = (PreparedStatement) connection.prepareStatement(DELETE);
 
-            p.setInt(1,id);
+            p.setInt(1, id);
 
             p.executeUpdate();
             p.close();
 
             System.out.println("Blog message " + id + "was deleted");
 
-        }catch ( SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 

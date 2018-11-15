@@ -56,8 +56,6 @@ public class CommentDAO {
      */
     // Delete
     public void delete(int id){
-
-
         try {
             PreparedStatement p = (PreparedStatement) connection.prepareStatement(DELETE);
 
