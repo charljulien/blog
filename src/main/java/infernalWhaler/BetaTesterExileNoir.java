@@ -61,7 +61,7 @@ public class BetaTesterExileNoir {
 
     private void saveAccessLevel(){
         System.out.println("Give level");
-        String level = kbd.nextLine();
+        String level = kbd.next();
         MemberAccess access = new MemberAccess(level);
         memberAccessService.saveAccessLevelToDB(access);
 
@@ -90,6 +90,6 @@ public class BetaTesterExileNoir {
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.updateBlogPost();
+        beta.saveUser();
     }
 }

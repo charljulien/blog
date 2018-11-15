@@ -35,6 +35,7 @@ public class CommentDAO {
         et.begin();
         em.persist(comment);
         et.commit();
+        EMProvidor.closeEmf();
     }
 
     /**
@@ -53,6 +54,7 @@ public class CommentDAO {
             em.remove(comment);
         }
         et.commit();
+        EMProvidor.closeEmf();
     }
 
 
