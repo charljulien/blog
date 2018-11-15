@@ -1,17 +1,15 @@
-<!-- url for this page is: localhost:8080/forms/login ; can it be the same url and still another jsp aka another html generated page? yes, right? -->
-
+<!-- url for this page is: localhost:8080/forms/login -->
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<p> ERROR LOGGING YOU IN. CHECK YOUR USERNAME AND PASSWORD AND THAN TRY AGAIN. </p>
-
-<h3> Log in </h3>
+<h3>Log In</h3>
 <div class="login-page">
     <div class="form">
         <form class="login-form">
@@ -22,6 +20,6 @@
         </form>
     </div>
 </div>
-
 </body>
 </html>
+

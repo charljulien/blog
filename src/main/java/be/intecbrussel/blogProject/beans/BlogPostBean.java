@@ -2,8 +2,6 @@ package be.intecbrussel.blogProject.beans;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -16,7 +14,7 @@ import java.time.LocalDate;
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {
 
-    // Variables
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -32,7 +30,7 @@ public class BlogPostBean implements Serializable {
     @JoinColumn(name = "User")
     private UserBean user;
 
-    // Constructor
+
     public BlogPostBean() {
         setDate(LocalDate.now());
     }
@@ -41,7 +39,7 @@ public class BlogPostBean implements Serializable {
         this.blogMessage = blogMessage;
         setDate(LocalDate.now());
     }
-    // Methods
+
 
     public long getId() {
         return id;

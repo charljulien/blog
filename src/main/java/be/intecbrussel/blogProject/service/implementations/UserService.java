@@ -25,19 +25,33 @@ public class UserService implements UserServiceInterface {
     }
 
     // Methods
+
     /**
+     * @author Mr. Black
      * @see UserDAO#saveUser(UserBean)
      * @see MemberAccessDAO#setReaderAccessLevel(UserBean)
      */
     @Override
     public void saveUserToDB(UserBean user) {
-        System.out.println("Saving user SERVICE");
+        System.out.println("Saving User SERVICE...");
         memberAccessDAO.setReaderAccessLevel(user);
         userDAO.saveUser(user);
     }
 
+
     public void handlingUser(UserBean user) {
         System.out.println("Handling" + user.getUserName());
         //Iets met sessionDAO om nieuw sessie te creeren ?
+    }
+
+    /**
+     * @author Mr. Black
+     * @see UserDAO#deleteUser(long)
+     */
+    @Override
+    public void deleteUserFromDB(long id) {
+        System.out.println("Deleting User SERVICE...");
+        userDAO.deleteUser(id);
+
     }
 }

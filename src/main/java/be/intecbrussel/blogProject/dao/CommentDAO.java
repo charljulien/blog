@@ -2,14 +2,12 @@ package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.CommentBean;
 
-import com.mysql.jdbc.PreparedStatement;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
-
 
 /**
  * Represents dataLayer of CommentBean class
@@ -20,11 +18,6 @@ import java.util.List;
  */
 public class CommentDAO {
 
-    private static final String UPDATE = "UPDATE comments SET comment=?, date=?, WHERE id=?";
-    private static final String DELETE = "DELETE FROM comments WHERE id=?";
-
-
-    // Variables
     private EntityManager em;
     private EntityTransaction et;
 
@@ -43,7 +36,6 @@ public class CommentDAO {
         em.persist(comment);
         et.commit();
     }
-
 
     /**
      * Delete comment in DB
@@ -70,6 +62,7 @@ public class CommentDAO {
      * @param lastName of object UserBean
      * @return comments based on certain lastName
      * @author Mr. Black
+     * @see CommentDAO#getCommentsByName(String)
      */
     private TypedQuery<CommentBean> getCommentsByNameQuery(String lastName) {
         TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean AS comment WHERE comment.userComment.lastName=:name", CommentBean.class);
@@ -87,6 +80,7 @@ public class CommentDAO {
      * @param id of the object comment
      * @return an id query of comment
      * @author Mr. Black
+     * @see CommentDAO#getCommentById(long)
      */
     private TypedQuery<CommentBean> getCommentByIdQuery(long id) {
         TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean AS comment WHERE comment.id=:id", CommentBean.class);

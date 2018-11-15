@@ -79,9 +79,17 @@ public class BetaTesterExileNoir {
         commentService.deleteCommentToDB(id);
     }
 
+    private void updateBlogPost(){
+        System.out.println("Give first ID and then TEXT");
+        long id = kbd.nextLong();
+        kbd.nextLine();
+        String text = kbd.nextLine();
+        blogPostService.updateBlogPostToDB(id,text);
+    }
+
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.deleteComment();
+        beta.updateBlogPost();
     }
 }
