@@ -10,7 +10,6 @@
 <body>
 <h3>User Registration</h3>
 
-
 <form method="post">
     First Name: <input type="text" name="firstName">
     Last Name: <input type="text" name="lastName">
