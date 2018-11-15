@@ -11,8 +11,8 @@
             <include-prelude>/WEB-INF/theBlog/parts/sidebar.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
-    
-    
+
+
     <servlet>
         <servlet-name>Anyservlet</servlet-name>
         <jsp-file>/header.jsp</jsp-file>
@@ -22,5 +22,7 @@
         <url-pattern>/blogcentral</url-pattern>
     </servlet-mapping>
 
-
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
 </web-app>
