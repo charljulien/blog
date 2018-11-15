@@ -27,6 +27,7 @@
         </properties>
     </persistence-unit>
 
+    <!-- dont need this!! first persistence unit is plenty -->
     <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">
         <properties>
             <!-- Configuring JDBC properties -->
