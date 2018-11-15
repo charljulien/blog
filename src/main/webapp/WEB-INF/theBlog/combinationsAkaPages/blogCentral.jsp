@@ -15,9 +15,9 @@
 
 <div class="main">
     <div>
-    <h2> Title Article 1 </h2>
-    <p> text article one text text text text goes here text and more text text text text text text </p>
-</div>
+        <h2> Title Article 1 </h2>
+        <p> text article one text text text text goes here text and more text text text text text text </p>
+    </div>
     <div>
         <h2> Title Article 2 </h2>
         <p> text article two text text text text goes here text and more text text text text text text </p>
