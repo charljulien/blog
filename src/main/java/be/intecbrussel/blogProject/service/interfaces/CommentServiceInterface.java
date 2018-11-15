@@ -16,5 +16,9 @@ public interface CommentServiceInterface {
      * @see be.intecbrussel.blogProject.dao.UserDAO#saveUser(UserBean)
      * */
     void saveCommentToDB(CommentBean comment);
+    /**
+     * @see be.intecbrussel.blogProject.dao.CommentDAO#deleteComment(long)
+     * */
+    void deleteCommentToDB(long ig);
 
 }

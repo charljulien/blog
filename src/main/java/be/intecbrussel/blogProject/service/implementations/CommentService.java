@@ -27,7 +27,13 @@ public class CommentService implements CommentServiceInterface {
      */
     @Override
     public void saveCommentToDB(CommentBean comment) {
-        System.out.println("Saving Comment SERVICE");
+        System.out.println("Saving Comment SERVICE...");
         commentDAO.safeComment(comment);
+    }
+
+    @Override
+    public void deleteCommentToDB(long id) {
+        System.out.println("Deleting Comment SERVICE...");
+        commentDAO.deleteComment(id);
     }
 }

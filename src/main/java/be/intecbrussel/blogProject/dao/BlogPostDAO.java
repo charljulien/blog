@@ -50,7 +50,7 @@ public class BlogPostDAO {
     /**
      * Update blog message in DB
      *
-     * @param blogPost
+     * @param blogPost updating blogPost object
      * @author Mr. Brown
      */
 
