@@ -35,4 +35,9 @@ public class UserService implements UserServiceInterface {
         memberAccessDAO.setReaderAccessLevel(user);
         userDAO.saveUser(user);
     }
+
+    public void handlingUser(UserBean user) {
+        System.out.println("Handling" + user.getUserName());
+        //Iets met sessionDAO om nieuw sessie te creeren ?
+    }
 }
