@@ -15,5 +15,9 @@ public interface UserServiceInterface {
      * @see be.intecbrussel.blogProject.dao.UserDAO#saveUser(UserBean)
      */
     void saveUserToDB(UserBean user);
+    /**
+     * @see be.intecbrussel.blogProject.dao.UserDAO#deleteUser(long)
+     * */
+    void deleteUserFromDB(long id);
 
 }

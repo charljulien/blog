@@ -24,6 +24,8 @@ public class MemberAccessDAO {
     /**
      * Creates an Access Level
      *
+     * @param memberAccess object
+     * @author Mr. Black
      * @see be.intecbrussel.blogProject.service.interfaces.MemberAccessServiceInterface#saveAccessLevelToDB(MemberAccess)
      */
     public void createAccessLevel(MemberAccess memberAccess) {
@@ -40,6 +42,7 @@ public class MemberAccessDAO {
      * This Methods should be used when creating a new UserBean to set default Reader Access
      *
      * @param user by creation of new user object
+     * @author Mr. Black
      * @see be.intecbrussel.blogProject.service.interfaces.MemberAccessServiceInterface#setReaderAccessLevel(UserBean)
      */
     public void setReaderAccessLevel(UserBean user) {
@@ -57,7 +60,12 @@ public class MemberAccessDAO {
     }
 
 
-    // Queries
+    /**
+     * Query to find a User without a defined access level
+     *
+     * @author Mr. Black
+     * @see MemberAccessDAO#getNoLevelDefinedUsers()
+     */
     private TypedQuery<UserBean> getNoLevelDefinedUsersQuery() {
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean  AS user where user.memberAccess=:level", UserBean.class);
         query.setParameter("level", null);
@@ -72,6 +80,7 @@ public class MemberAccessDAO {
      * Query to obtain Reader Access Level
      *
      * @return query Reader
+     * @author Mr. Black
      * @see MemberAccessDAO#getReaderAccess()
      */
     private TypedQuery<MemberAccess> getReaderAccessQuery() {
@@ -84,6 +93,7 @@ public class MemberAccessDAO {
      * List to obtain Reader Access Level
      *
      * @return Reader
+     * @author Mr. Black
      */
     public List<MemberAccess> getReaderAccess() {
         return getReaderAccessQuery().getResultList();
