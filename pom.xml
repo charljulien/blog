@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.intecbrussel</groupId>
-    <artifactId>The Blog</artifactId>
+    <artifactId>theBlog</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
@@ -13,12 +13,12 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
     </properties>
-
 
     <build>
         <finalName>theBlog</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -26,7 +26,7 @@
                 <version>1.6.9</version>
                 <configuration>
                     <container>
-                        <containerId>tomee7x</containerId>
+                        <containerId>tomcat8x</containerId>
                         <type>installed</type>
                         <home>${env.CATALINA_HOME}</home>
                     </container>
@@ -36,15 +36,15 @@
                     </configuration>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<version>3.8.0</version>-->
+                <!--<configuration>-->
+                    <!--<source>1.8</source>-->
+                    <!--<target>1.8</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
@@ -56,15 +56,20 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.46</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
-            <!-- hibernate-entitymanager -->
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.11.Final</version>
+            <version>5.3.7.Final</version>
         </dependency>
     </dependencies>
 

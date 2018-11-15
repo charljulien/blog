@@ -19,8 +19,7 @@ import java.util.List;
  */
 public class UserDAO {
 
-    Connection connection = null;
-    private static final String UPDATE = "UPDATE users SET FirstName=?, LastName=?, UserName=?, Email=?, Street=?, House_no=?, City=?, Zip=?, Password=? WHERE id=?";
+    C
 
     // Variables
     private EntityManager em;
@@ -63,31 +62,29 @@ public class UserDAO {
 
     /**
      * Update user in DB
-     * Mr.Brown
+     * @author Mr.Brown
      *
      * @param user
      */
-    public void updateUser(UserBean user) {
-        try {
-            PreparedStatement p = (PreparedStatement) connection.prepareStatement(UPDATE);
-            p.setString(1, user.getFirstname());
-            p.setString(2, user.getLastName());
-            p.setString(3, user.getUserName());
-            p.setString(4, user.getEmail());
-            p.setString(5, user.getStreet());
-            p.setString(6, user.getHouseNr());
-            p.setString(7, user.getCity());
-            p.setString(8, user.getZipCode());
-            p.setString(9, user.getPassword());
-
-            p.executeUpdate();
-            p.close();
-
-            System.out.println("User " + user.getId() + "was updated");
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public void updateUser(long id, String text) {
+        System.out.println("Updating user DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
+        et.begin();
+        List<UserBean> ub = getUserById(id);
+        for (UserBean user : ub) {
+            user.setFirstname(user.getFirstname() + " " + text);
+            user.setLastName(user.getLastName() + " " + text);
+            user.setUserName(user.getUserName() + " " + text);
+            user.setEmail(user.getEmail() + " " + text);
+            user.setStreet(user.getStreet() + " " + text);
+            user.setHouseNr(user.getHouseNr() + " " + text);
+            user.setCity(user.getCity() + " " + text);
+            user.setZipCode(user.getZipCode() + " " + text);
+            user.setPassword(user.getPassword() + " " + text);
+            em.merge(user);
         }
+        et.commit();
     }
 
     // Read
