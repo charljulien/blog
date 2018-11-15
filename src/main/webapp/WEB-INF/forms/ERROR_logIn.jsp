@@ -8,20 +8,20 @@
     <title>Insert title here</title>
 </head>
 <body>
-<h3>Log In</h3>
 
 <p> ERROR LOGGING YOU IN. CHECK YOUR USERNAME AND PASSWORD AND THAN TRY AGAIN. </p>
 
-<form method="post" action="getsession">
-    <input type="text" name="userName"/>
-    <input type="password" name="password"/>
-    <button>Log In</button>
-</form>
-
-<form method="post" action="logout">
-    <button>Log Out</button>
-</form>
-
+<h3> Log in </h3>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form">
+            <input type="text" placeholder="username"/>
+            <input type="password" placeholder="password"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
