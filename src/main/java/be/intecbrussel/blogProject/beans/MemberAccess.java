@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * This class's object grants as a key for the access level rights of users
  * [Admin, Author, Reader]
+ * //Miss Gold thinks it should be Author, User and Visitor. :P
  *
  * @author Mr. Black
  * @see UserBean
@@ -22,6 +23,7 @@ public class MemberAccess implements Serializable {
     private long id;
     @Column(name = "Access_Level")
     private String memberAccessLevel;
+    //Miss Gold wonders why we are keeping a list of users here.. Is it really necessary? and if yes, shouldn't we have one for author and one for user?
     @OneToMany(mappedBy = "memberAccess", cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<UserBean> users;
 
