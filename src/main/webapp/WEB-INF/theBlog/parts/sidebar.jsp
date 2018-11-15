@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="MyStyleSheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
+    <script src="myscript.js"></script>
 </head>
 <body>
 

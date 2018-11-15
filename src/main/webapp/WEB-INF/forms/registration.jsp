@@ -6,6 +6,8 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
+    <script src="myscript.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <h3>Registration Form:</h3>
