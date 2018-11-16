@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class UserDAO {
 
-    C
+
 
     // Variables
     private EntityManager em;
