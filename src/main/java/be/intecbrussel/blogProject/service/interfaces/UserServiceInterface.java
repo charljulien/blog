@@ -20,4 +20,6 @@ public interface UserServiceInterface {
      * */
     void deleteUserFromDB(long id);
 
+    UserBean handlingUser(UserBean user);
+
 }
