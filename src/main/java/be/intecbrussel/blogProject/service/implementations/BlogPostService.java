@@ -31,7 +31,7 @@ public class BlogPostService implements BlogPostServiceInterface {
     @Override
     public void saveBlogPostToDB(BlogPostBean blogPost) {
         System.out.println("Saving Blog Post to DB SERVICE...");
-        blogPostDAO.safeBlogPost(blogPost);
+        blogPostDAO.saveBlogPost(blogPost);
     }
 
     /**

@@ -11,7 +11,7 @@ import be.intecbrussel.blogProject.beans.BlogPostBean;
 public interface BlogPostServiceInterface {
 
     /**
-     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#safeBlogPost(BlogPostBean)
+     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#saveBlogPost(BlogPostBean)
      * */
     void saveBlogPostToDB(BlogPostBean blogpost);
 

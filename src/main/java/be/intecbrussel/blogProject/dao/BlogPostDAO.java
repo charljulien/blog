@@ -19,10 +19,8 @@ import java.util.List;
  */
 public class BlogPostDAO {
 
-
     private EntityManager em;
     private EntityTransaction et;
-
 
     /**
      * Safes a Blog post
@@ -31,7 +29,7 @@ public class BlogPostDAO {
      * @author Mr. Black
      * @see be.intecbrussel.blogProject.service.implementations.UserService#saveUserToDB(UserBean)
      */
-    public void safeBlogPost(BlogPostBean blogPost) {
+    public void saveBlogPost(BlogPostBean blogPost) {
         System.out.println("Saving Blog Post DAO...");
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
@@ -82,7 +80,6 @@ public class BlogPostDAO {
         et.commit();
         EMProvidor.closeEmf();
     }
-
 
     /**
      * Query to find Blog without an UserId
