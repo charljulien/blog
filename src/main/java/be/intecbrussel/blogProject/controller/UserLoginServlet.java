@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Class creates Servlet object for JSP pages
+ * Class creates Servlet login for JSP pages
  *
  * @author Mr. Pink
  */
@@ -25,12 +25,13 @@ public class UserLoginServlet extends HttpServlet {
     }
 
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        String text = request.getParameter("userName");
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
 
-        if (text != null && !text.trim().isEmpty()){
+        if (userName != null && !userName.trim().isEmpty()){
             HttpSession session = request.getSession();
             if (session.getAttribute("userName")==null){
-                session.setAttribute("userName", text);
+                session.setAttribute("userName", userName);
             }
 //            UserService userService = new UserService();
             UserBean userBean = new UserBean();
@@ -39,7 +40,7 @@ public class UserLoginServlet extends HttpServlet {
             request.setAttribute("userBean", userBean);
             request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp").forward(request, response);
         }else{
-            request.getRequestDispatcher("WEB-INF/forms/ERROR_login.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/forms/ERRORlogin.jsp").forward(request, response);
         }
     }
 }

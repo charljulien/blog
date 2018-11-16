@@ -16,10 +16,9 @@
 <h3> Log in </h3>
 <div class="login-page">
     <div class="form">
-        <form class="login-form">
-            <input type="text" placeholder="username"/>
-            <input type="password" placeholder="password"/>
-            <button>login</button>
+        <form class="login-form" method="POST">
+            <input type="text" placeholder="username" name="userName"/>
+            <input type="password" placeholder="password" name="password"/>
             <p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>
         </form>
     </div>

@@ -9,7 +9,7 @@ import java.util.List;
  * This class's object grants as a key for the access level rights of users
  * [Admin, Author, Reader]
  * //Miss Gold thinks it should be Author, User and Visitor. :P
- *
+ * //Miss Gold and Shower
  * @author Mr. Black
  * @see UserBean
  */
