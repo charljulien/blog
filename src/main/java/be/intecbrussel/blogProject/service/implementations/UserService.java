@@ -38,8 +38,7 @@ public class UserService implements UserServiceInterface {
         userDAO.saveUser(user);
     }
 
-<<<<<<< HEAD
-=======
+
 
     public UserBean handlingUser(UserBean user) {
         System.out.println("Handling" + user.getUserName());
@@ -47,7 +46,6 @@ public class UserService implements UserServiceInterface {
         return user;
     }
 
->>>>>>> 014215b2329a0e7613036ede9507c3208005d037
     /**
      * @author Mr. Black
      * @see UserDAO#deleteUser(long)
@@ -63,10 +61,7 @@ public class UserService implements UserServiceInterface {
      * @author Mr. Pink
      * IF USED STILL NEEDS TO BE ADDED TO INTERFACE CLASS OF SERVCIE
      */
-    public void handlingUser(UserBean user) {
-        System.out.println("Handling" + user.getUserName());
-        //Iets met sessionDAO om nieuw sessie te creeren ?
-    }
+
 
     /**
      * @author Mr. Black

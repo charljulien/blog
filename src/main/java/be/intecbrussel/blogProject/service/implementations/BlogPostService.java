@@ -38,16 +38,11 @@ public class BlogPostService implements BlogPostServiceInterface {
     @Override
     public void saveBlogPostToDB(BlogPostBean blogPost,String lastName) {
         System.out.println("Saving Blog Post to DB SERVICE...");
-<<<<<<< HEAD
         List<UserBean> userLastName = userDAO.getUserByLastName(lastName);
         for(UserBean user : userLastName){
             blogPost.setUser(user);
         }
-        blogPostDAO.safeBlogPost(blogPost);
-
-=======
         blogPostDAO.saveBlogPost(blogPost);
->>>>>>> 014215b2329a0e7613036ede9507c3208005d037
     }
 
     /**
