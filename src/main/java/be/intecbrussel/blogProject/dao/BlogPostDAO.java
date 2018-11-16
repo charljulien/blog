@@ -36,9 +36,9 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        em.persist(blogPost);
+        em.merge(blogPost);
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
     /**
@@ -60,7 +60,7 @@ public class BlogPostDAO {
             em.merge(post);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
     /**
@@ -80,7 +80,7 @@ public class BlogPostDAO {
             em.remove(blog);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
 
@@ -91,6 +91,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlowWithoutUserId()
      */
     private TypedQuery<BlogPostBean> getBlogWithoutUserIdQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog WHERE blog.user=:author", BlogPostBean.class);
         query.setParameter("author", null);
         return query;
@@ -108,6 +109,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogWithPredefinedId(long)
      */
     private TypedQuery<BlogPostBean> getBlogWithPredefinedIdQuery(long id) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog WHERE blog.id=:id", BlogPostBean.class);
         query.setParameter("id", id);
         return query;
@@ -124,6 +126,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogsByRecentDate()
      */
     private TypedQuery<BlogPostBean> getBlogsByRecentDateFirstQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date asc", BlogPostBean.class);
         return query;
     }
@@ -139,6 +142,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogsByOldestDateFirst()
      */
     private TypedQuery<BlogPostBean> getBlogsByOldestDateFirstQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date desc", BlogPostBean.class);
         return query;
     }
@@ -154,6 +158,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogsWithMostLikesFirst()
      */
     private TypedQuery<BlogPostBean> getBlogsWithMostLikesFirstQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.likeBlogCounter asc", BlogPostBean.class);
         return query;
     }
@@ -169,6 +174,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogsWithLessLikesFirst()
      */
     private TypedQuery<BlogPostBean> getBlogsWithLessLikesFirstQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.likeBlogCounter desc", BlogPostBean.class);
         return query;
     }
@@ -185,6 +191,7 @@ public class BlogPostDAO {
      * @see BlogPostDAO#getBlogsByPredefinedUser(String)
      */
     private TypedQuery<BlogPostBean> getBlogsByPredefinedUserQuery(String user) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog WHERE blog.user.lastName=:name", BlogPostBean.class);
         query.setParameter("name", user);
         return query;

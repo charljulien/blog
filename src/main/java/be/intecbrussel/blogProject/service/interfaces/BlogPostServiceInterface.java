@@ -7,13 +7,14 @@ package be.intecbrussel.blogProject.service.interfaces;
  * @see be.intecbrussel.blogProject.dao.BlogPostDAO
  */
 import be.intecbrussel.blogProject.beans.BlogPostBean;
+import be.intecbrussel.blogProject.beans.UserBean;
 
 public interface BlogPostServiceInterface {
 
     /**
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#safeBlogPost(BlogPostBean)
      * */
-    void saveBlogPostToDB(BlogPostBean blogpost);
+    void saveBlogPostToDB(BlogPostBean blogPost, String userBean);
 
     /**
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#updateBlogPost(long, String)

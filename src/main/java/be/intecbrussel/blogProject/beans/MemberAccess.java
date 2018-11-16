@@ -23,7 +23,6 @@ public class MemberAccess implements Serializable {
     private long id;
     @Column(name = "Access_Level")
     private String memberAccessLevel;
-    //Miss Gold wonders why we are keeping a list of users here.. Is it really necessary? and if yes, shouldn't we have one for author and one for user?
     @OneToMany(mappedBy = "memberAccess", cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<UserBean> users;
 

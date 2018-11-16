@@ -20,6 +20,11 @@ import java.io.IOException;
 @WebServlet("/Login")
 public class UserLoginServlet extends HttpServlet {
 
+    private static final String USER_BEAN = "userBean";
+    private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
+    private static final String ERROR_LOGIN_PAGE = "WEB-INF/forms/ERROR_login.jsp";
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         request.getRequestDispatcher("/WEB-INF/forms/login.jsp").forward(request, response);
     }
@@ -36,7 +41,7 @@ public class UserLoginServlet extends HttpServlet {
             UserBean userBean = new UserBean();
 //            userBean.setUserName(request.getParameter("userName"));
 //            userService.handlingUser(userBean);
-            request.setAttribute("userBean", userBean);
+            request.setAttribute(USER_BEAN, userBean);
             request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp").forward(request, response);
         }else{
             request.getRequestDispatcher("WEB-INF/forms/ERROR_login.jsp").forward(request, response);
