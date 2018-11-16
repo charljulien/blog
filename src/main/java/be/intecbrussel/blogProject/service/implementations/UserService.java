@@ -39,9 +39,11 @@ public class UserService implements UserServiceInterface {
     }
 
 
-    public void handlingUser(UserBean user) {
+
+    public UserBean handlingUser(UserBean user) {
         System.out.println("Handling" + user.getUserName());
         //Iets met sessionDAO om nieuw sessie te creeren ?
+        return user;
     }
 
     /**
@@ -52,6 +54,14 @@ public class UserService implements UserServiceInterface {
     public void deleteUserFromDB(long id) {
         System.out.println("Deleting User SERVICE...");
         userDAO.deleteUser(id);
+    }
 
+
+    /**
+     * @author Mr. Black
+     * to print in the console when making new user!
+     */
+    public void userRegistrationService(UserBean user) {
+        System.out.println(user.toString());
     }
 }

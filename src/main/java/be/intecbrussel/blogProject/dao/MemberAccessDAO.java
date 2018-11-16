@@ -44,7 +44,7 @@ public class MemberAccessDAO {
             em.persist(memberAccess);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
     /**
@@ -66,7 +66,7 @@ public class MemberAccessDAO {
             em.persist(level);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
 
@@ -77,6 +77,7 @@ public class MemberAccessDAO {
      * @see MemberAccessDAO#getNoLevelDefinedUsers()
      */
     private TypedQuery<UserBean> getNoLevelDefinedUsersQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean  AS user where user.memberAccess=:level", UserBean.class);
         query.setParameter("level", null);
         return query;
@@ -94,6 +95,7 @@ public class MemberAccessDAO {
      * @see MemberAccessDAO#getReaderAccess()
      */
     private TypedQuery<MemberAccess> getReaderAccessQuery() {
+        em = EMProvidor.getEntityManager();
         TypedQuery<MemberAccess> query = em.createQuery("SELECT access FROM MemberAccess AS access where memberAccessLevel=:default", MemberAccess.class);
         query.setParameter("default", "Reader");
         return query;
@@ -117,6 +119,7 @@ public class MemberAccessDAO {
      * @see MemberAccessDAO#getMemberAccessLevel(String)
      */
     private TypedQuery<MemberAccess> getMemberAccessLevelQuery(String accessLevel) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<MemberAccess> query = em.createQuery("SELECT access FROM MemberAccess AS access WHERE access.memberAccessLevel=:level", MemberAccess.class);
         query.setParameter("level", accessLevel);
         return query;

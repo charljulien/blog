@@ -20,4 +20,9 @@ public interface UserServiceInterface {
      * */
     void deleteUserFromDB(long id);
 
+    // What do they do ... Mr. Black
+    UserBean handlingUser(UserBean user);
+
+    void userRegistrationService(UserBean user);
+
 }

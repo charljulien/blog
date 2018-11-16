@@ -1,8 +1,12 @@
 package be.intecbrussel.blogProject.service.implementations;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
+import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.dao.BlogPostDAO;
+import be.intecbrussel.blogProject.dao.UserDAO;
 import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
+
+import java.util.List;
 
 /**
  * Represents the serviceLayer of BlogPostBean class
@@ -15,10 +19,13 @@ public class BlogPostService implements BlogPostServiceInterface {
 
 
     private BlogPostDAO blogPostDAO;
+    private UserDAO userDAO;
+
 
 
     public BlogPostService() {
         blogPostDAO = new BlogPostDAO();
+        userDAO = new UserDAO();
     }
 
 
@@ -29,8 +36,12 @@ public class BlogPostService implements BlogPostServiceInterface {
      * @author Mr. Black
      */
     @Override
-    public void saveBlogPostToDB(BlogPostBean blogPost) {
+    public void saveBlogPostToDB(BlogPostBean blogPost,String lastName) {
         System.out.println("Saving Blog Post to DB SERVICE...");
+        List<UserBean> userLastName = userDAO.getUserByLastName(lastName);
+        for(UserBean user : userLastName){
+            blogPost.setUser(user);
+        }
         blogPostDAO.saveBlogPost(blogPost);
     }
 

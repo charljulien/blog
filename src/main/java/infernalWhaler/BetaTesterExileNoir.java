@@ -68,8 +68,11 @@ public class BetaTesterExileNoir {
     }
 
     private void saveBlogPost(){
+
+
         System.out.println("Give message");
-        blogPostService.saveBlogPostToDB(new BlogPostBean(kbd.nextLine()));
+        System.out.println("Give name");
+        blogPostService.saveBlogPostToDB(new BlogPostBean(kbd.nextLine()),kbd.nextLine());
 
     }
 
@@ -90,6 +93,6 @@ public class BetaTesterExileNoir {
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.saveUser();
+        beta.saveBlogPost();
     }
 }

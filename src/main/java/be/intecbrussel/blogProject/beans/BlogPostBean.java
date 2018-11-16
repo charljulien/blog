@@ -25,8 +25,7 @@ public class BlogPostBean implements Serializable {
     private int likeBlogCounter;
     @Column(name = "Date")
     private LocalDate date;
-
-    @ManyToOne //why is this not added as FK in table?
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User")
     private UserBean user;
 

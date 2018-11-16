@@ -1,3 +1,4 @@
+<%@ taglib prefix="portlet" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- url for this page is: localhost:8080/forms/login ; can it be the same url and still another jsp aka another html generated page? yes, right? -->
 
 
@@ -19,7 +20,10 @@
         <form class="login-form" method="POST">
             <input type="text" placeholder="username" name="userName"/>
             <input type="password" placeholder="password" name="password"/>
-            <p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>
+            <input type="submit" value ="login">
+        </form>
+        <form action="Registration" method="GET">
+            <input type="submit" value="create an account">
         </form>
     </div>
 </div>

@@ -52,13 +52,14 @@ public class UserDAO {
             em.merge(user);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
     /**
      * Update user in DB
      *
-     * @param user
+     * @param id
+     * @param text
      * @author Mr.Brown
      */
     public void updateUser(long id, String text) {
@@ -80,6 +81,7 @@ public class UserDAO {
             em.merge(user);
         }
         et.commit();
+        EMProvidor.getInstance().closeEmf();
     }
 
     // Read
@@ -100,7 +102,7 @@ public class UserDAO {
             em.remove(user);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
 
@@ -113,6 +115,7 @@ public class UserDAO {
      * @see UserDAO#getUserByLastName(String)
      */
     private TypedQuery<UserBean> getUserByLastNameQuery(String lastName) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.lastName=:last", UserBean.class);
         query.setParameter("last", lastName);
         return query;
@@ -139,6 +142,7 @@ public class UserDAO {
      * @see UserDAO#getUserById(long)
      */
     private TypedQuery<UserBean> getUserByIdQuery(long id) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.id=:id", UserBean.class);
         query.setParameter("id", id);
         return query;
@@ -164,6 +168,7 @@ public class UserDAO {
      * @see UserDAO#getUserByMail(String)
      */
     private TypedQuery<UserBean> getUserByMailQuery(String mail) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.email=:email", UserBean.class);
         query.setParameter("email", mail);
         return query;
@@ -184,11 +189,12 @@ public class UserDAO {
      * Query to obtain UserBean by UserName
      *
      * @param userName for object UserBean
-     * @return for object UserBean with predefined UserName String
+     * @return object UserBean with predefined UserName String
      * @author Mr. Black
      * @see UserDAO#getUserByUserName(String)
      */
     private TypedQuery<UserBean> getUserByUserNameQuery(String userName) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.userName=:user", UserBean.class);
         query.setParameter("user", userName);
         return query;
@@ -203,6 +209,32 @@ public class UserDAO {
      */
     public List<UserBean> getUserByUserName(String username) {
         return getUserByUserNameQuery(username).getResultList();
+    }
+
+    /**
+     * Query to obtain UserBean by Password
+     *
+     * @param password for object UserBean
+     * @return object UserBean with predefined Password String
+     * @author Mr. Black
+     * @see UserDAO#getUserByPassword(String)
+     */
+    private TypedQuery<UserBean> getUserByPasswordQuery(String password) {
+        em = EMProvidor.getEntityManager();
+        TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.password=:pass", UserBean.class);
+        query.setParameter("pass", password);
+        return query;
+    }
+
+    /**
+     * List to obtain UserBean by Password
+     *
+     * @param password for oject UserBean
+     * @return User
+     * @author Mr. Black
+     */
+    public List<UserBean> getUserByPassword(String password) {
+        return getUserByPasswordQuery(password).getResultList();
     }
 
 }
