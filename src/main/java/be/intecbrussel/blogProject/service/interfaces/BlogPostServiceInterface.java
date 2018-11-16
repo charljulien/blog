@@ -12,7 +12,7 @@ import be.intecbrussel.blogProject.beans.UserBean;
 public interface BlogPostServiceInterface {
 
     /**
-     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#safeBlogPost(BlogPostBean)
+     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#saveBlogPost(BlogPostBean)
      * */
     void saveBlogPostToDB(BlogPostBean blogPost, String userBean);
 

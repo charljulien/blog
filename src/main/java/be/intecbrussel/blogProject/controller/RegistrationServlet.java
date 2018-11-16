@@ -1,5 +1,7 @@
 package be.intecbrussel.blogProject.controller;
 
+import be.intecbrussel.blogProject.beans.UserBean;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,18 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Class creates Servlet logout for JSP pages
- *
- * @author Mr. Pink
- */
-@WebServlet("/Logout")
-public class UserLogoutServlet extends HttpServlet {
+@WebServlet("/Registration")
+public class RegistrationServlet extends HttpServlet {
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        HttpSession session = request.getSession(false);
-        if (session !=null){
-            session.invalidate();
-        }
-        response.sendRedirect("./login.jsp");
+        request.getRequestDispatcher("WEB-INF/forms/registration.jsp").forward(request, response);
     }
 }
