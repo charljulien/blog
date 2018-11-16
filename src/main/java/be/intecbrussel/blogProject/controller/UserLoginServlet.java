@@ -44,14 +44,17 @@ public class UserLoginServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
-        if (userName != null && !userName.trim().isEmpty()){
+        if (userName != null && !userName.trim().isEmpty() && password != null && !password.trim().isEmpty()){
             HttpSession session = request.getSession();
             if (session.getAttribute("userName")==null){
                 session.setAttribute("userName", userName);
             }
+            if (session.getAttribute("password")==null){
+                session.setAttribute("password", password);
+            }
             UserBean userBean = new UserBean();
 //            userBean.setUserName(request.getParameter("userName"));
-            userServiceInterface.handlingUser(userBean);
+//            userServiceInterface.handlingUser(userBean);
             request.setAttribute("userBean", userBean);
             request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp").forward(request, response);
         }else{

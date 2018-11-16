@@ -44,9 +44,9 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        servletContextEvent.setAttribute("commentService");
-        servletContextEvent.setAttribute("blogPostService");
-        servletContextEvent.
+//        servletContextEvent.setAttribute("commentService");
+//        servletContextEvent.setAttribute("blogPostService");
+//        servletContextEvent.
 
     }
 
