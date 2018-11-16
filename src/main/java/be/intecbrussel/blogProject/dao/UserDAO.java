@@ -16,11 +16,6 @@ import java.util.List;
  */
 public class UserDAO {
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a9f6af8d9c37ddee31b135be09452a7fd345c29e
     // Variables
     private EntityManager em;
     private EntityTransaction et;

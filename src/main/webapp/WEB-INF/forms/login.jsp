@@ -16,8 +16,7 @@
             <input type="text" placeholder="username" name="userName"/>
             <input type="password" placeholder="password" name="password"/>
             <input type="submit" value ="login">
-            <%--<button>login</button>--%>
-            <%--<p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>--%>
+            <p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>
         </form>
     </div>
 </div>

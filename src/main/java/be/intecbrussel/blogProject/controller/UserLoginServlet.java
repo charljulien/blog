@@ -40,7 +40,7 @@ public class UserLoginServlet extends HttpServlet {
             request.setAttribute("userBean", userBean);
             request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp").forward(request, response);
         }else{
-            request.getRequestDispatcher("WEB-INF/forms/ERROR_login.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/forms/ERRORlogin.jsp").forward(request, response);
         }
     }
 }
