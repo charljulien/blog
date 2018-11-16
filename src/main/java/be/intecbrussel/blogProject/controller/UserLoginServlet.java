@@ -34,6 +34,10 @@ public class UserLoginServlet extends HttpServlet {
     private UserServiceInterface userService;
 
     // Methods
+
+    /**
+     * @author Mr. Black
+     */
     @Override
     public void init() throws ServletException {
         userService = (UserService) getServletContext().getAttribute(AppContextListener.USER_SERVICE);

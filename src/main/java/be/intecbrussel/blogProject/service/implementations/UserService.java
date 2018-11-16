@@ -58,15 +58,8 @@ public class UserService implements UserServiceInterface {
 
 
     /**
-     * @author Mr. Pink
-     * IF USED STILL NEEDS TO BE ADDED TO INTERFACE CLASS OF SERVCIE
-     */
-
-
-    /**
      * @author Mr. Black
      * to print in the console when making new user!
-     * IF USED STILL NEEDS TO BE ADDED TO INTERFACE CLASS OF SERVCIE
      */
     public void userRegistrationService(UserBean user) {
         System.out.println(user.toString());

@@ -189,7 +189,7 @@ public class UserDAO {
      * Query to obtain UserBean by UserName
      *
      * @param userName for object UserBean
-     * @return for object UserBean with predefined UserName String
+     * @return object UserBean with predefined UserName String
      * @author Mr. Black
      * @see UserDAO#getUserByUserName(String)
      */
@@ -209,6 +209,32 @@ public class UserDAO {
      */
     public List<UserBean> getUserByUserName(String username) {
         return getUserByUserNameQuery(username).getResultList();
+    }
+
+    /**
+     * Query to obtain UserBean by Password
+     *
+     * @param password for object UserBean
+     * @return object UserBean with predefined Password String
+     * @author Mr. Black
+     * @see UserDAO#getUserByPassword(String)
+     */
+    private TypedQuery<UserBean> getUserByPasswordQuery(String password) {
+        em = EMProvidor.getEntityManager();
+        TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean AS user WHERE user.password=:pass", UserBean.class);
+        query.setParameter("pass", password);
+        return query;
+    }
+
+    /**
+     * List to obtain UserBean by Password
+     *
+     * @param password for oject UserBean
+     * @return User
+     * @author Mr. Black
+     */
+    public List<UserBean> getUserByPassword(String password) {
+        return getUserByPasswordQuery(password).getResultList();
     }
 
 }
