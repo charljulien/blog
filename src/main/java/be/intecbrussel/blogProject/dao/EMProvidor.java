@@ -50,7 +50,7 @@ public class EMProvidor {
         return getEntityManagerFactory().createEntityManager();
     }
 
-    public static void closeEmf() {
+    public void closeEmf() {
         if (emf.isOpen() || emf != null) {
             emf.close();
         }

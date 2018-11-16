@@ -2,7 +2,6 @@ package be.intecbrussel.blogProject.dao;
 
 import be.intecbrussel.blogProject.beans.CommentBean;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -35,7 +34,7 @@ public class CommentDAO {
         et.begin();
         em.persist(comment);
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
     /**
@@ -54,7 +53,7 @@ public class CommentDAO {
             em.remove(comment);
         }
         et.commit();
-        EMProvidor.closeEmf();
+        EMProvidor.getInstance().closeEmf();
     }
 
 
@@ -67,6 +66,7 @@ public class CommentDAO {
      * @see CommentDAO#getCommentsByName(String)
      */
     private TypedQuery<CommentBean> getCommentsByNameQuery(String lastName) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean AS comment WHERE comment.userComment.lastName=:name", CommentBean.class);
         query.setParameter("name", lastName);
         return query;
@@ -85,6 +85,7 @@ public class CommentDAO {
      * @see CommentDAO#getCommentById(long)
      */
     private TypedQuery<CommentBean> getCommentByIdQuery(long id) {
+        em = EMProvidor.getEntityManager();
         TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean AS comment WHERE comment.id=:id", CommentBean.class);
         query.setParameter("id", id);
         return query;

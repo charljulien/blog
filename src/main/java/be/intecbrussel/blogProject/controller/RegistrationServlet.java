@@ -1,14 +1,16 @@
 package be.intecbrussel.blogProject.controller;
 
+<<<<<<< HEAD
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.service.implementations.UserService;
 
+=======
+>>>>>>> 41a138b9fa3e1ff249a84853b46114d8c1065e68
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +23,20 @@ import java.util.List;
 
 @WebServlet("/Registration")
 public class RegistrationServlet extends HttpServlet {
+<<<<<<< HEAD
     List<String> items;
     UserService userService;
 
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         request.getRequestDispatcher("WEB-INF/forms/registration.jsp").forward(request, response);
+=======
+
+    private static final String REGISTRATION_PAGE = "WEB-INF/forms/registration.jsp";
+
+    @Override
+    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        request.getRequestDispatcher(REGISTRATION_PAGE).forward(request, response);
+>>>>>>> 41a138b9fa3e1ff249a84853b46114d8c1065e68
     }
 
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{

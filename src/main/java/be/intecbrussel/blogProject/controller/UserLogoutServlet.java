@@ -15,11 +15,15 @@ import java.io.IOException;
  */
 @WebServlet("/Logout")
 public class UserLogoutServlet extends HttpServlet {
-    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+
+    private static final String LOGIN_PAGE = "./login.jsp";
+
+    @Override
+    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         HttpSession session = request.getSession(false);
         if (session !=null){
             session.invalidate();
         }
-        response.sendRedirect("./login.jsp");
+        response.sendRedirect(LOGIN_PAGE);
     }
 }
