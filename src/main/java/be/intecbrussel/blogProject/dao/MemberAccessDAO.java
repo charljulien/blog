@@ -33,8 +33,18 @@ public class MemberAccessDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        em.persist(memberAccess);
+        List<MemberAccess> accessLevel = getMemberAccessLevel(memberAccess.getMemberAccessLevel());
+        boolean accessLevelExists = false;
+        for (MemberAccess level : accessLevel) {
+            if (memberAccess.getMemberAccessLevel().equalsIgnoreCase(level.getMemberAccessLevel())) {
+                accessLevelExists = true;
+            }
+        }
+        if (!accessLevelExists) {
+            em.persist(memberAccess);
+        }
         et.commit();
+        EMProvidor.closeEmf();
     }
 
     /**
@@ -56,7 +66,7 @@ public class MemberAccessDAO {
             em.persist(level);
         }
         et.commit();
-
+        EMProvidor.closeEmf();
     }
 
 
@@ -77,14 +87,14 @@ public class MemberAccessDAO {
     }
 
     /**
-     * Query to obtain Reader Access Level
+     * Query to obtain << Reader >> Access Level
      *
      * @return query Reader
      * @author Mr. Black
      * @see MemberAccessDAO#getReaderAccess()
      */
     private TypedQuery<MemberAccess> getReaderAccessQuery() {
-        TypedQuery<MemberAccess> query = em.createQuery("SELECT acces FROM MemberAccess AS acces where memberAccessLevel=:default", MemberAccess.class);
+        TypedQuery<MemberAccess> query = em.createQuery("SELECT access FROM MemberAccess AS access where memberAccessLevel=:default", MemberAccess.class);
         query.setParameter("default", "Reader");
         return query;
     }
@@ -99,5 +109,26 @@ public class MemberAccessDAO {
         return getReaderAccessQuery().getResultList();
     }
 
+    /**
+     * Query to obtain String value accessLevel for members
+     *
+     * @param accessLevel represents the AccessLevel to search
+     * @author Mr. Black
+     * @see MemberAccessDAO#getMemberAccessLevel(String)
+     */
+    private TypedQuery<MemberAccess> getMemberAccessLevelQuery(String accessLevel) {
+        TypedQuery<MemberAccess> query = em.createQuery("SELECT access FROM MemberAccess AS access WHERE access.memberAccessLevel=:level", MemberAccess.class);
+        query.setParameter("level", accessLevel);
+        return query;
+    }
 
+    /**
+     * List to obtain predefined AccessLevel
+     *
+     * @return AccessLevel value
+     * @author Mr. Black
+     */
+    public List<MemberAccess> getMemberAccessLevel(String accessLevel) {
+        return getMemberAccessLevelQuery(accessLevel).getResultList();
+    }
 }
