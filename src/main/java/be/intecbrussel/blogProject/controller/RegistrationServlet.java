@@ -46,6 +46,10 @@ public class RegistrationServlet extends HttpServlet {
         request.getRequestDispatcher(REGISTRATION_PAGE).forward(request, response);
     }
 
+    /**
+     * @author Mr. Pink
+     * conditional statement does not work, check validity
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         items = new ArrayList<>();
         items = getItems(request);
