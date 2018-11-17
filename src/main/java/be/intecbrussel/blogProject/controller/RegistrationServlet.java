@@ -51,7 +51,7 @@ public class RegistrationServlet extends HttpServlet {
         items = getItems(request);
         boolean isEmpty = false;
 
-        //first we check if new user didn't left empty information in regsitration
+        //first we check if parameters are valid, that is to say no empty parameters
         for (String i : items) {
             if (i == null || i.trim().isEmpty()) {
                 isEmpty = true;
@@ -65,7 +65,7 @@ public class RegistrationServlet extends HttpServlet {
         if (isEmpty) {
             request.getRequestDispatcher(REGISTRATION_ERROR);
         }
-        //otherwise he goes to main page and his profile is created
+        //otherwise he goes to main page and his profile is created with method configureUserBean
         else {
             userBean = configureUserBean(userBean, request);
             userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
@@ -76,8 +76,8 @@ public class RegistrationServlet extends HttpServlet {
 
     /**
      * @author Mr. Pink
+     * methode to create a list of parameter to check validity
      */
-    //methode to create a list of parameters
     public List<String> getItems(HttpServletRequest request) {
         String firstName = request.getParameter(FIRST_NAME);
         String lastName = request.getParameter(LAST_NAME);
@@ -104,8 +104,8 @@ public class RegistrationServlet extends HttpServlet {
 
     /**
      * @author Mr. Pink
+     * methode to create user with yet validated parameters
      */
-    //methode to create user with valid parameters
     public UserBean configureUserBean(UserBean userBean, HttpServletRequest request) {
         userBean.setFirstname(request.getParameter(FIRST_NAME));
         userBean.setLastName(request.getParameter(LAST_NAME));
