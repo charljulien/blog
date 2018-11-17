@@ -1,5 +1,8 @@
 package be.intecbrussel.blogProject.controller;
 
+import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.service.implementations.UserService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +21,9 @@ import java.util.List;
 @WebServlet("/Registration")
 public class RegistrationServlet extends HttpServlet {
 
-//    List<String> items;
-//    UserService userService;
+    List<String> items;
+    UserService userService;
+    UserBean userBean;
 
 //    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 //        request.getRequestDispatcher("WEB-INF/forms/registration.jsp").forward(request, response);
@@ -37,7 +41,7 @@ public class RegistrationServlet extends HttpServlet {
         items = getItems(request);
         boolean isEmpty = false;
 
-        //first we check if new user didn't do shits in regsitration
+        //first we check if new user didn't left empty information in regsitration
         for (String i : items) {
             if (i == null || i.trim().isEmpty()) {
                 isEmpty = true;
@@ -53,12 +57,17 @@ public class RegistrationServlet extends HttpServlet {
         }
         //otherwise he goes to main page and his profile is created
         else {
-            userService = getServletContext().getAttribute("userService");
-            userService.saveUserToDB();
+            userBean = configureUserBean(userBean, request);
+            userService = (UserService) getServletContext().getAttribute("userService");
+            userService.saveUserToDB(userBean);
             request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp");
         }
     }
 
+    /**
+     * @author Mr. Pink
+     */
+    //methode to create a list of parameters
     public List<String> getItems(HttpServletRequest request) {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -81,5 +90,23 @@ public class RegistrationServlet extends HttpServlet {
         items.add(password);
 
         return items;
+    }
+
+    /**
+     * @author Mr. Pink
+     */
+    //methode to create user with valid parameters
+    public UserBean configureUserBean(UserBean userBean, HttpServletRequest request) {
+        userBean.setFirstname(request.getParameter("firstName"));
+        userBean.setLastName(request.getParameter("lastName"));
+        userBean.setEmail(request.getParameter("email"));
+        userBean.setStreet(request.getParameter("street"));
+        userBean.setHouseNr(request.getParameter("houseNumber"));
+        userBean.setCity(request.getParameter("city"));
+        userBean.setZipCode(request.getParameter("zipCode"));
+        userBean.setUserName(request.getParameter("userName"));
+        userBean.setPassword(request.getParameter("password"));
+
+        return userBean;
     }
 }
