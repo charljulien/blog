@@ -14,7 +14,7 @@
 <body>
 
 <div class="main">
-    <div>
+    <div >
         <h2> ${BlogPostBean.title} </h2>
         <p> ${BlogPostBean.blogMessage} </p>
     </div>
