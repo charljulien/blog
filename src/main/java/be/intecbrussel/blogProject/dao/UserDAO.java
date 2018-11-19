@@ -55,6 +55,7 @@ public class UserDAO {
         EMProvidor.getInstance().closeEmf();
     }
 
+    // this should be adjusted... change user itself without looking for certain id!!!!
     /**
      * Update user in DB
      *
@@ -93,7 +94,7 @@ public class UserDAO {
      * @author Mr. Black
      */
     public void deleteUser(long id) {
-        System.out.println("Deleting User DAO");
+        System.out.println("Deleting User DAO...");
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
@@ -104,6 +105,12 @@ public class UserDAO {
         et.commit();
         EMProvidor.getInstance().closeEmf();
     }
+
+    public void deleteUser(String userName){
+
+    }
+
+
 
 
     /**

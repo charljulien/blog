@@ -93,6 +93,6 @@ public class BetaTesterExileNoir {
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.saveBlogPost();
+        beta.saveUser();
     }
 }

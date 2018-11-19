@@ -91,25 +91,26 @@ public class UserLoginServlet extends HttpServlet {
 
     /**
      * To compare doPost from Mr Black, no need for extra if else normally
+     *
      * @author Mr. Pink
      */
-    protected void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
 
         if ((userName != null && !userName.trim().isEmpty())
-        &&(password != null && !password.trim().isEmpty())){
+                && (password != null && !password.trim().isEmpty())) {
             HttpSession session = request.getSession();
-            if (session.getAttribute(USER_NAME)==null){
+            if (session.getAttribute(USER_NAME) == null) {
                 session.setAttribute(USER_NAME, userName);
             }
-            if (session.getAttribute(PASSWORD)==null){
+            if (session.getAttribute(PASSWORD) == null) {
                 session.setAttribute(PASSWORD, password);
             }
             UserBean userBean = new UserBean();
             request.setAttribute(USER_BEAN, userBean);
             request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-        }else{
+        } else {
             request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
         }
     }

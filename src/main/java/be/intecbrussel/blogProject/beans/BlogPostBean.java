@@ -14,6 +14,8 @@ import java.time.LocalDate;
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {
 
+    // TITEL SHOULD BE ADDED TO THIS INSTANCE!!! ADJUST THIS!!!!
+    // STRING BLOGTITLE
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
