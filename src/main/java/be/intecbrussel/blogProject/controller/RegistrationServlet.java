@@ -31,6 +31,7 @@ public class RegistrationServlet extends HttpServlet {
     private static final String USER_NAME = "userName";
     private static final String PASSWORD = "password";
 
+
     private static final String REGISTRATION_PAGE = "WEB-INF/forms/registration.jsp";
     private static final String REGISTRATION_ERROR = "WEB-INF/forms/ERRORregistration.jsp";
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
