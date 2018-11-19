@@ -123,26 +123,24 @@ public class UserDAO {
         boolean statusOk = false;
 
         for (UserBean nameUser : userNameVal) {
-            if (!userName.isEmpty() || userName.equals(nameUser.getUserName())) {
+            if (userName.equals(nameUser.getUserName())) {
                 System.out.println("UserName is Correct");
-                  statusUserName = true;
-
+                statusUserName = true;
+            }
+            if (statusUserName) {
+                if (nameUser.getUserName().equals(userName)&& nameUser.getPassword().equals(password)) {
+                    System.out.println("Password is Correct");
+                    statusPassword = true;
+                }
             }
         }
-        for (UserBean passUser : passwordVal) {
-            if (!password.isEmpty() || password.equals(passUser.getPassword())) {
-                System.out.println("Password is Correct");
-                 statusPassword = true;
 
-            }
+        if (statusUserName && statusPassword) {
+            statusOk = true;
         }
 
-       if(statusUserName && statusPassword){
-           statusOk = true;
-       }
-
-       EMProvidor.getInstance().closeEM();
-       return statusOk;
+        EMProvidor.getInstance().closeEM();
+        return statusOk;
     }
 
 

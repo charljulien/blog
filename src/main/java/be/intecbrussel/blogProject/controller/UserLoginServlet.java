@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class creates Servlet login for JSP pages
@@ -23,8 +25,8 @@ import java.io.IOException;
 public class UserLoginServlet extends HttpServlet {
 
     // Variables
-    private static final String USER_BEAN = "userBean";
-    private static final String USER_NAME = "userName";
+    public static final String USER_BEAN = "userBean";
+    static final String USER_NAME = "userName";
     private static final String PASSWORD = "password";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
@@ -52,56 +54,19 @@ public class UserLoginServlet extends HttpServlet {
         request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
     }
 
-    /**
-     * @author Mr. Black
-     */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-//        String userName = request.getParameter(USER_NAME);
-//        String password = request.getParameter(PASSWORD);
-//        UserBean userBean = new UserBean();
-//
-//
-//        if (userName != null && !userName.trim().isEmpty()
-//                && password != null && !password.trim().isEmpty()){
-//            if (userName != null && !userName.trim().isEmpty()) {
-//                HttpSession session = request.getSession();
-//                if (session.getAttribute(USER_NAME) == null) {
-//                    session.setAttribute(USER_NAME, userName);
-//                }
-//                if (session.getAttribute("password")==null){
-//                    session.setAttribute("password", password);
-//                }
-//    //            userBean.setUserName(request.getParameter("userName"));
-//    //            userServiceInterface.handlingUser(userBean);
-//                request.setAttribute("userBean", userBean);
-//                request.getRequestDispatcher("WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp").forward(request, response);
-//            }else {
-//                request.getRequestDispatcher("WEB-INF/forms/ERRORlogin.jsp").forward(request, response);
-//                //            userService.handlingUser(userBean);
-//                request.setAttribute(USER_BEAN, userBean);
-//                userService.handlingUser(userBean);
-//                request.setAttribute(USER_BEAN, userBean);
-//                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-//            }
-//        } else {
-//            request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
-//        }
-//    }
 
     /**
      * To compare doPost from Mr Black, no need for extra if else normally
      *
-     * @author Mr. Pink
+     * @author Mr. Pink && Mr. Black
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
 
-        boolean userNameVal = userService.validateInLogFromDB(userName, password);
 
-        if ((userName != null && !userName.trim().isEmpty())
-                && (password != null && !password.trim().isEmpty())) {
+
+        if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
             HttpSession session = request.getSession();
             if (session.getAttribute(USER_NAME) == null) {
                 session.setAttribute(USER_NAME, userName);
@@ -109,13 +74,19 @@ public class UserLoginServlet extends HttpServlet {
             if (session.getAttribute(PASSWORD) == null) {
                 session.setAttribute(PASSWORD, password);
             }
+
+            boolean userNameVal = userService.validateInLogFromDB(userName, password);
             UserBean userBean = new UserBean();
-            if(userNameVal == true) {
-                request.setAttribute(USER_BEAN, userBean);
+
+
+            if (userNameVal) {
+                List<UserBean> userLog = userService.getUserByUserName(userName);
+                System.out.println("USERLOG OK "+userLog.toString());
+                request.getSession().setAttribute(USER_BEAN, userLog);
                 request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
 
-            } else if(userNameVal == false){
-                request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request,response);
+            } else if (!userNameVal) {
+                request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
             }
 
         } else {
