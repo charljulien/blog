@@ -3,6 +3,7 @@ package be.intecbrussel.blogProject.controller;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.service.implementations.UserService;
 import be.intecbrussel.blogProject.service.interfaces.UserServiceInterface;
+import be.intecbrussel.blogProject.sessionListeners.AppContextListener;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,13 +47,13 @@ public class RegistrationServlet extends HttpServlet {
     /**
      * @author Mr. Black
      */
-//    @Override
-//    public void init() throws ServletException {
-//        userService = (UserService) getServletContext().getAttribute(AppContextListener.USER_SERVICE);
-//        if (userService == null) {
-//            throw new ServletException("UserService not available");
-//        }
-//    }
+    @Override
+    public void init() throws ServletException {
+        userService = (UserService) getServletContext().getAttribute(AppContextListener.USER_SERVICE);
+        if (userService == null) {
+            throw new ServletException("UserService not available");
+        }
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
