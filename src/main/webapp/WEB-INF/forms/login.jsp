@@ -16,7 +16,9 @@
             <input type="text" placeholder="username" name="userName"/>
             <input type="password" placeholder="password" name="password"/>
             <input type="submit" value ="login">
-            <p class="message">Not registered? <a href="localhost:8080/forms/register">Create an account</a></p>
+        </form>
+        <form action="Registration" method="GET">
+            <input type="submit" value="create an account">
         </form>
     </div>
 </div>
