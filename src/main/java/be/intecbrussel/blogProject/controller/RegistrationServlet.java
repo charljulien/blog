@@ -20,9 +20,6 @@ import java.util.List;
 
 @WebServlet("/Registration")
 public class RegistrationServlet extends HttpServlet {
-    
-    List<String> items;
-//    UserService userService;
 
     private static final String FIRST_NAME = "firstName";
     private static final String LAST_NAME = "lastName";
