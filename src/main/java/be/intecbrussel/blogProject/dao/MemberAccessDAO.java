@@ -31,8 +31,7 @@ public class MemberAccessDAO {
     public void createAccessLevel(MemberAccess memberAccess) {
         System.out.println("Saving Access Level DAO...");
         em = EMProvidor.getEntityManager();
-        et = em.getTransaction();
-        et.begin();
+
         List<MemberAccess> accessLevel = getMemberAccessLevel(memberAccess.getMemberAccessLevel());
         boolean accessLevelExists = false;
         for (MemberAccess level : accessLevel) {
@@ -40,11 +39,15 @@ public class MemberAccessDAO {
                 accessLevelExists = true;
             }
         }
+        System.out.println("found access level" + accessLevelExists);
         if (!accessLevelExists) {
+            System.out.println("Adding memberaccess to PC: " + memberAccess);
             em.persist(memberAccess);
         }
+        et = em.getTransaction();
+        et.begin();
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
     /**
@@ -66,7 +69,7 @@ public class MemberAccessDAO {
             em.persist(level);
         }
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
 

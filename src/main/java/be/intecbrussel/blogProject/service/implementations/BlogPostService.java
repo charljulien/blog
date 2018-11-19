@@ -21,7 +21,13 @@ public class BlogPostService implements BlogPostServiceInterface {
     private BlogPostDAO blogPostDAO;
     private UserDAO userDAO;
 
+    /**
+     * Sort object by date old to new
+     */
 
+    /**
+     * Sort object by date new to old
+     */
 
     public BlogPostService() {
         blogPostDAO = new BlogPostDAO();

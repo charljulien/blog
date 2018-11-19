@@ -15,7 +15,7 @@ public class UserBean implements Serializable {
     @Column(name = "ID")
     private long id;
     @Column(name = "FirstName")
-    private String firstname;
+    private String firstName;
     @Column(name = "LastName")
     private String lastName;
     @Column(name = "UserName")
@@ -46,10 +46,10 @@ public class UserBean implements Serializable {
         this.comments = new ArrayList<>();
     }
 
-    public UserBean(String firstname, String lastName, String userName,
+    public UserBean(String firstName, String lastName, String userName,
                     String email, String street, String houseNr, String city,
                     String zipCode, String password) {
-        this.firstname = firstname;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.email = email;
@@ -71,12 +71,12 @@ public class UserBean implements Serializable {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -185,7 +185,7 @@ public class UserBean implements Serializable {
     public String toString() {
         return "UserBean{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
+                ", firstname='" + firstName + '\'' +
                 ", name='" + lastName + '\'' +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +

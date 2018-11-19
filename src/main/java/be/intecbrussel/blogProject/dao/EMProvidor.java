@@ -59,4 +59,10 @@ public class EMProvidor {
             System.out.println("Entity Manager Factory closed at: " + new Date());
         }
     }
+
+    public void closeEM(){
+        getEntityManager().close();
+    }
+
+
 }
