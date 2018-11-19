@@ -18,7 +18,7 @@ import java.util.List;
 @WebServlet("/Registration")
 public class RegistrationServlet extends HttpServlet {
 
-//    List<String> items;
+    List<String> items;
 //    UserService userService;
 
 //    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
