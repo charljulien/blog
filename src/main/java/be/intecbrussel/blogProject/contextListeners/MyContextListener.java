@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package be.intecbrussel.blogProject.contextListeners;
 
 import be.intecbrussel.blogProject.exceptions.InvalidContextAttributeException;
@@ -56,7 +55,7 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
 
     }
 }
-=======
+
 //package be.intecbrussel.blogProject.contextListeners;
 //
 //import be.intecbrussel.blogProject.exceptions.InvalidContextAttributeException;
@@ -114,4 +113,3 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
 //
 //    }
 //}
->>>>>>> 41a138b9fa3e1ff249a84853b46114d8c1065e68
