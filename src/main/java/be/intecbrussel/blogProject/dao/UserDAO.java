@@ -30,8 +30,7 @@ public class UserDAO {
     public void saveUser(UserBean user) {
         System.out.println("Saving user DAO...");
         em = EMProvidor.getEntityManager();
-        et = em.getTransaction();
-        et.begin();
+
         List<UserBean> eMail = getUserByMail(user.getEmail());
         List<UserBean> userName = getUserByUserName(user.getUserName());
         boolean eMailExists = false;
@@ -51,9 +50,12 @@ public class UserDAO {
         if (!eMailExists && !userNameExists) {
             em.merge(user);
         }
+        et = em.getTransaction();
+        et.begin();
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
+
 
     // this should be adjusted... change user itself without looking for certain id!!!!
     /**
@@ -70,7 +72,7 @@ public class UserDAO {
         et.begin();
         List<UserBean> ub = getUserById(id);
         for (UserBean user : ub) {
-            user.setFirstname(user.getFirstname() + " " + text);
+            user.setFirstName(user.getFirstName() + " " + text);
             user.setLastName(user.getLastName() + " " + text);
             user.setUserName(user.getUserName() + " " + text);
             user.setEmail(user.getEmail() + " " + text);
@@ -82,7 +84,7 @@ public class UserDAO {
             em.merge(user);
         }
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
     // Read
@@ -103,7 +105,7 @@ public class UserDAO {
             em.remove(user);
         }
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
     public void deleteUser(String userName){

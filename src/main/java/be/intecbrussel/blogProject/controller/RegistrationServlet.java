@@ -2,6 +2,7 @@ package be.intecbrussel.blogProject.controller;
 
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.service.implementations.UserService;
+import be.intecbrussel.blogProject.service.interfaces.UserServiceInterface;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,8 +40,19 @@ public class RegistrationServlet extends HttpServlet {
     private static final String USER_SERVICE = "userService";
 
     private List<String> items;
-    private UserService userService;
+    private UserServiceInterface userService;
     private UserBean userBean;
+
+    /**
+     * @author Mr. Black
+     */
+//    @Override
+//    public void init() throws ServletException {
+//        userService = (UserService) getServletContext().getAttribute(AppContextListener.USER_SERVICE);
+//        if (userService == null) {
+//            throw new ServletException("UserService not available");
+//        }
+//    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -113,7 +125,7 @@ public class RegistrationServlet extends HttpServlet {
      * methode to create user with yet validated parameters
      */
     public UserBean configureUserBean(UserBean userBean, HttpServletRequest request) {
-        userBean.setFirstname(request.getParameter(FIRST_NAME));
+        userBean.setFirstName(request.getParameter(FIRST_NAME));
         userBean.setLastName(request.getParameter(LAST_NAME));
         userBean.setEmail(request.getParameter(EMAIL));
         userBean.setStreet(request.getParameter(STREET));

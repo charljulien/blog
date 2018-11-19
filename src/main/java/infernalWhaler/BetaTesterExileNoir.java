@@ -5,6 +5,7 @@ import be.intecbrussel.blogProject.beans.CommentBean;
 import be.intecbrussel.blogProject.beans.MemberAccess;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.dao.EMProvidor;
+import be.intecbrussel.blogProject.dao.MemberAccessDAO;
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.implementations.CommentService;
 import be.intecbrussel.blogProject.service.implementations.MemberAccessService;
@@ -27,6 +28,7 @@ public class BetaTesterExileNoir {
     private BlogPostService blogPostService;
     private Scanner kbd;
     private EntityManager em = EMProvidor.getEntityManager();
+    private  MemberAccessDAO memberAccessDAO;
     // Constructor
     BetaTesterExileNoir(){
         userService = new UserService();
@@ -34,6 +36,8 @@ public class BetaTesterExileNoir {
         memberAccessService = new MemberAccessService();
         blogPostService = new BlogPostService();
         kbd = new Scanner(System.in);
+
+       memberAccessDAO = new MemberAccessDAO();
     }
     // Test One
     private void saveUser(){
@@ -93,6 +97,6 @@ public class BetaTesterExileNoir {
     public static void main(String[] args) {
 
         BetaTesterExileNoir beta = new BetaTesterExileNoir();
-        beta.saveUser();
+        beta.saveBlogPost();
     }
 }
