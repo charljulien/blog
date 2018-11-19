@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div>
+    <%@include file="./parts/headerUser.jsp" %>
+</div>
 
 <div class="main">
     <div>
