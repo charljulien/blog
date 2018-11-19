@@ -66,7 +66,7 @@ public class RegistrationServlet extends HttpServlet {
             }
         }
 
-        //if he did shit, he goes to the error page, that's the spirit
+        //if he did shit, he goes to the error page
         if (isEmpty) {
             request.getRequestDispatcher(REGISTRATION_ERROR).forward(request, response);
         }
