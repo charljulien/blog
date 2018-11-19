@@ -98,6 +98,8 @@ public class UserLoginServlet extends HttpServlet {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
 
+        boolean userNameVal = userService.validateInLogFromDB(userName, password);
+
         if ((userName != null && !userName.trim().isEmpty())
                 && (password != null && !password.trim().isEmpty())) {
             HttpSession session = request.getSession();
@@ -108,8 +110,14 @@ public class UserLoginServlet extends HttpServlet {
                 session.setAttribute(PASSWORD, password);
             }
             UserBean userBean = new UserBean();
-            request.setAttribute(USER_BEAN, userBean);
-            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+            if(userNameVal == true) {
+                request.setAttribute(USER_BEAN, userBean);
+                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+
+            } else if(userNameVal == false){
+                request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request,response);
+            }
+
         } else {
             request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
         }

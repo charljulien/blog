@@ -97,7 +97,7 @@ public class RegistrationServlet extends HttpServlet {
      * @author Mr. Pink
      * methode to create a list of parameter to check validity
      */
-    public List<String> getItems(HttpServletRequest request) {
+    private List<String> getItems(HttpServletRequest request) {
         String firstName = request.getParameter(FIRST_NAME);
         String lastName = request.getParameter(LAST_NAME);
         String email = request.getParameter(EMAIL);
@@ -125,7 +125,7 @@ public class RegistrationServlet extends HttpServlet {
      * @author Mr. Pink
      * methode to create user with yet validated parameters
      */
-    public UserBean configureUserBean(UserBean userBean, HttpServletRequest request) {
+    private UserBean configureUserBean(UserBean userBean, HttpServletRequest request) {
         userBean.setFirstName(request.getParameter(FIRST_NAME));
         userBean.setLastName(request.getParameter(LAST_NAME));
         userBean.setEmail(request.getParameter(EMAIL));

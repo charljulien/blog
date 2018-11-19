@@ -5,6 +5,8 @@ import be.intecbrussel.blogProject.dao.MemberAccessDAO;
 import be.intecbrussel.blogProject.dao.UserDAO;
 import be.intecbrussel.blogProject.service.interfaces.UserServiceInterface;
 
+import java.util.List;
+
 /**
  * Represents ServiceLayer of UserBean class
  *
@@ -56,6 +58,15 @@ public class UserService implements UserServiceInterface {
         userDAO.deleteUser(id);
     }
 
+    /**
+     * @author Mr. Black
+     * @see UserDAO#validateInLog(String, String)
+     * */
+    @Override
+    public boolean validateInLogFromDB(String userName, String password) {
+        System.out.println("Validating Login SERVICE...");
+        return userDAO.validateInLog(userName, password);
+    }
 
     /**
      * @author Mr. Black
@@ -64,4 +75,24 @@ public class UserService implements UserServiceInterface {
     public void userRegistrationService(UserBean user) {
         System.out.println(user.toString());
     }
+
+    /**
+     * @author Mr. Black
+     *
+     * BETA TYPE
+     * */
+    public List<UserBean> getUserByPassword(String password){
+        System.out.println("Getting User By Password < SERVICE >");
+        return userDAO.getUserByPassword(password);
+    }
+
+    /**
+    * @author Mr. Black
+     * BETA TYPE
+    * */
+    public List<UserBean> getUserByUserName(String userName){
+        System.out.println("Getting User By UserName < SERVICE >");
+        return userDAO.getUserByUserName(userName);
+    }
+
 }

@@ -21,6 +21,6 @@ public class Beta2TestExileNoir {
 
     public static void main(String[] args) {
         Beta2TestExileNoir b = new Beta2TestExileNoir();
-        b.userDAO.saveUser(new UserBean("Steven","Deseure","user","mail","test","test","test","test","test"));
+        System.out.println(b.userDAO.validateInLog("ExileNoir","pass"));
     }
 }

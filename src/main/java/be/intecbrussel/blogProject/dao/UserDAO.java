@@ -58,6 +58,7 @@ public class UserDAO {
 
 
     // this should be adjusted... change user itself without looking for certain id!!!!
+
     /**
      * Update user in DB
      *
@@ -108,11 +109,41 @@ public class UserDAO {
         EMProvidor.getInstance().closeEM();
     }
 
-    public void deleteUser(String userName){
+    public void deleteUser(String userName) {
 
     }
 
+    public boolean validateInLog(String userName, String password) {
+        System.out.println("Validating Login DAO...");
+        em = EMProvidor.getEntityManager();
+        List<UserBean> userNameVal = getUserByUserName(userName);
+        List<UserBean> passwordVal = getUserByPassword(password);
+        boolean statusUserName = false;
+        boolean statusPassword = false;
+        boolean statusOk = false;
 
+        for (UserBean nameUser : userNameVal) {
+            if (!userName.isEmpty() || userName.equals(nameUser.getUserName())) {
+                System.out.println("UserName is Correct");
+                  statusUserName = true;
+
+            }
+        }
+        for (UserBean passUser : passwordVal) {
+            if (!password.isEmpty() || password.equals(passUser.getPassword())) {
+                System.out.println("Password is Correct");
+                 statusPassword = true;
+
+            }
+        }
+
+       if(statusUserName && statusPassword){
+           statusOk = true;
+       }
+
+       EMProvidor.getInstance().closeEM();
+       return statusOk;
+    }
 
 
     /**
