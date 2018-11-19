@@ -67,14 +67,15 @@ public class RegistrationServlet extends HttpServlet {
 
         //if he did shit, he goes to the error page, that's the spirit
         if (isEmpty) {
-            request.getRequestDispatcher(REGISTRATION_ERROR);
+            request.getRequestDispatcher(REGISTRATION_ERROR).forward(request, response);
         }
         //otherwise he goes to main page and his profile is created with method configureUserBean
         else {
+            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+            userBean = new UserBean();
             userBean = configureUserBean(userBean, request);
             userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
             userService.saveUserToDB(userBean);
-            request.getRequestDispatcher(BLOG_CENTRAL_PAGE);
         }
     }
 
