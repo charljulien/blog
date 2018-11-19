@@ -13,6 +13,12 @@
     <a href="forms/logIn.jsp">Log In</a>
     <a href="forms/registration">Sign Up</a>
     Search: <input type="text" value="Search" placeholder="searchTerm"/>
+    <form action="Login" method="GET">
+        <input type="submit" value="login">
+    </form>
+    <form action="Registration" method="GET">
+        <input type="submit" value="create an account">
+    </form>
 </div>
 
 </body>

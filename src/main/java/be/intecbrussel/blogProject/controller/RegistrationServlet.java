@@ -64,7 +64,8 @@ public class RegistrationServlet extends HttpServlet {
      * @author Mr. Pink
      * conditional statement does not work, check validity
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         items = new ArrayList<>();
         items = getItems(request);
         boolean isEmpty = false;
