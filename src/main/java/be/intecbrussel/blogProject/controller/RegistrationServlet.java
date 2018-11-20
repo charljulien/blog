@@ -87,9 +87,11 @@ public class RegistrationServlet extends HttpServlet {
         else {
             request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
             userBean = new UserBean();
-            userBean = configureUserBean(userBean, request);
-            userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
+            configureUserBean(userBean, request);
+//            userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
             userService.saveUserToDB(userBean);
+            // Mr. Black , added last line
+            request.getSession().setAttribute(USER_SERVICE, userBean);
         }
     }
 

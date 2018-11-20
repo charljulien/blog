@@ -17,17 +17,18 @@ public class MySessionListener implements HttpSessionListener {
      */
     @Override
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {//listens bij new session, we zien die dan in tomcat cmd venster
-        System.out.println("a session was born");
+        System.out.println("A SESSION WAS BORN");
         sessionsActive++;
         totalSessions++;
-        System.out.println("sessions so far =" + totalSessions);
+        System.out.println("SESSIONS SO FAR = " + totalSessions);
+        System.out.println("ACTIVE SESSIONS = " + sessionsActive);
 
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
         sessionsActive--;
-        System.out.println("a session has perished");
-        System.out.println("there are " + sessionsActive + " sessions active atm.");
+        System.out.println("A SESSION HAS PERISHED!");
+        System.out.println("THERE ARE " + sessionsActive + " SESSIONS ACTIVE ATM.");
     }
 }

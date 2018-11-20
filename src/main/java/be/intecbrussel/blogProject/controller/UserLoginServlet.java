@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +25,8 @@ public class UserLoginServlet extends HttpServlet {
 
     // Variables
     public static final String USER_BEAN = "userBean";
-    static final String USER_NAME = "userName";
+
+    private static final String USER_NAME = "userName";
     private static final String PASSWORD = "password";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";

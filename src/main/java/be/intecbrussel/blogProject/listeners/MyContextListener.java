@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class MyContextListener implements ServletContextListener {
 
+
+    // USE AppContextListener instead...
+
     /**
      * Method responsible for starting a new service of each type upon initialization of context ( aka startup of your UI, in this case it being our web app ).
      *
