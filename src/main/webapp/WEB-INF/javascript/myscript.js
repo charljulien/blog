@@ -1,3 +1,1 @@
-$('.message a').click(function(){
-    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+Soufiane, wil je een update sturen van wat je al gedaan hebt? Ik zie hier niets van jou verschijnen...
