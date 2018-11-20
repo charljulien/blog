@@ -25,8 +25,12 @@ public class UserLoginServlet extends HttpServlet {
 
     // Variables
     public static final String USER_BEAN = "userBean";
+<<<<<<< HEAD
 
     private static final String USER_NAME = "userName";
+=======
+    public static final String USER_NAME = "userName";
+>>>>>>> 7db4d2fc59905ab418f2b01956a4ad18729a6039
     private static final String PASSWORD = "password";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";

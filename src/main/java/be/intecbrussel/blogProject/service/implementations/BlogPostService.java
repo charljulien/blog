@@ -51,6 +51,13 @@ public class BlogPostService implements BlogPostServiceInterface {
         blogPostDAO.saveBlogPost(blogPost);
     }
 
+    public void saveBlogPostToDB(BlogPostBean blogPost) {
+        System.out.println("Saving Blog Post to DB SERVICE...");
+        blogPostDAO.saveBlogPost(blogPost);
+    }
+
+
+
     /**
      * Updates attribute message of a predefined blogPost
      *

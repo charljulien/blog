@@ -15,34 +15,22 @@
 <div>
     <%@include file="./parts/headerUser.jsp" %>
 </div>
-
-<div class="main">
-    <div>
-        <h2> Title Article 1 </h2>
-        <p> text article one text text text text goes here text and more text text text text text text </p>
-    </div>
-    <div>
-        <h2> Title Article 2 </h2>
-        <p> text article two text text text text goes here text and more text text text text text text </p>
-    </div>
-    <div>
-        <h2> Title Article 3 </h2>
-        <p> text article three  text text text text goes here text and more text text text text text text </p>
-    </div>
-    <div>
-        <h2> Title Article 4 </h2>
-        <p> text article four text text text text goes here text and more text text text text text text </p>
-    </div>
-    <div>
-        <h2> Title Article 5 </h2>
-        <p> text article five text text text text goes here text and more text text text text text text </p>
-    </div>
-    <div>
-        <h2> Title Article 6 </h2>
-        <p> text article six  text text text text goes here text and more text text text text text text </p>
-    </div>
+<div>
+    <%@include file="./parts/sidebar.jsp" %>
 </div>
-
+<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>
+    <div>
+    <c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">
+        <tr>
+        <td>
+        ${blogpost.title}
+        </td>
+        <td>
+        ${blogpost.text}
+        </td>
+        <a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->
+        </tr>
+        </div>
 </body>
 </html>
 
