@@ -4,6 +4,8 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
+
 @WebListener
 public class MySessionListener implements HttpSessionListener {
     private int totalSessions = 0;
@@ -20,8 +22,8 @@ public class MySessionListener implements HttpSessionListener {
         System.out.println("A SESSION WAS BORN");
         sessionsActive++;
         totalSessions++;
-        System.out.println("SESSIONS SO FAR = " + totalSessions);
-        System.out.println("ACTIVE SESSIONS = " + sessionsActive);
+        System.out.println("SESSIONS SO FAR = " + totalSessions+" " +httpSessionEvent.getSession().getAttribute(USER_BEAN));
+        System.out.println("ACTIVE SESSIONS = " + sessionsActive+ " "+httpSessionEvent.getSession().getAttribute(USER_BEAN));
 
     }
 

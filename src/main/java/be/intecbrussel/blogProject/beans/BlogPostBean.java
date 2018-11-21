@@ -14,13 +14,14 @@ import java.time.LocalDate;
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {
 
-    // TITEL SHOULD BE ADDED TO THIS INSTANCE!!! ADJUST THIS!!!!
-    // STRING BLOG TITLE
+    // Mr. Black -- > title has been added
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
+    @Column(name = "Title")
+    private String title;
     @Column(name = "Blog_Message")
     private String blogMessage;
     @Column(name = "Likes")
@@ -36,7 +37,8 @@ public class BlogPostBean implements Serializable {
         setDate(LocalDate.now());
     }
 
-    public BlogPostBean(String blogMessage) {
+    public BlogPostBean(String title, String blogMessage) {
+        this.title = title;
         this.blogMessage = blogMessage;
         setDate(LocalDate.now());
     }
@@ -48,6 +50,14 @@ public class BlogPostBean implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBlogMessage() {

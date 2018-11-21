@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Class creates Servlet logout for JSP pages
  *
- * @author Mr. Pink
+ * @author Mr. Pink && Mr. Black
  */
 @WebServlet("/Logout")
 public class UserLogoutServlet extends HttpServlet {

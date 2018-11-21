@@ -90,7 +90,7 @@ public class UserService implements UserServiceInterface {
     * @author Mr. Black
      * BETA TYPE
     * */
-    public List<UserBean> getUserByUserName(String userName){
+    public UserBean getUserByUserName(String userName){
         System.out.println("Getting User By UserName < SERVICE >");
         return userDAO.getUserByUserName(userName);
     }

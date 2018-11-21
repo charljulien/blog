@@ -46,7 +46,7 @@ public interface UserServiceInterface {
      * @see be.intecbrussel.blogProject.dao.UserDAO#getUserByUserName(String)
      * @see be.intecbrussel.blogProject.service.implementations.UserService#getUserByUserName(String)
      */
-    List<UserBean> getUserByUserName(String userName);
+    UserBean getUserByUserName(String userName);
 
 
     // What do they do ... Mr. Black

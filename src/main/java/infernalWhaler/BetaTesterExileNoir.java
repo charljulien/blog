@@ -76,7 +76,7 @@ public class BetaTesterExileNoir {
 
         System.out.println("Give message");
         System.out.println("Give name");
-        blogPostService.saveBlogPostToDB(new BlogPostBean(kbd.nextLine()),kbd.nextLine());
+        blogPostService.saveBlogPostToDB(new BlogPostBean(kbd.nextLine(),kbd.nextLine()),kbd.nextLine());
 
     }
 
