@@ -16,7 +16,7 @@ import java.io.IOException;
 @WebServlet("/Logout")
 public class UserLogoutServlet extends HttpServlet {
 
-    private static final String LOGIN_PAGE = "./login.jsp";
+    private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
 
     @Override
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
@@ -24,6 +24,6 @@ public class UserLogoutServlet extends HttpServlet {
         if (session !=null){
             session.invalidate();
         }
-        response.sendRedirect(LOGIN_PAGE);
+        request.getRequestDispatcher(LOGIN_PAGE).forward(request,response);
     }
 }

@@ -42,6 +42,17 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
 
     }
 
+<<<<<<< HEAD
+=======
+
+    // USE AppContextListener instead...
+
+    /**
+     * Method responsible for starting a new service of each type upon initialization of context ( aka startup of your UI, in this case it being our web app ).
+     *
+     * @author Miss Gold
+     */
+>>>>>>> 809816f06b3310700082f7745294fbeea155832a
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 //        servletContextEvent.setAttribute("commentService");

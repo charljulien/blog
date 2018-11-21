@@ -45,5 +45,7 @@ public class BlogPostServlet extends HttpServlet {
         blogPostService = (BlogPostService) getServletContext().getAttribute(BLOG_POST_SERVICE);
         request.getSession().getAttribute(USER_BEAN);
         blogPostService.saveBlogPostToDB(blogPostBean);
+        // added my Mr. Black
+        request.getSession().setAttribute(USER_BEAN, blogPostBean);
     }
 }
