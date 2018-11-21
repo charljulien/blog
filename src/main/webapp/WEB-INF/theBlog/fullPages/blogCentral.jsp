@@ -18,7 +18,6 @@
 </div>
 <div>
     <%@include file="./parts/sidebar.jsp" %>
-<<<<<<< HEAD:src/main/webapp/WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp
 <%--</div>--%>
 <%--<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>--%>
     <%--<div>--%>
@@ -33,7 +32,7 @@
         <a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->
         </tr>
         </div>
-=======
+
 </div>
 
 <!-- this needs a counter = to only show the first six, and every time someone presses the more button the counter increases its capacity with 6 more
@@ -43,7 +42,6 @@
     <%@include file="./parts/blogCentralBody.jsp" %>
 </div>
 
->>>>>>> f6d4cc8abe3923d5d52e9a07994fdf76cc06ca50:src/main/webapp/WEB-INF/theBlog/fullPages/blogCentral.jsp
 </body>
 </html>
 
