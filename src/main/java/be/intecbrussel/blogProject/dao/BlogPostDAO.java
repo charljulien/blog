@@ -81,6 +81,22 @@ public class BlogPostDAO {
         EMProvidor.getInstance().closeEmf();
     }
 
+
+    /**
+     * Query to find all Blogs
+     * @author Mr. Black
+     * @see BlogPostDAO#getAllBlogs()
+     * */
+    private TypedQuery<BlogPostBean> getAllBlogsQuery(){
+        em = EMProvidor.getEntityManager();
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog",BlogPostBean.class);
+        return query;
+    }
+
+    public List<BlogPostBean> getAllBlogs(){
+        return getAllBlogsQuery().getResultList();
+    }
+
     /**
      * Query to find Blog without an UserId
      *

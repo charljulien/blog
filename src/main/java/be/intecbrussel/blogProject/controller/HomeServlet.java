@@ -18,10 +18,11 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         HttpSession session = request.getSession();
 
+        String articleTitle = "title";
         String article = "test article"; //temporary test String
 //        String article = get blogPost from userService from database
 
-        BlogPostBean blogPostBean = new BlogPostBean(article);
+        BlogPostBean blogPostBean = new BlogPostBean(articleTitle,article);
 
         session.setAttribute("blogPostBean", blogPostBean);
 

@@ -32,24 +32,26 @@ public class UserDAO {
         em = EMProvidor.getEntityManager();
 
         List<UserBean> eMail = getUserByMail(user.getEmail());
-        List<UserBean> userName = getUserByUserName(user.getUserName());
+        UserBean userName = getUserByUserName(user.getUserName());
         boolean eMailExists = false;
         boolean userNameExists = false;
+
         for (UserBean mail : eMail) {
             if (user.getEmail().equalsIgnoreCase(mail.getEmail())) {
                 System.out.println("Email already exists");
                 eMailExists = true;
             }
         }
-        for (UserBean username : userName) {
-            if (user.getUserName().equalsIgnoreCase(username.getUserName())) {
-                System.out.println("UserName already exists");
-                userNameExists = true;
-            }
+
+        if (user.getUserName().equalsIgnoreCase(userName.getUserName())) {
+            System.out.println("UserName already exists");
+            userNameExists = true;
         }
+
         if (!eMailExists && !userNameExists) {
             em.merge(user);
         }
+
         et = em.getTransaction();
         et.begin();
         et.commit();
@@ -116,24 +118,24 @@ public class UserDAO {
     public boolean validateInLog(String userName, String password) {
         System.out.println("Validating Login DAO...");
         em = EMProvidor.getEntityManager();
-        List<UserBean> userNameVal = getUserByUserName(userName);
+        UserBean userNameVal = getUserByUserName(userName);
         List<UserBean> passwordVal = getUserByPassword(password);
         boolean statusUserName = false;
         boolean statusPassword = false;
         boolean statusOk = false;
 
-        for (UserBean nameUser : userNameVal) {
-            if (userName.equals(nameUser.getUserName())) {
-                System.out.println("UserName is Correct");
-                statusUserName = true;
-            }
-            if (statusUserName) {
-                if (nameUser.getUserName().equals(userName)&& nameUser.getPassword().equals(password)) {
-                    System.out.println("Password is Correct");
-                    statusPassword = true;
-                }
+
+        if (userName.equals(userNameVal.getUserName())) {
+            System.out.println("UserName is Correct");
+            statusUserName = true;
+        }
+        if (statusUserName) {
+            if (userNameVal.getPassword().equals(password)) {
+                System.out.println("Password is Correct");
+                statusPassword = true;
             }
         }
+
 
         if (statusUserName && statusPassword) {
             statusOk = true;
@@ -245,8 +247,8 @@ public class UserDAO {
      * @return User
      * @author Mr. Black
      */
-    public List<UserBean> getUserByUserName(String username) {
-        return getUserByUserNameQuery(username).getResultList();
+    public UserBean getUserByUserName(String username) {
+        return getUserByUserNameQuery(username).getSingleResult();
     }
 
     /**

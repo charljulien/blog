@@ -30,7 +30,7 @@ public class UserLoginServlet extends HttpServlet {
     private static final String PASSWORD = "password";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
     private static final String ERROR_LOGIN_PAGE = "WEB-INF/forms/ERRORlogin.jsp";
 
     private UserServiceInterface userService;
@@ -64,8 +64,6 @@ public class UserLoginServlet extends HttpServlet {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
 
-
-
         if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
             HttpSession session = request.getSession();
             if (session.getAttribute(USER_NAME) == null) {
@@ -75,17 +73,17 @@ public class UserLoginServlet extends HttpServlet {
                 session.setAttribute(PASSWORD, password);
             }
 
+
             boolean userNameVal = userService.validateInLogFromDB(userName, password);
-            UserBean userBean = new UserBean();
-
-
             if (userNameVal) {
-                List<UserBean> userLog = userService.getUserByUserName(userName);
-                System.out.println("USERLOG OK "+userLog.toString());
-                request.getSession().setAttribute(USER_BEAN, userLog);
+                UserBean userLog = userService.getUserByUserName(userName);
+                System.out.println("USER LOG OK " + userLog.toString());
+
+                session.setAttribute(USER_BEAN, userLog);
                 request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
 
             } else if (!userNameVal) {
+                System.out.println("USER LOG INVALID...");
                 request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
             }
 
