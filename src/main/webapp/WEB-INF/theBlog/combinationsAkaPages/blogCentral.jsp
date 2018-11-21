@@ -17,9 +17,9 @@
 </div>
 <div>
     <%@include file="./parts/sidebar.jsp" %>
-</div>
-<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>
-    <div>
+<%--</div>--%>
+<%--<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>--%>
+    <%--<div>--%>
     <c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">
         <tr>
         <td>
