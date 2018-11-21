@@ -42,8 +42,7 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
 
     }
 
-<<<<<<< HEAD
-=======
+
 
     // USE AppContextListener instead...
 
@@ -52,7 +51,7 @@ public class MyContextListener implements HttpSessionListener, ServletContextLis
      *
      * @author Miss Gold
      */
->>>>>>> 809816f06b3310700082f7745294fbeea155832a
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 //        servletContextEvent.setAttribute("commentService");
