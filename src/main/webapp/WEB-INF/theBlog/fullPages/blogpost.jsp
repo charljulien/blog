@@ -1,4 +1,4 @@
-<!-- url for this page is: localhost:8080/theblog/blogpostTitle+ID -->
+<!-- url for this page should be : localhost:8080/theblog/blogpostTitle+ID -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,11 +15,11 @@
 
 <div class="main">
     <div >
-        <h2> ${BlogPostBean.title} </h2>
-        <p> ${BlogPostBean.blogMessage} </p>
+        <h2> ${blogPostBean.title} </h2>
+        <p> ${blogPostBean.blogMessage} </p>
     </div>
     <div>
-        <h3> ${BlogPostBean.likes} Likes </h3> <!-- uploaded in real time -->
+        <h3> ${blogPostBean.likes} Likes </h3> <!-- uploaded in real time -->
     </div>
     <div>
         <button onclick="myFunction()" > LIKE </button> <!-- action here goes to method that adds another like to the bunch ; can i add java function instead of js?-->

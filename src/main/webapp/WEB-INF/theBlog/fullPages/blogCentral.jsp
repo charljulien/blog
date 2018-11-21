@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- url for this page is: localhost:8080 or host(www.theblog.com)/theblog/blogcentral -->
 
 <!doctype html>
@@ -13,24 +14,19 @@
 </head>
 <body>
 <div>
-    <%@include file="./parts/headerUser.jsp" %>
+    <%@include file="parts/header.jsp" %>
 </div>
 <div>
     <%@include file="./parts/sidebar.jsp" %>
 </div>
-<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>
-    <div>
-    <c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">
-        <tr>
-        <td>
-        ${blogpost.title}
-        </td>
-        <td>
-        ${blogpost.text}
-        </td>
-        <a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->
-        </tr>
-        </div>
+
+<!-- this needs a counter = to only show the first six, and every time someone presses the more button the counter increases its capacity with 6 more
+ in java this would be a do while loop and in the while id be able to change the condition -->
+<%--Miss Gold to Mrs Black : Steven, kan je een lijst maken van alle bestaande blogs aub?--%>
+<div>
+    <%@include file="./parts/blogCentralBody.jsp" %>
+</div>
+
 </body>
 </html>
 

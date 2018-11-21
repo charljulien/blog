@@ -1,4 +1,4 @@
-package be.intecbrussel.blogProject.sessionListeners;
+package be.intecbrussel.blogProject.listeners;
 
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.implementations.CommentService;
