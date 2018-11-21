@@ -1,16 +1,47 @@
 package be.intecbrussel.blogProject.listeners;
 
+import be.intecbrussel.blogProject.exceptions.InvalidContextAttributeException;
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
-import be.intecbrussel.blogProject.service.implementations.CommentService;
-import be.intecbrussel.blogProject.service.implementations.MemberAccessService;
-import be.intecbrussel.blogProject.service.implementations.UserService;
+import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+import java.io.IOException;
 
 @WebListener
-public class MyContextListener implements ServletContextListener {
+public class MyContextListener implements HttpSessionListener, ServletContextListener {
+    BlogPostServiceInterface blogPostService;
+
+    @Override
+    public void sessionCreated(HttpSessionEvent httpSessionEvent)  {
+        ServletContext servletContext = httpSessionEvent.getSession().getServletContext();
+
+        try {
+            Object object = servletContext.getAttribute("blogPostService");
+            if ( object instanceof BlogPostServiceInterface){
+                blogPostService = (BlogPostService) servletContext.getAttribute("blogPostService");
+            }
+            else {
+                throw new InvalidContextAttributeException("This attribute does not exist.");
+            }
+
+        }catch (InvalidContextAttributeException icae){
+
+        }
+
+        servletContext.setAttribute("blogPostService", blogPostService);
+    }
+
+    @Override
+    public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
+
+
+    }
+
 
 
     // USE AppContextListener instead...
@@ -20,22 +51,75 @@ public class MyContextListener implements ServletContextListener {
      *
      * @author Miss Gold
      */
+
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        servletContextEvent.getServletContext().setAttribute("commentService", new CommentService());
-        servletContextEvent.getServletContext().setAttribute("blogPostService", new BlogPostService());
-        servletContextEvent.getServletContext().setAttribute("userService", new UserService());
-        servletContextEvent.getServletContext().setAttribute("memberAccessService", new MemberAccessService());
+//        servletContextEvent.setAttribute("commentService");
+//        servletContextEvent.setAttribute("blogPostService");
+//        servletContextEvent.
+
     }
 
-    /**
-     * Method responsible for destroying all the services created upon initialization of context ( so when you x/close your app UI, services go away).
-     * No implementation necessary, right?
-     * @author Miss Gold
-     */
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
-
     }
 }
+
+//package be.intecbrussel.blogProject.contextListeners;
+//
+//import be.intecbrussel.blogProject.exceptions.InvalidContextAttributeException;
+//import be.intecbrussel.blogProject.service.implementations.BlogPostService;
+//import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
+//
+//import javax.servlet.ServletContext;
+//import javax.servlet.ServletContextEvent;
+//import javax.servlet.ServletContextListener;
+//import javax.servlet.annotation.WebListener;
+//import javax.servlet.http.HttpSessionEvent;
+//import javax.servlet.http.HttpSessionListener;
+//import java.io.IOException;
+//
+//@WebListener
+//public class MyContextListener implements HttpSessionListener, ServletContextListener {
+//    BlogPostServiceInterface blogPostService;
+//
+//    @Override
+//    public void sessionCreated(HttpSessionEvent httpSessionEvent)  {
+//        ServletContext servletContext = httpSessionEvent.getSession().getServletContext();
+//
+//        try {
+//            Object object = servletContext.getAttribute("blogPostService");
+//            if ( object instanceof BlogPostServiceInterface){
+//                blogPostService = (BlogPostService) servletContext.getAttribute("blogPostService");
+//            }
+//            else {
+//                throw new InvalidContextAttributeException("This attribute does not exist.");
+//            }
+//
+//        }catch (InvalidContextAttributeException icae){
+//
+//        }
+//
+//        servletContext.setAttribute("blogPostService", blogPostService);
+//    }
+//
+//    @Override
+//    public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
+//
+//
+//    }
+//
+//    @Override
+//    public void contextInitialized(ServletContextEvent servletContextEvent) {
+//        servletContextEvent.setAttribute("commentService");
+//        servletContextEvent.setAttribute("blogPostService");
+//        servletContextEvent.
+//
+//    }
+//
+//    @Override
+//    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+//
+//    }
+//}

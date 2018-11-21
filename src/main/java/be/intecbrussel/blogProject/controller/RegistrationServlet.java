@@ -3,7 +3,7 @@ package be.intecbrussel.blogProject.controller;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.service.implementations.UserService;
 import be.intecbrussel.blogProject.service.interfaces.UserServiceInterface;
-import be.intecbrussel.blogProject.sessionListeners.AppContextListener;
+import be.intecbrussel.blogProject.listeners.AppContextListener;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

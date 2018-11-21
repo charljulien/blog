@@ -2,7 +2,7 @@ package be.intecbrussel.blogProject.controller;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
-import be.intecbrussel.blogProject.sessionListeners.AppContextListener;
+import be.intecbrussel.blogProject.listeners.AppContextListener;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,5 +48,4 @@ public class BlogPostServlet extends HttpServlet {
         // added my Mr. Black
         request.getSession().setAttribute(USER_BEAN, blogPostBean);
     }
-
 }

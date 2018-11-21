@@ -16,10 +16,10 @@
 
 <div class="userProfileINFO">
     <div>
-        <p>First name :${UserBean.firstName}</p>
+        <p>First name :${userBean.firstName}</p>
     </div>
     <div>
-        <p>Last name :${UserBean.lastName}</p>
+        <p>Last name :${userBean.lastName}</p>
     </div>
     <div>
         <p>E-mail Address :${UserBean.emailAddress}</p>
