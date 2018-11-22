@@ -52,13 +52,13 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        List<BlogPostBean> blogPost = getBlogWithPredefinedId(id);
+        List<BlogPostBean> blogPost = getListBlogWithPredefinedId(id);
         for (BlogPostBean post : blogPost) {
             post.setBlogMessage(post.getBlogMessage() + " " + text);
             em.merge(post);
         }
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
     /**
@@ -73,7 +73,7 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        List<BlogPostBean> blogPost = getBlogWithPredefinedId(id);
+        List<BlogPostBean> blogPost = getListBlogWithPredefinedId(id);
         for (BlogPostBean blog : blogPost) {
             em.remove(blog);
         }
@@ -81,19 +81,49 @@ public class BlogPostDAO {
         EMProvidor.getInstance().closeEmf();
     }
 
+    // TEST FASE did not work till now, second one works via intellij
+    public void likeBlogPostCountIncrease(BlogPostBean blog) {
+        System.out.println("Liking Blog count +1 DAO...");
+        em = EMProvidor.getEntityManager();
+        et = em.getTransaction();
+        et.begin();
+        em.persist(blog.likeIncrease());
+        et.commit();
+        EMProvidor.getInstance().closeEM();
+    }
+
+    /**
+     * BETA TESTER TO ADD A LIKE TO A POST
+     * THIS METHOD WORKS VIA INTELLIJ BETA2TESTER
+     *
+     * @author Mr. Black
+     */
+    public void likeBlogPostCountIncrease(long id) {
+        System.out.println("Liking Blog count +1 DAO...");
+        em = EMProvidor.getEntityManager();
+        BlogPostBean blogWithPredefinedId = getBlogWithPredefinedId(id);
+        blogWithPredefinedId.likeIncrease();
+        em.persist(blogWithPredefinedId);
+        et = em.getTransaction();
+        et.begin();
+        et.commit();
+        EMProvidor.getInstance().closeEM();
+    }
+
 
     /**
      * Query to find all Blogs
+     *
      * @author Mr. Black
      * @see BlogPostDAO#getAllBlogs()
-     * */
-    private TypedQuery<BlogPostBean> getAllBlogsQuery(){
+     */
+    private TypedQuery<BlogPostBean> getAllBlogsQuery() {
         em = EMProvidor.getEntityManager();
-        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog",BlogPostBean.class);
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog", BlogPostBean.class);
         return query;
     }
 
-    public List<BlogPostBean> getAllBlogs(){
+    public List<BlogPostBean> getAllBlogs() {
         return getAllBlogsQuery().getResultList();
     }
 
@@ -128,8 +158,12 @@ public class BlogPostDAO {
         return query;
     }
 
-    public List<BlogPostBean> getBlogWithPredefinedId(long id) {
+    public List<BlogPostBean> getListBlogWithPredefinedId(long id) {
         return getBlogWithPredefinedIdQuery(id).getResultList();
+    }
+
+    public BlogPostBean getBlogWithPredefinedId(long id) {
+        return getBlogWithPredefinedIdQuery(id).getSingleResult();
     }
 
     /**

@@ -2,8 +2,8 @@ package be.intecbrussel.blogProject.controller;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
-import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.listeners.AppContextListener;
+import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
 
 import javax.servlet.ServletException;
@@ -14,24 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static be.intecbrussel.blogProject.controller.BlogPostServlet.BLOG_POST_SERVICE;
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
-/**
- * @author Mr. Black
- */
-@WebServlet("/Post")
-public class BlogPostServlet extends HttpServlet {
+@WebServlet("/Like")
+public class BlogLikeCounterServlet extends HttpServlet {
 
-    private static final String TITLE_POST = "title";
-    private static final String POST = "postBlog";
-
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
-    private static final String BLOG_POST_PAGE = "/WEB-INF/forms/BlogPostInput.jsp";
-
-    public static final String BLOG_POST_SERVICE = "blogPostService";
+    private static final String LIKE_COUNTER = "likeCounter";
+    private static final String BLOG_POST_PAGE = "/WEB-INF/theBlog/fullPages/blogpost.jsp";
 
     private BlogPostServiceInterface blogPostService;
-    private BlogPostBean blogPostBean;
+
 
     /**
      * @author Mr. Black
@@ -51,17 +44,14 @@ public class BlogPostServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         // To get the logged in user and to save it to a UserBean
-        UserBean user = (UserBean) session.getAttribute(USER_BEAN);
+//        UserBean user = (UserBean) session.getAttribute(USER_BEAN);
+        BlogPostBean blog = (BlogPostBean) session.getAttribute(BLOG_POST_SERVICE);
 
-        blogPostBean = new BlogPostBean(request.getParameter(TITLE_POST), request.getParameter(POST));
+  //      Integer like = Integer.parseInt(request.getParameter(LIKE_COUNTER));
 
-        // Saving the Blog and UserBean (logged in user) to DB
-        blogPostService.saveBlogPostToDB(blogPostBean, user);
-
-        session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
-        session.setAttribute(USER_BEAN, blogPostBean);
-
-
+        blogPostService.likeBlogPostCountIncrease(blog.getId());
+        session.setAttribute(BLOG_POST_SERVICE, blog);
         request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
+
     }
 }

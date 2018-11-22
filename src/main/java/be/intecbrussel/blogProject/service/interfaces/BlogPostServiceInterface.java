@@ -40,4 +40,8 @@ public interface BlogPostServiceInterface {
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#deleteBlogPost(long)
      */
     void deleteBlogPostToDB(long id);
+
+    void likeBlogPostCountIncrease(BlogPostBean blog);
+
+    void likeBlogPostCountIncrease(long id);
 }

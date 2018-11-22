@@ -1,6 +1,6 @@
 <%--<!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS --%>
 <%--${userBean.userName} TO <<USERBEAN >> -->--%>
-<%--<jsp:useBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
+<jsp:useBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -33,6 +33,10 @@
         <input type="submit" value="create Post">
     </form>
 </c:if>
+
+<%--<!-- Mr. Black == now we can add attributes to << ${userBean} >> -->--%>
+<%--<jsp:useBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
+
 <c:if test="${empty userBean}">
     <p>You're not logged in!</p>
     <div class="header">

@@ -94,4 +94,22 @@ public class BlogPostService implements BlogPostServiceInterface {
         System.out.println("Deleting Blog Post from DB SERVICE...");
         blogPostDAO.deleteBlogPost(id);
     }
+
+    /**
+     * Adds a like to the blogCounter
+     * THESE TWO ARE BETA'S  -- SECOND ONE WORKS
+     *
+     * @author Mr. Black
+     */
+    @Override
+    public void likeBlogPostCountIncrease(BlogPostBean blog) {
+        System.out.println("Liking Blog count +1 SERVICE...");
+        blogPostDAO.likeBlogPostCountIncrease(blog);
+    }
+
+    @Override
+    public void likeBlogPostCountIncrease(long id) {
+        System.out.println("Liking Blog count +1 SERVICE...");
+        blogPostDAO.likeBlogPostCountIncrease(id);
+    }
 }
