@@ -1,3 +1,7 @@
+<!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS ${userBean.userName} TO <<USERBEAN >> -->
+<jsp:useBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- url for this page is: localhost:8080 or host(www.theblog.com)/theblog/blogcentral -->
 
@@ -14,8 +18,15 @@
 </head>
 <body>
 
+
+
 <!-- Used line below to verify that session of user is being saved and can be accessed -->
 <h1>WELCOME LORD ${userBean.userName}</h1>
+<!-- Mr. Black to get << BlogPostServlet >> to make a post -->
+<form action="Post" method="GET">
+    <input type="submit" value="create Post">
+</form>
+
 
 
 <div>
