@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 <!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS ${userBean.userName} TO <<USERBEAN >> -->
 <jsp:useBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <!-- is this necessary here AND in parts?? -->
+>>>>>>> 97ceabf20c785d2bd868304036661636acf98825
 <!-- url for this page is: localhost:8080 or host(www.theblog.com)/theblog/blogcentral -->
 
 <!doctype html>
@@ -18,15 +22,18 @@
 </head>
 <body>
 
+<<<<<<< HEAD
 
 
 <!-- Used line below to verify that session of user is being saved and can be accessed -->
+=======
+<!-- Mr Black: Used line below to verify that session of user is being saved and can be accessed -->
+>>>>>>> 97ceabf20c785d2bd868304036661636acf98825
 <h1>WELCOME LORD ${userBean.userName}</h1>
 <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
 <form action="Post" method="GET">
     <input type="submit" value="create Post">
 </form>
-
 
 
 <div>
@@ -35,27 +42,11 @@
 <div>
     <%@include file="./parts/sidebar.jsp" %>
 </div>
-<%--<div>--%>
-<%--<c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">--%>
-    <%--<tr>--%>
-    <%--<td>--%>
-    <%--${blogpost.title}--%>
-    <%--</td>--%>
-    <%--<td>--%>
-    <%--${blogpost.text}--%>
-    <%--</td>--%>
-    <%--<a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->--%>
-    <%--</tr>--%>
-    <%--</div>--%>
 
-
-    <!-- this needs a counter = to only show the first six, and every time someone presses the more button the counter increases its capacity with 6 more
-    in java this would be a do while loop and in the while id be able to change the condition -->
-    <%--Miss Gold to Mrs Black : Steven, kan je een lijst maken van alle bestaande blogs aub?       Mr. Black --> this is done! --%>
-    <div>
+<div>
     <%@include file="./parts/blogCentralBody.jsp" %>
-    </div>
+</div>
 
-    </body>
-    </html>
+</body>
+</html>
 
