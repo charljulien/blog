@@ -1,3 +1,8 @@
+
+
+
+<!-- I do need JTSL for this .. -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +17,19 @@
 
 <!-- condition IF author is logged in ; than u see the following: -->
 <div class="topnav">
-    <form action="Home" method="GET">
-        <input type="submit" value="Go to main page">
-    </form>
     <a href=" http://localhost:8080/theblog/Home "> Home </a>
-    <a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a> <!-- in my profile my author page OR when u click on name in any article -->
     <a href=" http://localhost:8080/theblog/CreateBlogPost "> Create Blog Post </a>
+    <a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a> <!-- in my profile my author page OR when u click on name in any article -->
     Search: <input type="text" value="Search" placeholder="searchTerm"/>
 </div>
 
-<!-- condition IF ELSE 1. author is logged in OR 2. user is logged in ; than u see the following: -->
+<!-- condition IF ELSE user is logged in ; than u see the following: -->
 <div class="topnav">
+  <!-- alternative to a href, mr pink prefers so must change ALL OR learn to use alternative and teach everyone -->
+    <!--
     <form action="Home" method="GET">
         <input type="submit" value="Go to main page">
-    </form>
+    </form> -->
     <a href=" http://localhost:8080/theblog/Home "> Home </a>
     <a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a>
     Search: <input type="text" value="Search" placeholder="searchTerm"/>
@@ -33,12 +37,9 @@
 
 <!-- condition else, u see this instead: -->
 <div class="topnav">
-    <form action="Home" method="GET">
-        <input type="submit" value="Go to main page">
-    </form>
     <a href=" http://localhost:8080/theblog/Home "> Home </a>
-    <a href=" http://localhost:8080/theblog/UserProfile "> Log In </a>
     <a href=" http://localhost:8080/theblog/UserProfile "> Register </a>
+    <a href=" http://localhost:8080/theblog/UserProfile "> Log In </a>
     Search: <input type="text" value="Search" placeholder="searchTerm"/>
 </div>
 

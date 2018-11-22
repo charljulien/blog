@@ -3,6 +3,6 @@
 <%--for each put in comment by mr pink to test the servlet--%>
 <%--for each itself still doesn't work--%>
 <div>
- ${blogPostBean.blogMessage}<!-- EL methode gebruike en via query zoeken -->
+ ${blogPostBean.blogMessage}<!-- EL methode gebruiken en via query zoeken -->
 
 </div>
