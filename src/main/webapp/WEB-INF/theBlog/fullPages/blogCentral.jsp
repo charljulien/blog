@@ -23,24 +23,21 @@
 </div>
 <div>
     <%@include file="./parts/sidebar.jsp" %>
-<<<<<<< HEAD
 <%--</div>--%>
 <%--<%@taglib prefix="c"% uri="http://java.sun.com/jsp/jstl/core"%>--%>
     <%--<div>--%>
-    <c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">
-        <tr>
-        <td>
-        ${blogpost.title}
-        </td>
-        <td>
-        ${blogpost.text}
-        </td>
-        <a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->
-        </tr>
-        </div>
-
-=======
->>>>>>> 6eccc7276a673102424f89f548510195fb080d18
+    <%--<c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">--%>
+        <%--<tr>--%>
+        <%--<td>--%>
+        <%--${blogpost.title}--%>
+        <%--</td>--%>
+        <%--<td>--%>
+        <%--${blogpost.text}--%>
+        <%--</td>--%>
+        <%--<a href ="BlogPost?"> ... </a> <!-- continue reading aka go to detail page -->--%>
+        <%--</tr>--%>
+        <%--</div>--%>
+    <%--</c:forEach>--%>
 </div>
 <%--<div>--%>
 <%--<c:forEach items="§{blogposts}" var="blogpost" varStatus="what?">--%>
@@ -63,11 +60,6 @@
     <%@include file="./parts/blogCentralBody.jsp" %>
     </div>
 
-<<<<<<< HEAD
 </body>
 </html>
-=======
-    </body>
-    </html>
->>>>>>> 6eccc7276a673102424f89f548510195fb080d18
 
