@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Class creates Servlet login for JSP pages
  *
- * @author Mr. Pink
+ * @author Mr. Pink && Mr. Black
  */
 
 @WebServlet("/Login")
@@ -73,7 +72,6 @@ public class UserLoginServlet extends HttpServlet {
                 session.setAttribute(PASSWORD, password);
             }
 
-
             boolean userNameVal = userService.validateInLogFromDB(userName, password);
             if (userNameVal) {
                 UserBean userLog = userService.getUserByUserName(userName);
@@ -86,7 +84,6 @@ public class UserLoginServlet extends HttpServlet {
                 System.out.println("USER LOG INVALID...");
                 request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
             }
-
         } else {
             request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
         }

@@ -119,11 +119,9 @@ public class UserDAO {
         System.out.println("Validating Login DAO...");
         em = EMProvidor.getEntityManager();
         UserBean userNameVal = getUserByUserName(userName);
-        List<UserBean> passwordVal = getUserByPassword(password);
         boolean statusUserName = false;
         boolean statusPassword = false;
         boolean statusOk = false;
-
 
         if (userName.equals(userNameVal.getUserName())) {
             System.out.println("UserName is Correct");
@@ -135,8 +133,6 @@ public class UserDAO {
                 statusPassword = true;
             }
         }
-
-
         if (statusUserName && statusPassword) {
             statusOk = true;
         }
@@ -241,7 +237,7 @@ public class UserDAO {
     }
 
     /**
-     * List to obtain UserBean by UserName
+     * Obtain UserBean by UserName
      *
      * @param username for object UserBean
      * @return User
@@ -270,7 +266,7 @@ public class UserDAO {
      * List to obtain UserBean by Password
      *
      * @param password for oject UserBean
-     * @return User
+     * @return List User
      * @author Mr. Black
      */
     public List<UserBean> getUserByPassword(String password) {

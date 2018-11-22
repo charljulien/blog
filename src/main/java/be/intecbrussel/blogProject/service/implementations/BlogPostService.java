@@ -37,25 +37,37 @@ public class BlogPostService implements BlogPostServiceInterface {
 
     /**
      * Saves a BlogPost to the DB
+     * This is the BETA version
      *
      * @param blogPost object
      * @author Mr. Black
      */
     @Override
-    public void saveBlogPostToDB(BlogPostBean blogPost,String lastName) {
+    public void saveBlogPostToDB(BlogPostBean blogPost, String lastName) {
         System.out.println("Saving Blog Post to DB SERVICE...");
         List<UserBean> userLastName = userDAO.getUserByLastName(lastName);
-        for(UserBean user : userLastName){
+        for (UserBean user : userLastName) {
             blogPost.setUser(user);
         }
         blogPostDAO.saveBlogPost(blogPost);
     }
 
-    public void saveBlogPostToDB(BlogPostBean blogPost) {
+    /**
+     * Saves a BlogPost to the DB via servlet
+     *
+     * @param blogPost object
+     * @param user     object, obtained by session.getAttribute(USER_BEAN)
+     * @author Mr. Black
+     */
+    @Override
+    public void saveBlogPostToDB(BlogPostBean blogPost, UserBean user) {
         System.out.println("Saving Blog Post to DB SERVICE...");
+        System.out.println("Logged in user: " + user.toString());
+        System.out.println("Blog Posted by Logged in user: " + blogPost);
+
+        blogPost.setUser(user);
         blogPostDAO.saveBlogPost(blogPost);
     }
-
 
 
     /**

@@ -1,3 +1,7 @@
+<!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS << ${blogPostService} >> to << BlogPostBean >> -->
+<jsp:useBean id="blogPostService" scope="session" type="be.intecbrussel.blogProject.beans.BlogPostBean"/>
+
+
 <!-- url for this page should be : localhost:8080/theblog/blogpostTitle+ID -->
 <!doctype html>
 <html lang="en">
@@ -9,17 +13,18 @@
     <script src="myscript.js"></script>
     <link rel="stylesheet" href="styles.css">
 
-    <title>${BlogPostBean.title}</title>
+    <title>${blogPostService.title}</title>
 </head>
 <body>
 
 <div class="main">
     <div >
-        <h2> ${blogPostBean.title} </h2>
-        <p> ${blogPostBean.blogMessage} </p>
+        <h1>BLOG POSTED BY ${blogPostService.user.userName}</h1>
+        <h2> ${blogPostService.title} </h2>
+        <p> ${blogPostService.blogMessage} </p>
     </div>
     <div>
-        <h3> ${blogPostBean.likes} Likes </h3> <!-- uploaded in real time -->
+        <h3> ${blogPostService.likeBlogCounter} Likes </h3> <!-- uploaded in real time -->
     </div>
     <div>
         <button onclick="myFunction()" > LIKE </button> <!-- action here goes to method that adds another like to the bunch ; can i add java function instead of js?-->

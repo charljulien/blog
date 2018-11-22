@@ -72,6 +72,7 @@ public class BlogPostBean implements Serializable {
         return likeBlogCounter++;
     }
 
+    // Should not be used... (Mr. Black)
     public int likeDecrease() {
         return likeBlogCounter--;
     }
@@ -80,6 +81,7 @@ public class BlogPostBean implements Serializable {
         return likeBlogCounter;
     }
 
+    // Should not be used... (Mr. Black)
     public void setLikeBlogCounter(int likeBlogCounter) {
         this.likeBlogCounter = likeBlogCounter;
     }
@@ -98,5 +100,9 @@ public class BlogPostBean implements Serializable {
 
     public void setUser(UserBean user) {
         this.user = user;
+    }
+
+    public String toString(){
+        return getTitle()+"\n"+getBlogMessage();
     }
 }

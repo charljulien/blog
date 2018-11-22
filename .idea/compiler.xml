@@ -2,7 +2,11 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+<<<<<<< HEAD
       <module name="theBlog" target="1.8" />
+=======
+      <module name="theblog" target="1.8" />
+>>>>>>> f776bfad9a43b5efbd3762ca003d24828011c482
     </bytecodeTargetLevel>
   </component>
 </project>
