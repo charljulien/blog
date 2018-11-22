@@ -7,4 +7,4 @@ ${blogpost.body} <!-- iterate over the list of words, so article body should be 
 
  just do some more research : https://stackoverflow.com/questions/1583940/how-do-i-get-the-first-n-characters-of-a-string-without-checking-the-size-or-goi -->
 </body>
-</html>
+</html>g
