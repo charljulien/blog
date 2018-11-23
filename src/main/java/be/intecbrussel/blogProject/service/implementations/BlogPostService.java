@@ -16,24 +16,29 @@ import java.util.List;
  * @see BlogPostDAO
  */
 public class BlogPostService implements BlogPostServiceInterface {
-
-
     private BlogPostDAO blogPostDAO;
     private UserDAO userDAO;
-
-    /**
-     * Sort object by date old to new
-     */
-
-    /**
-     * Sort object by date new to old
-     */
 
     public BlogPostService() {
         blogPostDAO = new BlogPostDAO();
         userDAO = new UserDAO();
     }
 
+    /**
+     * Sort object by date old to new
+     */
+    @Override
+    public void sortBlogPostsOldToNew() {
+        blogPostDAO.getBlogsByOldestDateFirst();
+    }
+
+    /**
+     * Sort object by date new to old
+     */
+    @Override
+    public void sortBlogPostsNewToOld() {
+
+    }
 
     /**
      * Saves a BlogPost to the DB
@@ -59,6 +64,7 @@ public class BlogPostService implements BlogPostServiceInterface {
      * @param user     object, obtained by session.getAttribute(USER_BEAN)
      * @author Mr. Black
      */
+    //M Gold : VIA servlet?? where is the servlet in all of this?
     @Override
     public void saveBlogPostToDB(BlogPostBean blogPost, UserBean user) {
         System.out.println("Saving Blog Post to DB SERVICE...");
@@ -68,7 +74,6 @@ public class BlogPostService implements BlogPostServiceInterface {
         blogPost.setUser(user);
         blogPostDAO.saveBlogPost(blogPost);
     }
-
 
     /**
      * Updates attribute message of a predefined blogPost
@@ -94,4 +99,26 @@ public class BlogPostService implements BlogPostServiceInterface {
         System.out.println("Deleting Blog Post from DB SERVICE...");
         blogPostDAO.deleteBlogPost(id);
     }
+
+    /**
+     * Adds a like to the blogCounter
+     * THESE TWO ARE BETA'S  -- SECOND ONE WORKS
+     *
+     * @author Mr. Black
+     */
+    @Override
+    public void likeBlogPostCountIncrease(BlogPostBean blog) {
+        System.out.println("Liking Blog count +1 SERVICE...");
+        blogPostDAO.likeBlogPostCountIncrease(blog);
+    }
+
+    @Override
+    public void likeBlogPostCountIncrease(long id) {
+        System.out.println("Liking Blog count +1 SERVICE...");
+        blogPostDAO.likeBlogPostCountIncrease(id);
+    }
+
+    //MISS GOLD and her annoying questions:
+    //should there be a decrease here? just like on facebook, so u can remove your own like?
+    //should we allow unlimited extra likes by same user ? or should we add limit?
 }

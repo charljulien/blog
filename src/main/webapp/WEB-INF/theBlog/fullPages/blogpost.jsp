@@ -27,6 +27,10 @@
         <h3> ${blogPostService.likeBlogCounter} Likes </h3> <!-- uploaded in real time -->
     </div>
     <div>
+        <form class="Like-Blog" action="Like" method="POST">
+            <input type="submit" value="LIKE Blog" name="likeCounter">
+        </form>
+
         <button onclick="myFunction()" > LIKE </button> <!-- action here goes to method that adds another like to the bunch ; can i add java function instead of js?-->
     </div>
 </div>

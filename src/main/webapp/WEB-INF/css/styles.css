@@ -1,1 +1,43 @@
- Soufiane, wil je een update sturen van wat je al gedaan hebt? Ik zie hier niets van jou verschijnen...
+
+
+ /**
+ * @author Mr. Black
+ */
+ /* Nav Bar */
+ body{
+        background-color:darkslategrey;
+     /*background-image: url("229564-anime-girl-headphones.jpg");*/
+ }
+
+ .topnav ul {
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+     overflow: hidden;
+     background-color: transparent;
+ }
+
+ li {
+     float: left;
+ }
+
+ li a {
+     display: block;
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
+
+ li a:hover:not(.active) {
+     background-color: lightgray;
+ }
+
+ .active {
+     background-color: darkslateblue;
+
+     color: white;
+     text-align: center;
+     padding: 14px 16px;
+     text-decoration: none;
+ }
