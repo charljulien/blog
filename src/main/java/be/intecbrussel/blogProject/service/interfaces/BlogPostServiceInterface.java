@@ -16,6 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 public interface BlogPostServiceInterface {
 
     /**
+     * Sort object by date old to new
+     */
+    void sortBlogPostsOldToNew();
+
+    /**
+     * Sort object by date new to old
+     */
+    void sortBlogPostsNewToOld();
+
+    /**
      * This is the BETA version
      *
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#saveBlogPost(BlogPostBean)
@@ -40,4 +50,8 @@ public interface BlogPostServiceInterface {
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#deleteBlogPost(long)
      */
     void deleteBlogPostToDB(long id);
+
+    void likeBlogPostCountIncrease(BlogPostBean blog);
+
+    void likeBlogPostCountIncrease(long id);
 }

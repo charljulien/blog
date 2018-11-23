@@ -1,2 +1,3 @@
 conditie jptl ?
 param handling in jsp ?
+<!-- u cannot link to jsp pages, u have to go through a servlet  ; u can link to html but its better to go trough servlet??-->

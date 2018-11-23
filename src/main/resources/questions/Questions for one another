@@ -7,6 +7,9 @@ steken ( wss kan dat gewoon via een query in een method
 en hoeft het geen member variable te worden ergens..
 ANTWOORD KOMT HIER:
 
+To Miss Gold:
+in de BlogPostDAO onderaan zijn alle queries te vinden, deze hebben elk eronder een public resultList.
+deze resultlist (of in sommige gevallen SingleResult) geven de resultaten terug die je odig hebt²
 
 
 Miss Gold to MR Pink:
@@ -15,6 +18,7 @@ focus je dus op css :)
 Doe je aub een update ( push) van wat je tot nu toe al hebt? Bedankt
 
 ANTWOORD KOMT HIER:
+
 
 
 

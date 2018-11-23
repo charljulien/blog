@@ -61,6 +61,7 @@ public class EMProvidor {
     }
 
     public void closeEM(){
+        System.out.println("CLOSING ENTITY MANAGER");
         getEntityManager().close();
     }
 

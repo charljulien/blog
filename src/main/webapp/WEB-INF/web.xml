@@ -9,25 +9,33 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-
     <servlet>
+        <servlet-name>UserLoginServlet</servlet-name>
+        <servlet-class></servlet-class> <!-- no clue what to put here -->
+        <security-role-ref>
+            <role-name>Author</role-name> <!-- $[MemberAccess.memberAccessLevel] -->
+            <role-link>author</role-link>
+        </security-role-ref>
+    </servlet>
+
+    <!-- Miss Gold:  why is here ABSOLUTELY NO NEED for any of these mappings?? -->
+
+    <!--<servlet>
     <servlet-name>Anyservlet</servlet-name>
     <jsp-file>/header.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
     <servlet-name>Anyservlet</servlet-name>
     <url-pattern>/blogcentral</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping> -->
 
-    <!--<jsp-config>-->
+    <!-- <jsp-config>-->
         <!--<jsp-property-group>-->
             <!--<url-pattern>/theblog/*</url-pattern>-->
             <!--<include-prelude>/WEB-INF/theBlog/parts/header.jsp</include-prelude>-->
             <!--<include-prelude>/WEB-INF/theBlog/parts/sidebar.jsp</include-prelude>-->
         <!--</jsp-property-group>-->
     <!--</jsp-config>-->
-
-
 
     <!--<servlet>-->
         <!--<servlet-name>Anyservlet</servlet-name>-->
@@ -40,5 +48,7 @@
 
     <!--<session-config>-->
         <!--<session-timeout>20</session-timeout>-->
+
     <!--</session-config>-->
+
 </web-app>

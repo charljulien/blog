@@ -1,6 +1,7 @@
 package infernalWhaler;
 
 import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.dao.BlogPostDAO;
 import be.intecbrussel.blogProject.dao.EMProvidor;
 import be.intecbrussel.blogProject.dao.UserDAO;
 
@@ -12,15 +13,17 @@ public class Beta2TestExileNoir {
     private Scanner kbd;
     private EntityManager em;
     private UserDAO userDAO;
+    private BlogPostDAO blogPostDAO;
 
     Beta2TestExileNoir(){
         kbd = new Scanner(System.in);
         em = EMProvidor.getEntityManager();
         userDAO = new UserDAO();
+        blogPostDAO = new BlogPostDAO();
     }
 
     public static void main(String[] args) {
         Beta2TestExileNoir b = new Beta2TestExileNoir();
-        System.out.println(b.userDAO.validateInLog("ExileNoir","pass"));
+       b.blogPostDAO.likeBlogPostCountIncrease(1);
     }
 }
