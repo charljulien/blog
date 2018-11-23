@@ -72,16 +72,13 @@
     <div class="topnav">
         <ul>
             <li>
-                <a href=" http://localhost:8080/theblog/Home "> Home </a>
+                <a href=" http://localhost:8080/theBlog/Home "> Home </a>
             </li>
             <li>
-                <a href=" http://localhost:8080/theblog/UserProfile "> Register </a>
+                <a href=" http://localhost:8080/theBlog/Registration "> Register </a>
             </li>
             <li>
-                <a href=" http://localhost:8080/theblog/UserProfile "> Log In </a>
-            </li>
-            <li>
-                Search: <input type="text" value="Search" placeholder="searchTerm"/>
+                <a href=" http://localhost:8080/theBlog/Login "> Log In </a>
             </li>
         </ul>
     </div>

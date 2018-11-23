@@ -28,7 +28,7 @@
         <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
         <div class="button" name="createBlog">
             <div class="header">
-                <%@include file="parts/header.jsp" %>
+                <%@include file="header.jsp" %>
             </div>
             <form action="Post" method="GET">
                 <input type="submit" value="create Post">
@@ -41,7 +41,7 @@
     <c:if test="${empty userBean}">
         <p>You're not logged in!</p>
         <div class="header">
-            <%@include file="parts/header.jsp" %>
+            <%@include file="header.jsp" %>
         </div>
     </c:if>
 </div>

@@ -20,6 +20,7 @@
 </head>
 
 <body>
+<p>coucou c'est le header</p>
     <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
     <div class="header">
         <%@include file="parts/header.jsp" %>
@@ -28,11 +29,17 @@
 <!-- also, i saw u deleted CreateBlogPostServlet : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
 
 <div>
+    <p>coucou c'est le sidebar</p>
+
     <%@include file="./parts/sidebar.jsp" %>
 </div>
 
 <div>
-    <%--<%@include file="./parts/blogCentralBody.jsp" %>--%>
+    <p>coucou c'est le blogcentralbody</p>
+    <%--Mr Gold needs to fix this jsp--%>
+    <%--no header in it--%>
+    <%--fix blogPostBean conflict--%>
+<%--<%@include file="./parts/blogCentralBody.jsp" %>--%>
 </div>
 
 </body>
