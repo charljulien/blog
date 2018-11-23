@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static be.intecbrussel.blogProject.controller.BlogPostServlet.BLOG_POST_SERVICE;
-import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
 @WebServlet("/Like")
 public class BlogLikeCounterServlet extends HttpServlet {
