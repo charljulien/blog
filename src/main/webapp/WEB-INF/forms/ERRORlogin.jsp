@@ -9,25 +9,28 @@
     <title>Insert title here</title>
     <script src="myscript.js"></script>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
-<p> ERROR LOGGING YOU IN. CHECK YOUR USERNAME AND PASSWORD AND THAN TRY AGAIN. </p>
+<center>
+    <h3 style="font-size: 20px; ">ERROR LOGGING YOU IN. CHECK YOUR USERNAME AND PASSWORD AND THAN TRY AGAIN.</h3>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form" action="Login" method="POST">
 
-<h3> Log in </h3>
-<div class="login-page">
-    <div class="form">
-        <form class="login-form" method="POST">
-            <input type="text" placeholder="username" name="userName"/>
-            <input type="password" placeholder="password" name="password"/>
-            <input type="submit" value ="login">
-        </form>
-        <form action="Registration" method="GET">
-            <input type="submit" value="create an account">
-        </form>
+                <input style="width: 200px;" type="text" placeholder="username" name="userName"/><br>
+                <input style="width: 200px;" type="password" placeholder="password" name="password"/><br>
+                <input type="submit" value ="login">
+
+            </form>
+            <form action="Registration" method="GET">
+                <input type="submit" value="create an account" style="width: 120px;">
+            </form>
+
+        </div>
     </div>
-</div>
+</center>
 
 </body>
 </html>

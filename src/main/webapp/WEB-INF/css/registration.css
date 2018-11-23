@@ -1,0 +1,54 @@
+html{
+    background:#eeeeee;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: darkgrey;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0;
+    height: 100%;
+    max-height: 1000px;
+    background:#fafafa;
+    box-shadow: 0px 0px 50px 0px rgba(20,50,50,0.55);
+    padding-left: 20px;
+}
+
+h3 {
+    font-size: 50px;
+    font-family: trebuchet ms;
+    color: darkgrey;
+
+}
+
+
+
+input {
+    width: 120px;
+    transition: width 0.5s ;
+}
+
+input[type=text]:focus {
+    width: 25%;
+}
+
+
+.text-field{
+    font-family: trebuchet ms;
+
+}
+
+
+
+
+
+
+
