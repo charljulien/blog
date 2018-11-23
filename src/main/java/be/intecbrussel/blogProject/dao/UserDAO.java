@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Represents the dataLayer of UserBean class
@@ -62,32 +63,61 @@ public class UserDAO {
     // this should be adjusted... change user itself without looking for certain id!!!!
 
     /**
-     * Update user in DB
-     *
-     * @param id
-     * @param text
-     * @author Mr.Brown
+     * @param choice
+     * @param user
+     * @author Mr.brown
      */
-    public void updateUser(long id, String text) {
+    public void updateUser(char choice, UserBean user) {
         System.out.println("Updating user DAO...");
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        List<UserBean> ub = getUserById(id);
-        for (UserBean user : ub) {
-            user.setFirstName(user.getFirstName() + " " + text);
-            user.setLastName(user.getLastName() + " " + text);
-            user.setUserName(user.getUserName() + " " + text);
-            user.setEmail(user.getEmail() + " " + text);
-            user.setStreet(user.getStreet() + " " + text);
-            user.setHouseNr(user.getHouseNr() + " " + text);
-            user.setCity(user.getCity() + " " + text);
-            user.setZipCode(user.getZipCode() + " " + text);
-            user.setPassword(user.getPassword() + " " + text);
-            em.merge(user);
+
+        System.out.println("a: Do you want to update your Firstname ");
+        System.out.println("b: Do you want to update your Lastname ");
+        System.out.println("c: Do you want to update your Username ");
+        System.out.println("d: Do you want to update your Email ");
+        System.out.println("e: Do you want to update your Street ");
+        System.out.println("f: Do you want to update your HousNr ");
+        System.out.println("g: Do you want to update your City ");
+        System.out.println("h: Do you want to update your ZipCode  ");
+        System.out.println("i: Do you want to update your Password ");
+        Scanner kbd = new Scanner(System.in);
+        choice = kbd.next().charAt(0);
+
+        switch (choice) {
+            case 'a':
+                user.setFirstName(user.getFirstName());
+                break;
+            case 'b':
+                user.setLastName(user.getLastName());
+                break;
+            case 'c':
+                user.setUserName(user.getUserName());
+                break;
+            case 'd':
+                user.setEmail(user.getEmail());
+                break;
+            case 'e':
+                user.setStreet(user.getStreet());
+                break;
+            case 'f':
+                user.setHouseNr(user.getHouseNr());
+                break;
+            case 'g':
+                user.setCity(user.getCity());
+                break;
+            case 'h':
+                user.setZipCode(user.getZipCode());
+                break;
+            case 'i':
+                user.setPassword(user.getPassword());
+                break;
         }
+        em.merge(user);
         et.commit();
         EMProvidor.getInstance().closeEM();
+
     }
 
     // Read
@@ -111,7 +141,10 @@ public class UserDAO {
         EMProvidor.getInstance().closeEM();
     }
 
+
     public void deleteUser(String userName) {
+
+
 
     }
 
