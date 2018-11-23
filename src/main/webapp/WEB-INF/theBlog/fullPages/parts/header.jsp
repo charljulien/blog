@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<% <jsp:userBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
+<%--<jsp:userBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
 <!-- I do need JTSL for this .. -->
 
 <!DOCTYPE html>
@@ -14,7 +14,8 @@
 </head>
 <body>
 <!-- condition IF user is logged in ; than u see the following: -->
-<c:if test="${not empty userBean && memberAcces not author}">
+<%--<c:if test="${not empty userBean && memberAcces not author}">--%>
+<c:if test="${not empty userBean}">
     <div class="topnav">
         <ul>
             <li>

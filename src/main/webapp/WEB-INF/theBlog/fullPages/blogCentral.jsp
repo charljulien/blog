@@ -49,9 +49,8 @@
 </div>
 
 <div>
-    <%@include file="./parts/blogCentralBody.jsp" %>
+    <%--<%@include file="./parts/blogCentralBody.jsp" %>--%>
 </div>
 
 </body>
 </html>
-
