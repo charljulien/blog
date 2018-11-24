@@ -112,13 +112,29 @@ public class BlogPostService implements BlogPostServiceInterface {
         blogPostDAO.likeBlogPostCountIncrease(blog);
     }
 
+    /**
+     * BETA TESTER TO ADD A LIKE TO A POST
+     * THIS METHOD WORKS VIA INTELLIJ BETA2TESTER
+     *
+     * @author Mr. Black
+     */
     @Override
     public void likeBlogPostCountIncrease(long id) {
         System.out.println("Liking Blog count +1 SERVICE...");
         blogPostDAO.likeBlogPostCountIncrease(id);
     }
 
-    //MISS GOLD and her annoying questions:
-    //should there be a decrease here? just like on facebook, so u can remove your own like?
-    //should we allow unlimited extra likes by same user ? or should we add limit?
+    /**
+     * Reads a Blog post
+     *
+     * @param title String of the BlogPostBean
+     * @return BlogPostBean object with predefined title String
+     * @author Mr. Black
+     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#readBlogPost(String)
+     */
+    @Override
+    public BlogPostBean readBlogPost(String title) {
+        System.out.println("Reading from the DB SERVICE...");
+        return blogPostDAO.readBlogPost(title);
+    }
 }

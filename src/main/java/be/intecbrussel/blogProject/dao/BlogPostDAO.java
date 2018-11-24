@@ -40,6 +40,21 @@ public class BlogPostDAO {
     }
 
     /**
+     * Reads a Blog post
+     *
+     * @param title String of the BlogPostBean
+     * @return BlogPostBean object with predefined title String
+     * @authr Mr. Black
+     */
+    public BlogPostBean readBlogPost(String title) {
+        System.out.println("Connecting to read from DB...");
+        em = EMProvidor.getEntityManager();
+        BlogPostBean idUser = getBlogWithPredefinedTitle(title);
+        //   System.out.println(idUser);
+        return idUser;
+    }
+
+    /**
      * Update blog message
      *
      * @param id   of the object BlogPost to update
@@ -87,7 +102,8 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        em.persist(blog.likeIncrease());
+         blog.likeIncrease();
+        em.merge(blog);
         et.commit();
         EMProvidor.getInstance().closeEM();
     }
@@ -247,6 +263,24 @@ public class BlogPostDAO {
 
     public List<BlogPostBean> getBlogsByPredefinedUser(String user) {
         return getBlogsByPredefinedUserQuery(user).getResultList();
+    }
+
+    /**
+     * Query to find BlogPostBean with predefined title
+     *
+     * @param title String to find the BlogPostBean Object
+     * @author Mr. Black
+     * @see BlogPostDAO#getBlogWithPredefinedTitle(String)
+     */
+    private TypedQuery<BlogPostBean> getBlogWithPredefinedTitleQuery(String title) {
+        em = EMProvidor.getEntityManager();
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog where blog.title=:title", BlogPostBean.class);
+        query.setParameter("title", title);
+        return query;
+    }
+
+    public BlogPostBean getBlogWithPredefinedTitle(String title) {
+        return getBlogWithPredefinedTitleQuery(title).getSingleResult();
     }
 
 }

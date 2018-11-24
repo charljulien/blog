@@ -51,7 +51,26 @@ public interface BlogPostServiceInterface {
      */
     void deleteBlogPostToDB(long id);
 
+    // TEST FASE did not work till now, second one works via intellij
     void likeBlogPostCountIncrease(BlogPostBean blog);
 
+    /**
+     * BETA TESTER TO ADD A LIKE TO A POST
+     * THIS METHOD WORKS VIA INTELLIJ BETA2TESTER
+     *
+     * @author Mr. Black
+     */
     void likeBlogPostCountIncrease(long id);
+
+    /**
+     * Reads a Blog post
+     *
+     * @param title String of the BlogPostBean
+     * @return BlogPostBean object with predefined title String
+     * @author Mr. Black
+     * @see be.intecbrussel.blogProject.dao.BlogPostDAO#readBlogPost(String)
+     * @see be.intecbrussel.blogProject.service.implementations.BlogPostService#readBlogPost(String)
+     */
+    BlogPostBean readBlogPost(String title);
+
 }

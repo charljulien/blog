@@ -42,15 +42,19 @@ public class BlogLikeCounterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        // To get the logged in user and to save it to a UserBean
-//        UserBean user = (UserBean) session.getAttribute(USER_BEAN);
+
         BlogPostBean blog = (BlogPostBean) session.getAttribute(BLOG_POST_SERVICE);
+        System.out.println("SERVLET LIKE COUNTER " + blog);
 
-  //      Integer like = Integer.parseInt(request.getParameter(LIKE_COUNTER));
 
-        blogPostService.likeBlogPostCountIncrease(blog.getId());
+        BlogPostBean listOfBlogs = blogPostService.readBlogPost(blog.getTitle());
+        System.out.println("BLOG WITH SEARCHED TITLE: "+listOfBlogs);
+
+        blog.setId(listOfBlogs.getId());
+        blogPostService.likeBlogPostCountIncrease(listOfBlogs);
+
+
         session.setAttribute(BLOG_POST_SERVICE, blog);
         request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
-
     }
 }

@@ -50,18 +50,14 @@ public class BlogPostServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        // To get the logged in user and to save it to a UserBean
+
         UserBean user = (UserBean) session.getAttribute(USER_BEAN);
 
         blogPostBean = new BlogPostBean(request.getParameter(TITLE_POST), request.getParameter(POST));
-
-        // Saving the Blog and UserBean (logged in user) to DB
         blogPostService.saveBlogPostToDB(blogPostBean, user);
 
-        //Miss Gold needs to review exact meaning of this
         session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
         session.setAttribute(USER_BEAN, blogPostBean);
-
 
         request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
     }
