@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<jsp:userBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
-<!-- I do need JTSL for this .. -->
 
 <!DOCTYPE html>
 <html>
@@ -10,30 +8,20 @@
     <style>
         <%@include file="/WEB-INF/css/styles.css" %>
     </style>
-    <!-- miss gold is wondering if it is necessary to add stylesheet here as well? or only in complete jsp pages..-->
 </head>
+
+
 <body>
 <!-- condition IF user is logged in ; than u see the following: -->
-<%--<c:if test="${not empty userBean && memberAcces not author}">--%>
 <c:if test="${not empty userBean}">
     <div class="topnav">
         <ul>
-            <li>
-                <h1>WELCOME ${userBean.userName}</h1>
-            </li>
-            <li>
-                <a href=" http://localhost:8080/theblog/Home "> Home </a>
-            </li>
-            <li>
-                <a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a>
-                <!-- in my profile my author page OR when u click on name in any article -->
-            </li>
-            <li>
-                <a href="http://localhost:8080/theblog/LogOut"> Log Out </a>
-            </li>
-            <li>
-                Search: <input type="text" value="Search" placeholder="searchTerm"/>
-            </li>
+            <li><a href=" http://localhost:8080/theblog/Home "> Home </a></li>
+            <li><a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a></li>
+
+            <form class="logout" action="Logout" method="get" style="float:right">
+                <li><p class="active">Welcome ${userBean.userName}   <input  type="submit" value="Logout"></p></li>
+            </form>
         </ul>
     </div>
 </c:if>
@@ -70,18 +58,16 @@
 <!-- condition else, u see this instead: -->
 <c:if test="${empty userBean}">
     <div class="topnav">
+        <!-- Mr. Black LOGIN PAGE INCLUDE -->
+        <%@include file="../../../forms/login.jsp"%>
         <ul>
             <li>
                 <a href=" http://localhost:8080/theBlog/Home "> Home </a>
             </li>
-            <li>
-                <a href=" http://localhost:8080/theBlog/Registration "> Register </a>
-            </li>
-            <li>
-                <a href=" http://localhost:8080/theBlog/Login "> Log In </a>
-            </li>
         </ul>
+
     </div>
+
 </c:if>
 
 </body>

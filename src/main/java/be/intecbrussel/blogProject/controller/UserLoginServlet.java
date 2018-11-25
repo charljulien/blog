@@ -65,12 +65,12 @@ public class UserLoginServlet extends HttpServlet {
 
         if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
             HttpSession session = request.getSession();
-            if (session.getAttribute(USER_NAME) == null) {
-                session.setAttribute(USER_NAME, userName);
-            }
-            if (session.getAttribute(PASSWORD) == null) {
-                session.setAttribute(PASSWORD, password);
-            }
+//            if (session.getAttribute(USER_NAME) == null) {
+//                session.setAttribute(USER_NAME, userName);
+//            }
+//            if (session.getAttribute(PASSWORD) == null) {
+//                session.setAttribute(PASSWORD, password);
+//            }
 
             boolean userNameVal = userService.validateInLogFromDB(userName, password);
             if (userNameVal) {
