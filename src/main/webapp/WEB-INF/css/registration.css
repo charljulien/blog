@@ -23,6 +23,13 @@ body {
 
 }
 
+.error-box{
+    font-size: 30px;
+    font-family: "Trebuchet MS";
+    color: black;
+
+}
+
 legend{
     font-size: 40px;
     font-family: "Trebuchet MS";
