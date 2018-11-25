@@ -10,8 +10,9 @@
 </head>
 <body>
 <div>
-    <h3 style="font-size: 30px;">AN ERROR HAS OCCURRED. PLEASE TRY AGAIN.</h3>
-    <form method="post">
+    <div class="error-box">
+        <h3 >AN ERROR HAS OCCURRED. PLEASE TRY AGAIN.</h3>
+    </div>
         <div>
             <form method="post">
                 <div class="text-field"> First Name: <br><input type="text" name="firstName"></div>

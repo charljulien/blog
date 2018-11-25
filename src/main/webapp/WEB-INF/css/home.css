@@ -19,32 +19,15 @@ body {
     max-height: 1000px;
     background:#fafafa;
     box-shadow: 0px 0px 50px 0px rgba(20,50,50,0.55);
-
-
-}
-
-.error-box{
-    font-size: 30px;
-    font-family: "Trebuchet MS";
-    color: black;
+    padding: 0;
 
 }
 
-legend{
-    font-size: 40px;
-    font-family: "Trebuchet MS";
-    color: black;
-}
-
-fieldset{
-    margin-top: 20px;
-    background-image: linear-gradient(whitesmoke,darkgrey);
-    border-radius: 10px;
-}
 
 
-.text-field {
+input {
     width: 120px;
+    float:right;
     margin-top: 15px;
     font-family: "Trebuchet MS";
 }
@@ -59,7 +42,6 @@ fieldset{
     background-image: linear-gradient(darkgrey,whitesmoke);
     padding-top:10px;
     padding-bottom:10px;
-    margin-top: 20px;
 
 }
 
@@ -73,10 +55,6 @@ a:hover{
 }
 
 .search-box{
-    float: right;
-}
-
-img{
     float: right;
 }
 
