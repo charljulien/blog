@@ -54,6 +54,14 @@ public class BlogPostDAO {
         return idUser;
     }
 
+    public List<BlogPostBean> readBlogPost() {
+        System.out.println("Connecting to read from DB...");
+        em = EMProvidor.getEntityManager();
+        List<BlogPostBean> blogs = getAllBlogs();
+        //   System.out.println(idUser);
+        return blogs;
+    }
+
     /**
      * Update blog message
      *

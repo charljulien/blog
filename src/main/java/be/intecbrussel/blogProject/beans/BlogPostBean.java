@@ -14,8 +14,6 @@ import java.time.LocalDate;
 @Table(name = "Blog_Post")
 public class BlogPostBean implements Serializable {
 
-    // Mr. Black -- > title has been added
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

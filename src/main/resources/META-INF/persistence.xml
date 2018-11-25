@@ -27,25 +27,6 @@
         </properties>
     </persistence-unit>
 
-    <!-- dont need this!! first persistence unit is plenty -->
-    <!--<persistence-unit name="default" transaction-type="RESOURCE_LOCAL">-->
-        <!--<properties>-->
-            <!--&lt;!&ndash; Configuring JDBC properties &ndash;&gt;-->
-            <!--<property name="javax.persistence.jdbc.url"-->
-                      <!--value="jdbc:h2:mem:memoria"/>-->
-            <!--<property name="javax.persistence.jdbc.driver"-->
-                      <!--value="org.h2.Driver"/>-->
-            <!--&lt;!&ndash; Hibernate properties &ndash;&gt;-->
-            <!--<property name="hibernate.show_sql"-->
-                      <!--value="true"/>-->
-            <!--<property name="hibernate.format_sql"-->
-                      <!--value="true"/>-->
-            <!--<property name="hibernate.dialect"-->
-                      <!--value="org.hibernate.dialect.H2Dialect"/>-->
-            <!--<property name="hibernate.hbm2ddl.auto"-->
-                      <!--value="create-drop"/>-->
-        <!--</properties>-->
-    <!--</persistence-unit>-->
 
 </persistence>
 

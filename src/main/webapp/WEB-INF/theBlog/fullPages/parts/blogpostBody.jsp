@@ -1,10 +1,23 @@
-<%@ page contentType="text/html"; charset=UTF-8"%>
+<%@ page contentType="text/html, charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-<h1> Article </h1>
-${blogpost.title}
-${blogpost.body} <!-- iterate over the list of words, so article body should be a list? ; or I could use this : String upToNCharacters = s.substring(0, Math.min(s.length(), n));
+<h1> Blog List </h1>
 
- just do some more research : https://stackoverflow.com/questions/1583940/how-do-i-get-the-first-n-characters-of-a-string-without-checking-the-size-or-goi -->
+    <table>
+
+        <jsp:useBean id="BlogPostBean" scope="session" type="java.util.List"/>
+        <jsp:useBean id="byDate" scope="session" type="be.intecbrussel.blogProject.beans.BlogPostBean"/>
+        <c:forEach items="${byDate}" var="bydate" varStatus="status">
+            <tr>
+                <td>${status.index}</td>
+                <td>${byDate.user}</td>
+                <td>${byDate.title}</td>
+                <td>${byDate.blogMessage}</td>
+            </tr>
+        </c:forEach>
+    </table>
+
+
 </body>
 </html>g

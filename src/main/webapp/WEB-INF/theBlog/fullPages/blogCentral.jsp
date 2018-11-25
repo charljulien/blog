@@ -37,7 +37,19 @@
 </div>
 
 <div>
-    <p>coucou c'est le blogcentralbody</p>
+    <h1>coucou c'est le blogcentralbody</h1>
+
+ <table>
+     <p>The blogs are here...?</p>
+     <jsp:useBean id="all" scope="request" class="be.intecbrussel.blogProject.beans.BlogPostBean"/>
+     <c:forEach items="${all}" var="blog" varStatus="status">
+         <tr>
+            <td>${blog.title}</td>
+         </tr>
+     </c:forEach>
+ </table>
+
+
     <%--Mr Gold needs to fix this jsp--%>
     <%--no header in it--%>
     <%--fix blogPostBean conflict--%>
