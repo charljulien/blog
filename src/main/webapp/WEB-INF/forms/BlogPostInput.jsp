@@ -9,15 +9,22 @@
 <html>
 <head>
     <title>Post Blog</title>
+    <style>
+        <%@include file="/WEB-INF/css/home.css" %>
+    </style>
 </head>
 <body>
 <!-- page to create a blog -->
-<div class ="Blog-post-page">
+
+
+
     <form class="Blog-post" action="Post" method="POST">
-        <input type="text" placeholder="title blog" name="title"><br>
-        <textarea cols="50" rows="10" placeholder="text blog" name="postBlog"></textarea>
-        <input type="submit" value="Submit Blog">
+
+        <input type="text" placeholder="title blog" name="title" style="float: left; background: lightgreen; border-radius: 5px;"><br>
+        <textarea cols="50" rows="10" placeholder="text blog" name="postBlog" style="float: left; background: lightgreen; border-radius: 5px;"></textarea><br>
+
+        <input type="submit" value="Submit Blog" style="float: left"><br>
     </form>
-</div>
+
 </body>
 </html>

@@ -5,7 +5,7 @@ body {
     width: 100%;
     height: 100%;
     max-height: 1500px;
-    background:darkslategrey;
+    background-image: linear-gradient(darkslategrey,darkgrey);
     box-shadow: 0px 0px 50px 0px rgba(20,50,50,0.55);
     padding: 0;
 
@@ -27,7 +27,7 @@ input {
     text-decoration: none;
     font-family: "Trebuchet MS";
     color: black;
-    background-image: linear-gradient(green,yellowgreen);
+    background-image: linear-gradient(darkgrey,slategrey);
     padding-top:10px;
     padding-bottom:10px;
 
@@ -45,6 +45,13 @@ a:hover{
 .search-box{
     float: right;
 }
+
+.Blog-Post{
+    float: left;
+
+}
+
+
 
 
 
