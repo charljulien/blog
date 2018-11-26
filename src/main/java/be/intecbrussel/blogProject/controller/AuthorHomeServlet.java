@@ -13,6 +13,10 @@ import java.io.PrintWriter;
 
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
+/**
+ * @author Mr. Pink
+ */
+
 @WebServlet("/AuthorPage")
 public class AuthorHomeServlet extends HttpServlet {
     private static final String AUTHOR_PAGE = "WEB-INF/theBlog/fullPages/authorPage.jsp";
