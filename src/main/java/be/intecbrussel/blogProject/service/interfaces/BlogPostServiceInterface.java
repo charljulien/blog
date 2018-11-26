@@ -12,6 +12,7 @@ import be.intecbrussel.blogProject.beans.UserBean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public interface BlogPostServiceInterface {
 
@@ -72,5 +73,7 @@ public interface BlogPostServiceInterface {
      * @see be.intecbrussel.blogProject.service.implementations.BlogPostService#readBlogPost(String)
      */
     BlogPostBean readBlogPost(String title);
+
+    List<BlogPostBean> readBlogPostByRecentDate();
 
 }

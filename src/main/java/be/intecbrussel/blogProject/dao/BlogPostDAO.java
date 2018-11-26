@@ -62,6 +62,13 @@ public class BlogPostDAO {
         return blogs;
     }
 
+    public List<BlogPostBean> readBlogPostByRecentDate(){
+        System.out.println("Connecting to read from DB...");
+        em = EMProvidor.getEntityManager();
+        List<BlogPostBean> blogs = getBlogsByRecentDate();
+        return blogs;
+    }
+
     /**
      * Update blog message
      *

@@ -13,15 +13,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/Home")
 public class HomeServlet extends HttpServlet {
 
-    private static final String HOME_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
     private BlogPostServiceInterface blogPostService;
     private BlogPostDAO blogPostDAO = new BlogPostDAO();
+    public static final String ALL = "all";
 
     /**
      * @author Mr. Black
@@ -37,16 +39,6 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
 
-//        String articleTitle = "title";
-//        String article = "test article"; //temporary test String
-////        String article = get blogPost from userService from database
-//
-//        BlogPostBean blogPostBean = new BlogPostBean(articleTitle, article);
-//
-//        session.setAttribute("blogPostBean", blogPostBean);
-//
-//        request.getRequestDispatcher(HOME_PAGE).forward(request, response);
-
 
 //        String id = request.getParameter("id");
 //        if(id==null) {
@@ -59,10 +51,10 @@ public class HomeServlet extends HttpServlet {
 //            request.getRequestDispatcher("");
 //        }
 
-        List<BlogPostBean> all = blogPostDAO.readBlogPost();
+        List<BlogPostBean> all = blogPostDAO.readBlogPostByRecentDate();
         System.out.println(all);
-        request.setAttribute("all", all);
-        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogCentral.jsp").forward(request,response);
+        session.setAttribute(ALL, all);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
 
     }
 }

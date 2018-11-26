@@ -1,7 +1,10 @@
 package be.intecbrussel.blogProject.controller;
 
+import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.implementations.UserService;
+import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
 import be.intecbrussel.blogProject.service.interfaces.UserServiceInterface;
 import be.intecbrussel.blogProject.listeners.AppContextListener;
 
@@ -12,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
+
+import static be.intecbrussel.blogProject.controller.HomeServlet.ALL;
+import static be.intecbrussel.blogProject.listeners.AppContextListener.BLOG_SERVICE;
 
 /**
  * Class creates Servlet login for JSP pages
@@ -33,6 +40,7 @@ public class UserLoginServlet extends HttpServlet {
     private static final String ERROR_LOGIN_PAGE = "WEB-INF/forms/ERRORlogin.jsp";
 
     private UserServiceInterface userService;
+    private BlogPostServiceInterface blogPostService;
 
     // Methods
 
@@ -46,6 +54,11 @@ public class UserLoginServlet extends HttpServlet {
         if (userService == null) {
             throw new ServletException("User Service not available");
         }
+        blogPostService = (BlogPostService)getServletContext().getAttribute(BLOG_SERVICE);
+        if(blogPostService == null){
+            throw new ServletException("BlogPost Service not available");
+        }
+
     }
 
     @Override
@@ -73,7 +86,10 @@ public class UserLoginServlet extends HttpServlet {
                 System.out.println("USER LOG OK " + userLog.toString());
 
                 session.setAttribute(USER_BEAN, userLog);
-                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+                List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
+                System.out.println(all);
+                request.setAttribute(ALL, all);
+                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
 
             } else if (!userNameVal) {
                 System.out.println("USER LOG INVALID...");

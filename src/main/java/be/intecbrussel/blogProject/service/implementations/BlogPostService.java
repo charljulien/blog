@@ -137,4 +137,9 @@ public class BlogPostService implements BlogPostServiceInterface {
         System.out.println("Reading from the DB SERVICE...");
         return blogPostDAO.readBlogPost(title);
     }
+
+    @Override
+    public List<BlogPostBean> readBlogPostByRecentDate() {
+        return blogPostDAO.getBlogsByRecentDate();
+    }
 }

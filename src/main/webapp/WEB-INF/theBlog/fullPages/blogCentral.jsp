@@ -37,11 +37,11 @@
 
  <table>
      <p>The blogs are here...?</p>
-     <c:forEach items="${all}" var="blog" varStatus="status">
+     <c:forEach items="${all}" var="blog" end="6" varStatus="status">
          <tr>
-             <td>${status.index}</td>
             <td>${blog.title}</td>
-
+             <td>${blog.blogMessage}</td>
+             <td>${blog.user.userName}</td>
          </tr>
      </c:forEach>
  </table>
