@@ -8,8 +8,8 @@
     <title>Insert title here</title>
     <script src="myscript.js"></script>
     <style>
-        <%@include file="/WEB-INF/css/registration.css" %>
-    </style>
+    <%@include file="/WEB-INF/css/registration.css" %>
+</style>
 </head>
 <body>
 

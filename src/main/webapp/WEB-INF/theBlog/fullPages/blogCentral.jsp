@@ -16,7 +16,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog Central</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/home.css">
 </head>
 
 <body>
@@ -25,16 +25,12 @@
 
     <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
     <div class="header">
-        <%@include file="parts/header.jsp" %>
+        <%@include file="parts/headerUser.jsp" %>
     </div>
 <!-- Miss Gold to Mr Black: love what u did here ( above, and under ) and that u got it to work but this needs to be a header functionality.. has nothing to do with body, I will change this after we discuss it -->
 <!-- also, i saw u deleted CreateBlogPostServlet : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
 
-<div>
-    <p>coucou c'est le sidebar</p>
 
-    <%@include file="./parts/sidebar.jsp" %>
-</div>
 
 <div>
     <h1>coucou c'est le blogcentralbody</h1>
