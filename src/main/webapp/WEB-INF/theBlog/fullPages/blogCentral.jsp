@@ -42,6 +42,11 @@
             <td>${blog.title}</td>
              <td>${blog.blogMessage}</td>
              <td>${blog.user.userName}</td>
+             <td>
+                 <form action="Like" method="post">
+                     <input type="submit" value="Like" style="width: 50px;">
+                 </form>
+             </td>
          </tr>
      </c:forEach>
  </table>

@@ -206,7 +206,7 @@ public class BlogPostDAO {
      */
     private TypedQuery<BlogPostBean> getBlogsByRecentDateFirstQuery() {
         em = EMProvidor.getEntityManager();
-        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date asc", BlogPostBean.class);
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date desc ", BlogPostBean.class);
         return query;
     }
 
@@ -222,7 +222,7 @@ public class BlogPostDAO {
      */
     private TypedQuery<BlogPostBean> getBlogsByOldestDateFirstQuery() {
         em = EMProvidor.getEntityManager();
-        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date desc", BlogPostBean.class);
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog ORDER BY blog.date asc ", BlogPostBean.class);
         return query;
     }
 

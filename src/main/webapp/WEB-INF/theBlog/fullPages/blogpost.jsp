@@ -18,7 +18,7 @@
 <body>
 
 <div class="main">
-    <div >
+    <div>
         <h1>BLOG POSTED BY ${blogPostService.user.userName}</h1>
         <h2> ${blogPostService.title} </h2>
         <p> ${blogPostService.blogMessage} </p>
@@ -37,3 +37,4 @@
 
 </body>
 </html>
+-----

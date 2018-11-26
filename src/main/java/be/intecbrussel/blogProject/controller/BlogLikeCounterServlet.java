@@ -55,6 +55,6 @@ public class BlogLikeCounterServlet extends HttpServlet {
 
 
         session.setAttribute(BLOG_POST_SERVICE, blog);
-        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
+//        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
     }
 }

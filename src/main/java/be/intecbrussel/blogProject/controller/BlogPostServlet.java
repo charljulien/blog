@@ -25,7 +25,7 @@ public class BlogPostServlet extends HttpServlet {
     private static final String TITLE_POST = "title";
     private static final String POST = "postBlog";
 
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
     private static final String BLOG_POST_PAGE = "/WEB-INF/forms/BlogPostInput.jsp";
 
     public static final String BLOG_POST_SERVICE = "blogPostService";
@@ -57,8 +57,8 @@ public class BlogPostServlet extends HttpServlet {
         blogPostService.saveBlogPostToDB(blogPostBean, user);
 
         session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
-        session.setAttribute(USER_BEAN, blogPostBean);
-
-        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
+      //  session.setAttribute(USER_BEAN, blogPostBean);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
+//        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
     }
 }
