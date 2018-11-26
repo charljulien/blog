@@ -7,7 +7,9 @@
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
     <script src="myscript.js"></script>
-    <link rel="stylesheet" href="registration.css">
+    <style>
+        <%@include file="/WEB-INF/css/registration.css" %>
+    </style>
 </head>
 <body>
 

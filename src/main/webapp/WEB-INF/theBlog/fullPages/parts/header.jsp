@@ -27,12 +27,12 @@
 </c:if>
 
 <!-- condition IF author is logged in ; than u see the following: -->
-<c:if test="${(not empty userBean) && (memberAcces = author) }"> <!-- EL problems : invalid EL locations or unresolved references.. SOLVE!!!-->
-    <!-- this is not java !!! how to resolve according to jstl? -->
+<c:if test="${(not empty userBean) && (memberAcces = author) }">
+
     <div class="topnav">
         <ul>
             <li>
-                <a href=" http://localhost:8080/theblog/Home "> Home </a>
+                <a href=" http://localhost:8080/theblog/Home "> Home </a> <!-- THIS WORKS STEVEN!!!-->
             </li>
             <li>
                 <!-- div is 'bigger' than li, of ul, so i dont think this is the appropriate way to stash them.. -->
@@ -59,7 +59,7 @@
 <c:if test="${empty userBean}">
     <div class="topnav">
         <!-- Mr. Black LOGIN PAGE INCLUDE -->
-        <%@include file="../../../forms/login.jsp"%>
+        <%@include file="../../../forms/login.jsp"%> <!-- je mag nt rechtstreeks naar jsp verwijzen... -->
         <ul>
             <li>
                 <a href=" http://localhost:8080/theBlog/Home "> Home </a>
