@@ -12,24 +12,22 @@
 <body>
 
 <form action="Registration" method="GET">
-    <input type="submit" value="create an account">
+    <input type="submit" value="create an account" style="  margin-right:15px;">
 </form>
-
 <form action="Login" method="Post">
+    <input type="submit" value="login" style="width: 50px;">
     <input style="width: 100px;" type="password" placeholder="password" name="password"/>
     <input style="width: 100px;" type="text" placeholder="username" name="userName"/>
-    <input type="submit" value="login" style="width: 50px;">
 </form>
 
-<div class="topnav">
-    <a>
-        <a href="../blogCentral.jsp">Home</a>
 
-        <form class="search-box">
-            <input type="text" placeholder="searchTerm..."/></form>
-    </a>
+<%--<div class="topnav">--%>
+<%--<a>--%>
+<%--<form class="search-box">--%>
+<%--<input type="text" placeholder="searchTerm..."/></form>--%>
+<%--</a>--%>
 
-</div>
+<%--</div>--%>
 </body>
 </html>
 

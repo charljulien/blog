@@ -3,49 +3,75 @@ body {
     width: 100%;
     height: 100%;
     max-height: 1500px;
-    background-image: linear-gradient(darkslategrey,darkgrey);
-    box-shadow: 0px 0px 50px 0px rgba(20,50,50,0.55);
+    background-image: linear-gradient(darkslategrey, darkgrey);
+    box-shadow: 0px 0px 50px 0px rgba(20, 50, 50, 0.55);
     padding: 0;
 
 }
 
+/*.inlog  {*/
+/*float: right;*/
 
+/*}*/
+/*.inlog input{*/
+/*width: 120px;*/
+/*margin-top: 15px;*/
+/*font-family: "Trebuchet MS";*/
+/*}*/
 
 input {
     width: 120px;
-    float:right;
+    float: right;
     margin-top: 15px;
     font-family: "Trebuchet MS";
 }
 
-.topnav{
 
-    float: left;
+
+.topnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     width: 100%;
     text-decoration: none;
     font-family: "Trebuchet MS";
     color: black;
-    background-image: linear-gradient(darkgrey,slategrey);
-    padding-top:10px;
-    padding-bottom:10px;
-
-
+    background-image: linear-gradient(darkgrey, slategrey);
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-a{
-    color:black;
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
     text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
 }
 
-a:hover{
-    color:white;
+li p {
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    padding-left: 20px;
 }
 
-.search-box{
+a:hover {
+    color: white;
+}
+
+.search-box {
     float: right;
 }
 
-.Blog-Post{
+.Blog-Post {
     float: left;
 
 }

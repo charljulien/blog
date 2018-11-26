@@ -10,15 +10,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="myscript.js"></script>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        <%@include file="/WEB-INF/css/home.css" %>
+    </style>
 </head>
 <body>
 <div>
     <%@include file="parts/header.jsp" %>
 </div>
-<div>
-    <%@include file="./parts/sidebar.jsp" %>
-</div>
+
 <!-- include body author page with the articles of said author -->
 <div>
     <table>
