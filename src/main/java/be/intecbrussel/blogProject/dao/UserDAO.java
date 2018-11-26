@@ -32,22 +32,25 @@ public class UserDAO {
         System.out.println("Saving user DAO...");
         em = EMProvidor.getEntityManager();
 
-        List<UserBean> eMail = getUserByMail(user.getEmail());
+
         UserBean userName = getUserByUserName(user.getUserName());
         boolean eMailExists = false;
         boolean userNameExists = false;
 
-        for (UserBean mail : eMail) {
-            if (user.getEmail().equalsIgnoreCase(mail.getEmail())) {
+        if(userName != null){
+            if (user.getEmail().equalsIgnoreCase(userName.getEmail())) {
                 System.out.println("Email already exists");
                 eMailExists = true;
             }
+
+
+            if (user.getUserName().equalsIgnoreCase(userName.getUserName()) ) {
+                System.out.println("user already exists");
+                userNameExists = true;
+            }
+
         }
 
-        if (user.getUserName().equalsIgnoreCase(userName.getUserName())) {
-            System.out.println("UserName already exists");
-            userNameExists = true;
-        }
 
         if (!eMailExists && !userNameExists) {
             em.merge(user);
@@ -277,7 +280,12 @@ public class UserDAO {
      * @author Mr. Black
      */
     public UserBean getUserByUserName(String username) {
-        return getUserByUserNameQuery(username).getSingleResult();
+        UserBean userBean = null;
+        try {
+            userBean = getUserByUserNameQuery(username).getSingleResult();
+        }
+        catch (Exception ex){}
+        return userBean;
     }
 
     /**

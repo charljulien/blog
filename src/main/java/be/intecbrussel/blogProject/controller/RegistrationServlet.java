@@ -36,7 +36,7 @@ public class RegistrationServlet extends HttpServlet {
 
     private static final String REGISTRATION_PAGE = "WEB-INF/forms/registration.jsp";
     private static final String REGISTRATION_ERROR = "WEB-INF/forms/ERRORregistration.jsp";
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/combinationsAkaPages/blogCentral.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
 
     private static final String USER_SERVICE = "userService";
 
@@ -86,13 +86,14 @@ public class RegistrationServlet extends HttpServlet {
         }
         //otherwise he goes to main page and his profile is created with method configureUserBean
         else {
-            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+
             userBean = new UserBean();
             configureUserBean(userBean, request);
-//            userService = (UserService) getServletContext().getAttribute(USER_SERVICE);
+
             userService.saveUserToDB(userBean);
-            // Mr. Black , added last line
             request.getSession().setAttribute(USER_SERVICE, userBean);
+            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
+
         }
     }
 
