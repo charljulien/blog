@@ -15,16 +15,26 @@
 </head>
 <body>
 <!-- page to create a blog -->
+<div class="topnav">
+    <a>
+        <a href="theBlog/combinationsAkaPages/blogCentral.jsp">Home</a>
+
+        <form class="search-box">
+            <input type="text" placeholder="searchTerm..."/></form>
+    </a>
+
+</div>
 
 
+<form class="Blog-post" action="Post" method="POST">
 
-    <form class="Blog-post" action="Post" method="POST">
+    <input type="text" placeholder="title blog" name="title"
+           style="float: left; background: lightgreen; border-radius: 5px;"><br>
+    <textarea cols="50" rows="10" placeholder="text blog" name="postBlog"
+              style="float: left; background: lightgreen; border-radius: 5px;"></textarea><br>
 
-        <input type="text" placeholder="title blog" name="title" style="float: left; background: lightgreen; border-radius: 5px;"><br>
-        <textarea cols="50" rows="10" placeholder="text blog" name="postBlog" style="float: left; background: lightgreen; border-radius: 5px;"></textarea><br>
-
-        <input type="submit" value="Submit Blog" style="float: left"><br>
-    </form>
+    <input type="submit" value="Submit Blog" style="float: left"><br>
+</form>
 
 </body>
 </html>

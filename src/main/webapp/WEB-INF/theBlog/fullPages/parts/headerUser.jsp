@@ -32,8 +32,7 @@
 <div class="topnav">
     <a >
         <a href="theBlog/combinationsAkaPages/blogCentral.jsp">Home</a>
-        <a href="forms/logIn.jsp">Log In</a>
-        <a href="forms/registration">Sign Up</a>
+
         <form class="search-box">
             <input type="text" placeholder="searchTerm..."/></form></a>
 
