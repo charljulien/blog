@@ -25,7 +25,7 @@ legend{
 fieldset{
     margin-top: 20px;
     background-image: linear-gradient(slategrey,darkgrey);
-    border-radius: 10px;
+    border: none;
 }
 
 

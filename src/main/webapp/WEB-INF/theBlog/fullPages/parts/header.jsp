@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="myscript.js"></script>
     <style>
-        <%@include file="/WEB-INF/css/styles.css" %>
+        <%@include file="/WEB-INF/css/home.css" %>
     </style>
 </head>
 
