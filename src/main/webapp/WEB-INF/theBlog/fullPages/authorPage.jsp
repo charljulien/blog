@@ -1,5 +1,5 @@
 <!-- url for this page is: localhost:8080/theblog/author -->
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html lang="en">
@@ -21,7 +21,15 @@
 </div>
 <!-- include body author page with the articles of said author -->
 <div>
-    <%@include file="parts/authorPageBody.jsp" %>
+    <table>
+        <p>The blogs are here...?</p>
+        <c:forEach items="${blogPostByUser}" var="blog" varStatus="status">
+            <tr>
+                <td>${status.index}</td>
+                <td>${blog.title}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 
 </body>
