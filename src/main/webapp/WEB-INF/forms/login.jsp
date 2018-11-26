@@ -5,27 +5,31 @@
     <meta charset="ISO-8859-1">
     <title>Insert title here</title>
     <script src="myscript.js"></script>
-    <link rel="stylesheet" href="../../css/login.css" type="text/css">
-
+    <style>
+        <%@include file="../css/home.css" %>
+    </style>
 </head>
 <body>
 
-    <div class="login-page">
-        <div class="form" style="float: right">
-            <form class="login-form" action="Login" method="POST">
+<form action="Registration" method="GET">
+    <input type="submit" value="create an account">
+</form>
 
-                <input  type="text" placeholder="username" name="userName"/>
-                <input  type="password" placeholder="password" name="password"/>
-                <input type="submit" value ="login">
+<form action="Login" method="Post">
+    <input style="width: 100px;" type="password" placeholder="password" name="password"/>
+    <input style="width: 100px;" type="text" placeholder="username" name="userName"/>
+    <input type="submit" value="login" style="width: 50px;">
+</form>
 
-                <form action="Registration" method="GET">
-                    <input type="submit" value="Register">
-                </form>
+<div class="topnav">
+    <a>
+        <a href="../blogCentral.jsp">Home</a>
 
-            </form>
+        <form class="search-box">
+            <input type="text" placeholder="searchTerm..."/></form>
+    </a>
 
-        </div>
-    </div>
+</div>
 </body>
 </html>
 

@@ -25,7 +25,7 @@
 
     <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
     <div class="header">
-        <%@include file="parts/headerUser.jsp" %>
+        <%@include file="parts/header.jsp" %>
     </div>
 <!-- Miss Gold to Mr Black: love what u did here ( above, and under ) and that u got it to work but this needs to be a header functionality.. has nothing to do with body, I will change this after we discuss it -->
 <!-- also, i saw u deleted CreateBlogPostServlet : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
