@@ -41,10 +41,11 @@
 
  <table>
      <p>The blogs are here...?</p>
-     <jsp:useBean id="all" scope="request" class="be.intecbrussel.blogProject.beans.BlogPostBean"/>
      <c:forEach items="${all}" var="blog" varStatus="status">
          <tr>
+             <td>${status.index}</td>
             <td>${blog.title}</td>
+
          </tr>
      </c:forEach>
  </table>

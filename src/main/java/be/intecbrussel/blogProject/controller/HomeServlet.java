@@ -62,7 +62,7 @@ public class HomeServlet extends HttpServlet {
         List<BlogPostBean> all = blogPostDAO.readBlogPost();
         System.out.println(all);
         request.setAttribute("all", all);
-        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogCentral.jsp");
+        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogCentral.jsp").forward(request,response);
 
     }
 }

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="styles.css" media="screen"/>
-    <script src="myscript.js"></script>
-</head>
-<body>
+
 
 
 <div class="sidenav">
@@ -27,5 +20,4 @@ Search: <input type="text" value="Search" placeholder="searchTerm"/>
 </div>
 
 
-</body>
-</html>
+
