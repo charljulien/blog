@@ -13,17 +13,24 @@
 </head>
 <body>
 
+<%@include file="parts/header.jsp" %>
+
 <div class="main">
     <div>
         <h1>Blog Article ${all.user.userName} </h1>
         <h2> Title: ${all.title} </h2>
         <p> ${all.blogMessage} </p>
-        <h3> ${all.likeBlogCounter}  </h3> <!-- uploaded in real time -->
+        <h3> ${all.likeBlogCounter} </h3> <!-- uploaded in real time -->
 
         <form action="Like" method="post">
             <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
             <input type="hidden" name="blogName" value="${all.id}">
         </form>
+<<<<<<< HEAD
 </div>
+=======
+    </div>
+
+>>>>>>> 25186df3cef78ce1dab0c7f75f0028ecd27f0deb
 </body>
 </html>

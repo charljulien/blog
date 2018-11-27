@@ -15,13 +15,15 @@
 </head>
 <body>
 <!-- page to create a blog -->
+
 <div class="topnav">
-    <a>
-        <a href="theBlog/combinationsAkaPages/blogCentral.jsp">Home</a>
+    <ul>
+        <li><a href="./Home">Home</a></li>
 
         <form class="search-box">
-            <input type="text" placeholder="searchTerm..."/></form>
-    </a>
+            <li><input type="text" placeholder="searchTerm..."/></li>
+        </form>
+    </ul>
 
 </div>
 
