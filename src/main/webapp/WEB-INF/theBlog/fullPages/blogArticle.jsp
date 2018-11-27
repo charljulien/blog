@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -7,30 +6,27 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="myscript.js"></script> <!-- ?????? -->
-    <link rel="stylesheet" href="../../css/home.css">
+
 
     <title>${all.title}</title>
 </head>
 <body>
 
 <%@include file="parts/header.jsp" %>
-
+<fieldset style="border-radius: 5px; margin:20px 50px"><legend><h1 style="text-align: center">Blog Article ${all.user.userName} </h1></legend>
 <div class="main">
     <div>
-        <h1>Blog Article ${all.user.userName} </h1>
-        <h2> Title: ${all.title} </h2>
-        <p> ${all.blogMessage} </p>
-        <h3> ${all.likeBlogCounter} </h3> <!-- uploaded in real time -->
+        <h2 style="margin-left: 200px">Title: ${all.title} </h2>
+        <p style="margin-left: 200px"> Blog Message: <br> ${all.blogMessage} </p>
+        <h3 style="margin-left: 200px">Likes: ${all.likeBlogCounter} </h3> <!-- uploaded in real time -->
 
-        <form action="Like" method="post">
+        <form id="like" action="Like" method="post">
             <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
             <input type="hidden" name="blogName" value="${all.id}">
         </form>
-<<<<<<< HEAD
-</div>
-=======
     </div>
+</div>
+</fieldset>
 
->>>>>>> 25186df3cef78ce1dab0c7f75f0028ecd27f0deb
 </body>
 </html>

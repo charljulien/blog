@@ -18,6 +18,7 @@
         <ul>
             <li><a href="./Home"> Home </a></li>
             <li><a href="./UserProfile"> My Profile </a></li>
+            <li><form action="Post" method="post"><a href="Post"> Create Blog</a> </form></li>
 
             <form class="logout" action="Logout" method="get" style="float:right">
                 <li><input style="margin-right: 15px; margin-left: 15px" type="submit" value="Logout"> <p class="active"> Welcome ${userBean.userName}</p> </li>
