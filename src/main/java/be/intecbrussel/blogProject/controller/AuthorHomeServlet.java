@@ -3,6 +3,7 @@ package be.intecbrussel.blogProject.controller;
 import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
 import be.intecbrussel.blogProject.dao.BlogPostDAO;
+import be.intecbrussel.blogProject.dao.UserDAO;
 import be.intecbrussel.blogProject.listeners.AppContextListener;
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
@@ -26,10 +27,11 @@ import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 @WebServlet("/AuthorPage")
 public class AuthorHomeServlet extends HttpServlet {
     private BlogPostServiceInterface blogPostService;
-    private BlogPostDAO blogPostDAO = new BlogPostDAO();
+    private UserDAO userDAO = new UserDAO();
+
 
     private static final String AUTHOR_PAGE = "WEB-INF/theBlog/fullPages/authorPage.jsp";
-    private static final String USER_NAME = "userName";
+
 
     @Override
     public void init() throws ServletException {
@@ -39,13 +41,22 @@ public class AuthorHomeServlet extends HttpServlet {
         }
     }
 
+/**
+ * Mr. Black this does not fully work yet....
+ * */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String userName = (String) session.getAttribute(USER_NAME);
-        List<BlogPostBean> blogPostByUser = blogPostDAO.getBlogsByPredefinedUser(userName);
-        System.out.println(blogPostByUser);
-        request.setAttribute("blogPostByUser", blogPostByUser);
+        UserBean user = (UserBean) session.getAttribute(USER_BEAN);
+
+        List<BlogPostBean> blogPostByUser = blogPostService.readBlogsByPredefinedUser(user.getUserName());
+        session.setAttribute("author", blogPostByUser);
         request.getRequestDispatcher(AUTHOR_PAGE).forward(request,response);
+
+//        List<UserBean> blogPostByUser = userDAO.readUserBlogs(user.getUserName());
+//        session.setAttribute("author",blogPostByUser);
+//        System.out.println(blogPostByUser);
+//        request.getRequestDispatcher(AUTHOR_PAGE).forward(request,response);
+
     }
 }

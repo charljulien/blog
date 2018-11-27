@@ -20,12 +20,13 @@
 </div>
 
 <!-- include body author page with the articles of said author -->
+
+<!-- Mr. Pink THIS STILL DOES NOT WORK -->
 <div>
     <table>
         <p>The blogs are here...?</p>
-        <c:forEach items="${blogPostByUser}" var="blog" varStatus="status">
+        <c:forEach items="${author}" var="blog" varStatus="status">
             <tr>
-                <td>${status.index}</td>
                 <td>${blog.title}</td>
             </tr>
         </c:forEach>

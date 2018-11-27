@@ -9,16 +9,6 @@ body {
 
 }
 
-/*.inlog  {*/
-/*float: right;*/
-
-/*}*/
-/*.inlog input{*/
-/*width: 120px;*/
-/*margin-top: 15px;*/
-/*font-family: "Trebuchet MS";*/
-/*}*/
-
 input {
     width: 120px;
     float: right;
@@ -92,15 +82,11 @@ a:hover {
     margin-left: 200px;
 }
 
-.blogArt h1{
-    text-align: center;
+#userProfile pre {
+    margin-left: 100px;
+    font-weight: bold;
+    font-family: "Trebuchet MS";
 }
-
-.blogArt h2, .blogArt h3, .blogArt p{
-    margin-left: 200px;
-}
-
-
 
 
 

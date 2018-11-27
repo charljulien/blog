@@ -1,6 +1,8 @@
 package be.intecbrussel.blogProject.dao;
 
+import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
+import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -60,6 +62,11 @@ public class UserDAO {
         et.begin();
         et.commit();
         EMProvidor.getInstance().closeEM();
+    }
+
+    public List<UserBean> readUserBlogs(String userName){
+        em = EMProvidor.getEntityManager();
+        return getUserBeanBlogs(userName);
     }
 
 
@@ -312,6 +319,17 @@ public class UserDAO {
      */
     public List<UserBean> getUserByPassword(String password) {
         return getUserByPasswordQuery(password).getResultList();
+    }
+
+    private TypedQuery<UserBean> getUserBeanBlogsQuery(String userName){
+        em = EMProvidor.getEntityManager();
+        TypedQuery<UserBean> query = em.createQuery("SELECT user.blogs FROM UserBean AS user Where user.userName=:userName",UserBean.class);
+        query.setParameter("userName",userName);
+        return query;
+    }
+
+    public List<UserBean> getUserBeanBlogs(String userName){
+        return getUserBeanBlogsQuery(userName).getResultList();
     }
 
 }

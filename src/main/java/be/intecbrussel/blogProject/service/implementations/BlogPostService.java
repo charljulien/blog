@@ -147,4 +147,9 @@ public class BlogPostService implements BlogPostServiceInterface {
     public BlogPostBean readBlogPost(long id) {
         return blogPostDAO.readBlogPost(id);
     }
+
+    @Override
+    public List<BlogPostBean> readBlogsByPredefinedUser(String user) {
+        return blogPostDAO.readBlogsByPredefinedUser(user);
+    }
 }

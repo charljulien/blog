@@ -41,7 +41,6 @@ public class HomeServlet extends HttpServlet {
 
 
         List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
-        System.out.println(all);
         session.setAttribute(ALL, all);
         request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
     }

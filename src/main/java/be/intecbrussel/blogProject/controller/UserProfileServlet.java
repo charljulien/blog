@@ -13,12 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
+
 @WebServlet("/UserProfile")
 public class UserProfileServlet extends HttpServlet {
+
     private UserServiceInterface userService;
 
     private static final String USER_PROFILE = "/WEB-INF/theBlog/fullPages/parts/userprofile.jsp";
-    private static final String USER_NAME = "userName";
 
     @Override
     public void init() throws ServletException {
@@ -32,9 +34,9 @@ public class UserProfileServlet extends HttpServlet {
     public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         HttpSession session = request.getSession();
-        String userName = (String) session.getAttribute(USER_NAME);
+        UserBean user = (UserBean) session.getAttribute(USER_BEAN);
 
-        UserBean userBean = userService.getUserByUserName(userName);
+        UserBean userBean = userService.getUserByUserName(user.getUserName());
         session.setAttribute("userBean", userBean);
         request.getRequestDispatcher(USER_PROFILE).forward(request,response);
     }

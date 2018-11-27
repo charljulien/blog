@@ -64,17 +64,22 @@ public class BlogPostDAO {
     public List<BlogPostBean> readBlogPost() {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
-        List<BlogPostBean> blogs = getAllBlogs();
-        //   System.out.println(idUser);
-        return blogs;
+        return getAllBlogs();
     }
 
     public List<BlogPostBean> readBlogPostByRecentDate(){
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
-        List<BlogPostBean> blogs = getBlogsByRecentDate();
-        return blogs;
+        return getBlogsByRecentDate();
     }
+
+    public List<BlogPostBean> readBlogsByPredefinedUser(String user){
+        System.out.println("Connecting to read from DB...");
+        em = EMProvidor.getEntityManager();
+        return getBlogsByPredefinedUser(user);
+    }
+
+
 
     /**
      * Update blog message
@@ -278,7 +283,7 @@ public class BlogPostDAO {
      */
     private TypedQuery<BlogPostBean> getBlogsByPredefinedUserQuery(String user) {
         em = EMProvidor.getEntityManager();
-        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog WHERE blog.user.lastName=:name", BlogPostBean.class);
+        TypedQuery<BlogPostBean> query = em.createQuery("SELECT blog FROM BlogPostBean AS blog WHERE blog.user.userName=:name", BlogPostBean.class);
         query.setParameter("name", user);
         return query;
     }

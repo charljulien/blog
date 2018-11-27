@@ -33,7 +33,7 @@
     <div class="topnav">
         <ul>
             <li>
-                <a href=" http://localhost:8080/theblog/Home "> Home </a>
+                <a href="./Home"> Home </a>
             </li>
             <li>
                 <div class="button" name="createBlog">
@@ -43,7 +43,7 @@
                 </div>
             </li>
             <li>
-                <a href=" http://localhost:8080/theblog/UserProfile "> My Profile </a>
+                <a href="./UserProfile"> My Profile </a>
             </li>
             <li>
                 Search: <input type="text" value="Search" placeholder="searchTerm"/>

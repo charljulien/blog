@@ -78,4 +78,6 @@ public interface BlogPostServiceInterface {
 
     BlogPostBean readBlogPost(long id);
 
+    List<BlogPostBean> readBlogsByPredefinedUser(String user);
+
 }
