@@ -42,11 +42,15 @@
             <td>${blog.title}</td>
              <td>${blog.blogMessage}</td>
              <td>${blog.user.userName}</td>
+             <!-- like count field -->
              <td>
                  <form action="Like" method="post">
-                     <input type="submit" value="Like" style="width: 50px;">
+
+                     <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
+                     <input type="hidden" name="blogName" value="${blog.title}">
                  </form>
              </td>
+
          </tr>
      </c:forEach>
  </table>

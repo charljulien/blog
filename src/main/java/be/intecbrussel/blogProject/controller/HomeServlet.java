@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/Home")
-public class HomeServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {5
 
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
     private BlogPostServiceInterface blogPostService;
@@ -42,16 +42,17 @@ public class HomeServlet extends HttpServlet {
 
 //        String id = request.getParameter("id");
 //        if(id==null) {
-//            List<BlogPostBean> byDate = blogPostDAO.getAllBlogs();
-//            request.setAttribute("byDate", byDate);
-//            request.getRequestDispatcher("WEB-INF/theBlog/fullPages/parts/blogpostBody.js");
+//            List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
+//            System.out.println(all);
+//            session.setAttribute(ALL, all);
+//            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
 //        } else {
-//            BlogPostBean blog = blogPostDAO.getBlogWithPredefinedId(Integer.parseInt(id));
+//            BlogPostBean blog = blogPostService.getBlogWithPredefinedId(Integer.parseInt(id));
 //            request.setAttribute("blog",blog);
 //            request.getRequestDispatcher("");
 //        }
 
-        List<BlogPostBean> all = blogPostDAO.readBlogPostByRecentDate();
+        List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
         System.out.println(all);
         session.setAttribute(ALL, all);
         request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
