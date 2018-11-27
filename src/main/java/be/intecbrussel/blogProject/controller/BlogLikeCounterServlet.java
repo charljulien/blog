@@ -44,11 +44,8 @@ public class BlogLikeCounterServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-
         BlogPostBean blog = blogPostService.readBlogPost(Long.parseLong(request.getParameter("blogName")));
         blogPostService.likeBlogPostCountIncrease(blog);
-        response.sendRedirect("./Article");
-
-
+        response.sendRedirect("./Home");
     }
 }

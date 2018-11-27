@@ -18,8 +18,8 @@
 
 <div class="main">
     <div>
-        <h1>Blog Article </h1>
-        <h2> ${all.title} </h2>
+        <h1>Blog Article ${all.user.userName} </h1>
+        <h2> Title: ${all.title} </h2>
         <p> ${all.blogMessage} </p>
         <h3> ${all.likeBlogCounter}  </h3> <!-- uploaded in real time -->
 
