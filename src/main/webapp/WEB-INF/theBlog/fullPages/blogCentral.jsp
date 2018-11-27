@@ -40,6 +40,7 @@
      <c:forEach items="${all}" var="blog" end="6" varStatus="status">
          <tr>
 
+             <td>${blog.id}</td>
             <td> <a href="${pageContext.request.contextPath}/Article?id=${blog.id}"> ${blog.title} </a></td>
              <td>${blog.blogMessage}</td>
              <td>${blog.user.userName}</td>

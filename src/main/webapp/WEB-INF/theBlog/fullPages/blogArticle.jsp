@@ -1,7 +1,4 @@
-<!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS << ${blogPostService} >> to << BlogPostBean >> -->
 
-
-<!-- url for this page should be : localhost:8080/theblog/blogpostTitle+ID -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,6 +25,5 @@
             <input type="hidden" name="blogName" value="${all.id}">
         </form>
 </div>
-
 </body>
 </html>

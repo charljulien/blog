@@ -46,6 +46,6 @@ public class BlogLikeCounterServlet extends HttpServlet {
 
         BlogPostBean blog = blogPostService.readBlogPost(Long.parseLong(request.getParameter("blogName")));
         blogPostService.likeBlogPostCountIncrease(blog);
-        response.sendRedirect("./Home");
+        response.sendRedirect("./Article?id="+Long.parseLong(request.getParameter("blogName")));
     }
 }
