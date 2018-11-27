@@ -39,7 +39,6 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
 
-
 //        String id = request.getParameter("id");
 //        if(id==null) {
 //            List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
@@ -56,6 +55,5 @@ public class HomeServlet extends HttpServlet {
         System.out.println(all);
         session.setAttribute(ALL, all);
         request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
-
     }
 }

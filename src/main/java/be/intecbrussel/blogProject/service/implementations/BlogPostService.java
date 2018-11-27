@@ -142,4 +142,9 @@ public class BlogPostService implements BlogPostServiceInterface {
     public List<BlogPostBean> readBlogPostByRecentDate() {
         return blogPostDAO.getBlogsByRecentDate();
     }
+
+    @Override
+    public BlogPostBean readBlogPost(long id) {
+        return blogPostDAO.readBlogPost(id);
+    }
 }

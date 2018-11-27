@@ -28,7 +28,7 @@
         <%@include file="parts/header.jsp" %>
     </div>
 <!-- Miss Gold to Mr Black: love what u did here ( above, and under ) and that u got it to work but this needs to be a header functionality.. has nothing to do with body, I will change this after we discuss it -->
-<!-- also, i saw u deleted CreateBlogPostServlet : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
+<!-- also, i saw u deleted BlogArticle : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
 
 
 
@@ -39,15 +39,15 @@
      <p>The blogs are here...?</p>
      <c:forEach items="${all}" var="blog" end="6" varStatus="status">
          <tr>
-            <td>${blog.title}</td>
+
+            <td> <a href="${pageContext.request.contextPath}/Article?id=${blog.id}"> ${blog.title} </a></td>
              <td>${blog.blogMessage}</td>
              <td>${blog.user.userName}</td>
              <!-- like count field -->
              <td>
                  <form action="Like" method="post">
-
                      <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
-                     <input type="hidden" name="blogName" value="${blog.title}">
+                     <input type="hidden" name="blogName" value="${blog.id}">
                  </form>
              </td>
 

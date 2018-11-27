@@ -48,17 +48,15 @@ public class BlogPostServlet extends HttpServlet {
         request.getRequestDispatcher(BLOG_POST_PAGE).forward(request, response);
     }
 
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-
         UserBean user = (UserBean) session.getAttribute(USER_BEAN);
 
         blogPostBean = new BlogPostBean(request.getParameter(TITLE_POST), request.getParameter(POST));
         blogPostService.saveBlogPostToDB(blogPostBean, user);
 
         session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
-      //  session.setAttribute(USER_BEAN, blogPostBean);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
-//        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
     }
 }

@@ -76,4 +76,6 @@ public interface BlogPostServiceInterface {
 
     List<BlogPostBean> readBlogPostByRecentDate();
 
+    BlogPostBean readBlogPost(long id);
+
 }

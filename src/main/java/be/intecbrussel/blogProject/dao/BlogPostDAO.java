@@ -49,9 +49,16 @@ public class BlogPostDAO {
     public BlogPostBean readBlogPost(String title) {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
-        BlogPostBean idUser = getBlogWithPredefinedTitle(title);
+        BlogPostBean titleUser = getBlogWithPredefinedTitle(title);
         //   System.out.println(idUser);
-        return idUser;
+        return titleUser;
+    }
+
+    public BlogPostBean readBlogPost(long id){
+        System.out.println("Connecting to read from DB...");
+        em = EMProvidor.getEntityManager();
+        BlogPostBean idUser = getBlogWithPredefinedId(id);
+        return  idUser;
     }
 
     public List<BlogPostBean> readBlogPost() {
@@ -82,11 +89,11 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        List<BlogPostBean> blogPost = getListBlogWithPredefinedId(id);
-        for (BlogPostBean post : blogPost) {
-            post.setBlogMessage(post.getBlogMessage() + " " + text);
-            em.merge(post);
-        }
+        BlogPostBean blogPost = getListBlogWithPredefinedId(id);
+
+            blogPost.setBlogMessage(blogPost.getBlogMessage() + " " + text);
+            em.merge(blogPost);
+
         et.commit();
         EMProvidor.getInstance().closeEM();
     }
@@ -103,10 +110,10 @@ public class BlogPostDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        List<BlogPostBean> blogPost = getListBlogWithPredefinedId(id);
-        for (BlogPostBean blog : blogPost) {
-            em.remove(blog);
-        }
+        BlogPostBean blogPost = getListBlogWithPredefinedId(id);
+
+            em.remove(blogPost);
+
         et.commit();
         EMProvidor.getInstance().closeEmf();
     }
@@ -190,8 +197,8 @@ public class BlogPostDAO {
         return query;
     }
 
-    public List<BlogPostBean> getListBlogWithPredefinedId(long id) {
-        return getBlogWithPredefinedIdQuery(id).getResultList();
+    public BlogPostBean getListBlogWithPredefinedId(long id) {
+        return getBlogWithPredefinedIdQuery(id).getSingleResult();
     }
 
     public BlogPostBean getBlogWithPredefinedId(long id) {

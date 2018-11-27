@@ -21,7 +21,7 @@ import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 public class BlogLikeCounterServlet extends HttpServlet {
 
     private static final String LIKE_COUNTER = "likeCounter";
-    private static final String BLOG_POST_PAGE = "/WEB-INF/theBlog/fullPages/blogpost.jsp";
+    private static final String BLOG_POST_PAGE = "/WEB-INF/theBlog/fullPages/blogArticle.jsp";
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
 
     private BlogPostServiceInterface blogPostService;
@@ -45,21 +45,10 @@ public class BlogLikeCounterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 
-        // session user
-
-    //    BlogPostBean blog = (BlogPostBean) session.getAttribute(BLOG_POST_SERVICE);
-
-
-
-        BlogPostBean blog = blogPostService.readBlogPost(request.getParameter("blogName"));
-
-
-
+        BlogPostBean blog = blogPostService.readBlogPost(Long.parseLong(request.getParameter("blogName")));
         blogPostService.likeBlogPostCountIncrease(blog);
-        response.sendRedirect("./Home");
+        response.sendRedirect("./Article");
 
-     //   session.setAttribute(BLOG_POST_SERVICE, blog);
-        //this should redirect again to home page or whatever page it is on
-//        request.getRequestDispatcher("WEB-INF/theBlog/fullPages/blogpost.jsp").forward(request, response);
+
     }
 }
