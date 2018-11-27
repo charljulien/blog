@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/Home")
-public class HomeServlet extends HttpServlet {5
+public class HomeServlet extends HttpServlet {
 
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
     private BlogPostServiceInterface blogPostService;
