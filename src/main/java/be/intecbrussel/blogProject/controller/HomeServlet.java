@@ -39,7 +39,6 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
 
-
         List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
         session.setAttribute(ALL, all);
         request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);

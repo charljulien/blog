@@ -27,30 +27,7 @@
     </div>
 </c:if>
 
-<!-- condition IF author is logged in ; than u see the following: -->
-<c:if test="${(not empty userBean) && (memberAcces = author) }">
 
-    <div class="topnav">
-        <ul>
-            <li>
-                <a href="./Home"> Home </a>
-            </li>
-            <li>
-                <div class="button" name="createBlog">
-                    <form action="Post" method="GET">
-                        <input type="submit" value="create Post">
-                    </form>
-                </div>
-            </li>
-            <li>
-                <a href="./UserProfile"> My Profile </a>
-            </li>
-            <li>
-                Search: <input type="text" value="Search" placeholder="searchTerm"/>
-            </li>
-        </ul>
-    </div>
-</c:if>
 
 <!-- condition else, u see this instead: -->
 <c:if test="${empty userBean}">

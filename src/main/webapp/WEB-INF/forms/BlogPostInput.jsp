@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Computers Inc
+  User: Mr. Black
   Date: 22/11/2018
   Time: 11:07
   To change this template use File | Settings | File Templates.
@@ -14,20 +14,8 @@
     </style>
 </head>
 <body>
-<!-- page to create a blog -->
 
-<div class="topnav">
-    <ul>
-        <li><a href="./Home">Home</a></li>
-
-        <form class="search-box">
-            <li><input type="text" placeholder="searchTerm..."/></li>
-        </form>
-    </ul>
-
-</div>
-
-
+<%@include file="../theBlog/fullPages/parts/header.jsp" %>
 <form class="Blog-post" action="Post" method="POST">
 
     <input type="text" placeholder="title blog" name="title"

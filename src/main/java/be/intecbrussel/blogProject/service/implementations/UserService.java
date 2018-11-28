@@ -95,4 +95,8 @@ public class UserService implements UserServiceInterface {
         return userDAO.getUserByUserName(userName);
     }
 
+    @Override
+    public List<UserBean> readAllUsers() {
+        return userDAO.readAllUsers();
+    }
 }

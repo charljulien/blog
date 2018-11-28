@@ -309,5 +309,4 @@ public class BlogPostDAO {
     public BlogPostBean getBlogWithPredefinedTitle(String title) {
         return getBlogWithPredefinedTitleQuery(title).getSingleResult();
     }
-
 }

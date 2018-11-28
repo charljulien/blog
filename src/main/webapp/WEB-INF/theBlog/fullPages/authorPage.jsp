@@ -19,19 +19,16 @@
     <%@include file="parts/header.jsp" %>
 </div>
 
-<!-- include body author page with the articles of said author -->
-
-<!-- Mr. Pink THIS STILL DOES NOT WORK -->
-<div>
-    <table>
-        <p>The blogs are here...?</p>
+<fieldset style="border-radius: 5px; margin:20px 50px">
+    <legend><h2 style="text-align: center">${userBean.userName}'s Blog Articles</h2></legend>
+    <table style="margin: 50px 150px 50px 100px">
         <c:forEach items="${author}" var="blog" varStatus="status">
             <tr>
-                <td>${blog.title}</td>
+                <td style="font-weight: bold">${blog.title}</td>
+                <td style="font-weight: lighter">${blog.blogMessage}</td>
             </tr>
         </c:forEach>
     </table>
-</div>
-
+</fieldset>
 </body>
 </html>

@@ -26,9 +26,10 @@ import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
 @WebServlet("/AuthorPage")
 public class AuthorHomeServlet extends HttpServlet {
+
+
     private BlogPostServiceInterface blogPostService;
     private UserDAO userDAO = new UserDAO();
-
 
     private static final String AUTHOR_PAGE = "WEB-INF/theBlog/fullPages/authorPage.jsp";
 
@@ -51,12 +52,7 @@ public class AuthorHomeServlet extends HttpServlet {
 
         List<BlogPostBean> blogPostByUser = blogPostService.readBlogsByPredefinedUser(user.getUserName());
         session.setAttribute("author", blogPostByUser);
+        System.out.println(blogPostByUser);
         request.getRequestDispatcher(AUTHOR_PAGE).forward(request,response);
-
-//        List<UserBean> blogPostByUser = userDAO.readUserBlogs(user.getUserName());
-//        session.setAttribute("author",blogPostByUser);
-//        System.out.println(blogPostByUser);
-//        request.getRequestDispatcher(AUTHOR_PAGE).forward(request,response);
-
     }
 }

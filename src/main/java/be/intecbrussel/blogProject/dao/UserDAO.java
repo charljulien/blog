@@ -1,8 +1,6 @@
 package be.intecbrussel.blogProject.dao;
 
-import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
-import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -184,6 +182,12 @@ public class UserDAO {
         return statusOk;
     }
 
+    public List<UserBean> readAllUsers(){
+        System.out.println("Reading all users DAO...");
+        em = EMProvidor.getEntityManager();
+        return getAllUsers();
+    }
+
 
     /**
      * Query to obtain User by LastName
@@ -332,4 +336,14 @@ public class UserDAO {
         return getUserBeanBlogsQuery(userName).getResultList();
     }
 
+
+    private TypedQuery<UserBean> getAllUsersQuery(){
+        em = EMProvidor.getEntityManager();
+        TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean",UserBean.class);
+        return query;
+    }
+
+    public List<UserBean> getAllUsers(){
+        return getAllUsersQuery().getResultList();
+    }
 }

@@ -32,9 +32,15 @@ public class CommentDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        em.persist(comment);
+        em.merge(comment);
         et.commit();
         EMProvidor.getInstance().closeEmf();
+    }
+
+    public List<CommentBean> readAllComments(){
+        System.out.println("Reading all Comments DAO...");
+        em =EMProvidor.getEntityManager();
+        return getAllComments();
     }
 
     /**
@@ -94,5 +100,17 @@ public class CommentDAO {
     public List<CommentBean> getCommentById(long id) {
         return getCommentByIdQuery(id).getResultList();
     }
+
+
+    private TypedQuery<CommentBean> getAllCommentsQuery(){
+        em = EMProvidor.getEntityManager();
+        TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean As comment WHERE comment.userComment.blogs",CommentBean.class);
+        return query;
+    }
+
+    public List<CommentBean> getAllComments(){
+        return getAllCommentsQuery().getResultList();
+    }
+
 
 }

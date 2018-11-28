@@ -20,45 +20,35 @@
 </head>
 
 <body>
-
-
-
-    <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
-    <div class="header">
-        <%@include file="parts/header.jsp" %>
-    </div>
+<!-- Mr. Black to get << BlogPostServlet >> to make a post -->
+<div class="header">
+    <%@include file="parts/header.jsp" %>
+</div>
 <!-- Miss Gold to Mr Black: love what u did here ( above, and under ) and that u got it to work but this needs to be a header functionality.. has nothing to do with body, I will change this after we discuss it -->
 <!-- also, i saw u deleted BlogArticle : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
 
-
-
 <div>
-    <h1>coucou c'est le blogcentralbody</h1>
+    <fieldset style="border-radius: 5px; margin:20px 50px">
+        <legend><h1 style="text-align: center">Blog Articles</h1></legend>
+        <table style="margin-left: 100px; margin-right: 150px">
+            <c:forEach items="${all}" var="blog" end="5" varStatus="status">
+                <tr>
+                    <td><a href="${pageContext.request.contextPath}/Article?id=${blog.id}"> ${blog.title} </a></td>
+                    <td>${blog.blogMessage}</td>
+                    <td>${blog.user.userName}</td>
+                    <!-- like count field -->
+                    <td>
+                        <form style="margin-left: 10px; margin-top: 25px" action="Like" method="post">
+                            <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
+                            <input type="hidden" name="blogName" value="${blog.id}">
+                        </form>
+                    </td>
 
- <table>
-     <p>The blogs are here...?</p>
-     <c:forEach items="${all}" var="blog" end="6" varStatus="status">
-         <tr>
-            <td> <a href="${pageContext.request.contextPath}/Article?id=${blog.id}"> ${blog.title} </a></td>
-             <td>${blog.blogMessage}</td>
-             <td>${blog.user.userName}</td>
-             <!-- like count field -->
-             <td>
-                 <form action="Like" method="post">
-                     <input type="submit" value="Like" style="width: 50px;" name="likeCounter">
-                     <input type="hidden" name="blogName" value="${blog.id}">
-                 </form>
-             </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </fieldset
 
-         </tr>
-     </c:forEach>
- </table>
-
-
-    <%--Mr Gold needs to fix this jsp--%>
-    <%--no header in it--%>
-    <%--fix blogPostBean conflict--%>
-<%--<%@include file="./parts/blogCentralBody.jsp" %>--%>
 </div>
 
 </body>

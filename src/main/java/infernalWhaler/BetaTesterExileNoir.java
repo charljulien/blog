@@ -56,12 +56,12 @@ public class BetaTesterExileNoir {
         userService.saveUserToDB(userBean);
     }
     // Test Two
-    private void saveComment(){
-        System.out.println("input Comment");
-        String message = kbd.nextLine();
-        CommentBean commentBean = new CommentBean(message);
-        commentService.saveCommentToDB(commentBean);
-    }
+//    private void saveComment(){
+//        System.out.println("input Comment");
+//        String message = kbd.nextLine();
+//        CommentBean commentBean = new CommentBean(message);
+//        commentService.saveCommentToDB(commentBean);
+//    }
 
     private void saveAccessLevel(){
         System.out.println("Give level");

@@ -57,6 +57,6 @@ public class BlogPostServlet extends HttpServlet {
         blogPostService.saveBlogPostToDB(blogPostBean, user);
 
         session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+        response.sendRedirect("./Home");
     }
 }

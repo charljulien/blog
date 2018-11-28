@@ -49,9 +49,6 @@ public interface UserServiceInterface {
     UserBean getUserByUserName(String userName);
 
 
-    // What do they do ... Mr. Black
-    UserBean handlingUser(UserBean user);
-
-    void userRegistrationService(UserBean user);
+    List<UserBean> readAllUsers();
 
 }

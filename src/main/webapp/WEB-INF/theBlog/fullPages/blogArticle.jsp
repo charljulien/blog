@@ -28,5 +28,7 @@
 </div>
 </fieldset>
 
+<%@include file="parts/comment.jsp"%>
+
 </body>
 </html>

@@ -22,8 +22,8 @@ public class MySessionListener implements HttpSessionListener {
         System.out.println("A SESSION WAS BORN");
         sessionsActive++;
         totalSessions++;
-        System.out.println("SESSIONS SO FAR = " + totalSessions+" " +httpSessionEvent.getSession().getAttribute(USER_BEAN));
-        System.out.println("ACTIVE SESSIONS = " + sessionsActive+ " "+httpSessionEvent.getSession().getAttribute(USER_BEAN));
+        System.out.println("SESSIONS SO FAR = " + totalSessions);
+        System.out.println("ACTIVE SESSIONS = " + sessionsActive);
 
     }
 
