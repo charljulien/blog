@@ -2,6 +2,7 @@ package be.intecbrussel.blogProject.controller;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.exceptions.ErrorFool;
 import be.intecbrussel.blogProject.service.implementations.BlogPostService;
 import be.intecbrussel.blogProject.service.implementations.UserService;
 import be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface;
@@ -34,6 +35,7 @@ public class UserLoginServlet extends HttpServlet {
 
     private static final String USER_NAME = "userName";
     private static final String PASSWORD = "password";
+    private static final String ERREUR =  "erreur";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
@@ -75,10 +77,9 @@ public class UserLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
+        HttpSession session = request.getSession();
 
         if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
-            HttpSession session = request.getSession();
-
 
             boolean userNameVal = userService.validateInLogFromDB(userName, password);
             if (userNameVal) {
@@ -92,11 +93,16 @@ public class UserLoginServlet extends HttpServlet {
                 request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
 
             } else if (!userNameVal) {
-                System.out.println("USER LOG INVALID...");
-                request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
+                ErrorFool errorFool = new ErrorFool();
+                System.out.println("USER LOG INVALID..." + errorFool.getErreur());
+                session.setAttribute(ERREUR, errorFool);
+                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
             }
         } else {
-            request.getRequestDispatcher(ERROR_LOGIN_PAGE).forward(request, response);
+            ErrorFool errorFool = new ErrorFool();
+            System.out.println("USER LOG INVALID..." + errorFool.getErreur());
+            session.setAttribute(ERREUR, errorFool);
+            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
         }
     }
 }
