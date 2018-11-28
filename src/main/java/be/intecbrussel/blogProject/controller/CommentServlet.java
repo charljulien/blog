@@ -53,8 +53,8 @@ public class CommentServlet extends HttpServlet {
         List<CommentBean> commentsByBlog = commentService.readAllComments();
 
 
-        session.setAttribute("comment",commentsByBlog);
-        request.getRequestDispatcher(BLOG_ARTICLE).forward(request,response);
+        session.setAttribute("comment", commentsByBlog);
+        request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

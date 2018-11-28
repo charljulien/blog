@@ -17,6 +17,9 @@ import javax.xml.ws.spi.http.HttpContext;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Mr. Black && Mr. Pink
+ */
 @WebServlet("/Home")
 public class HomeServlet extends HttpServlet {
 
@@ -41,6 +44,6 @@ public class HomeServlet extends HttpServlet {
 
         List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
         session.setAttribute(ALL, all);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
     }
 }

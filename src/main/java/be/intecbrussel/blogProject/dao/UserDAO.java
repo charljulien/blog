@@ -37,14 +37,14 @@ public class UserDAO {
         boolean eMailExists = false;
         boolean userNameExists = false;
 
-        if(userName != null){
+        if (userName != null) {
             if (user.getEmail().equalsIgnoreCase(userName.getEmail())) {
                 System.out.println("Email already exists");
                 eMailExists = true;
             }
 
 
-            if (user.getUserName().equalsIgnoreCase(userName.getUserName()) ) {
+            if (user.getUserName().equalsIgnoreCase(userName.getUserName())) {
                 System.out.println("user already exists");
                 userNameExists = true;
             }
@@ -62,7 +62,7 @@ public class UserDAO {
         EMProvidor.getInstance().closeEM();
     }
 
-    public List<UserBean> readUserBlogs(String userName){
+    public List<UserBean> readUserBlogs(String userName) {
         em = EMProvidor.getEntityManager();
         return getUserBeanBlogs(userName);
     }
@@ -153,7 +153,6 @@ public class UserDAO {
     public void deleteUser(String userName) {
 
 
-
     }
 
     public boolean validateInLog(String userName, String password) {
@@ -182,7 +181,7 @@ public class UserDAO {
         return statusOk;
     }
 
-    public List<UserBean> readAllUsers(){
+    public List<UserBean> readAllUsers() {
         System.out.println("Reading all users DAO...");
         em = EMProvidor.getEntityManager();
         return getAllUsers();
@@ -294,8 +293,8 @@ public class UserDAO {
         UserBean userBean = null;
         try {
             userBean = getUserByUserNameQuery(username).getSingleResult();
+        } catch (Exception ex) {
         }
-        catch (Exception ex){}
         return userBean;
     }
 
@@ -325,25 +324,25 @@ public class UserDAO {
         return getUserByPasswordQuery(password).getResultList();
     }
 
-    private TypedQuery<UserBean> getUserBeanBlogsQuery(String userName){
+    private TypedQuery<UserBean> getUserBeanBlogsQuery(String userName) {
         em = EMProvidor.getEntityManager();
-        TypedQuery<UserBean> query = em.createQuery("SELECT user.blogs FROM UserBean AS user Where user.userName=:userName",UserBean.class);
-        query.setParameter("userName",userName);
+        TypedQuery<UserBean> query = em.createQuery("SELECT user.blogs FROM UserBean AS user Where user.userName=:userName", UserBean.class);
+        query.setParameter("userName", userName);
         return query;
     }
 
-    public List<UserBean> getUserBeanBlogs(String userName){
+    public List<UserBean> getUserBeanBlogs(String userName) {
         return getUserBeanBlogsQuery(userName).getResultList();
     }
 
 
-    private TypedQuery<UserBean> getAllUsersQuery(){
+    private TypedQuery<UserBean> getAllUsersQuery() {
         em = EMProvidor.getEntityManager();
-        TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean",UserBean.class);
+        TypedQuery<UserBean> query = em.createQuery("SELECT user FROM UserBean", UserBean.class);
         return query;
     }
 
-    public List<UserBean> getAllUsers(){
+    public List<UserBean> getAllUsers() {
         return getAllUsersQuery().getResultList();
     }
 }

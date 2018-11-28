@@ -30,7 +30,7 @@
              Password:            <small>${userBean.password}</small></pre>
 
         <p>Your post history:
-        <a href="./AuthorPage"> Author page </a></p>
+            <a href="./AuthorPage"> Author page </a></p>
     </div>
 </fieldset>
 

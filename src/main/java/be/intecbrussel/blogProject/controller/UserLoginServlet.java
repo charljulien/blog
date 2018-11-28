@@ -105,7 +105,7 @@ public class UserLoginServlet extends HttpServlet {
                 request.setAttribute(ERREUR, errorFool);
                 request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             ErrorFool errorFool = new ErrorFool();
             System.out.println("USER LOG INVALID..." + errorFool.getErreur());
             request.setAttribute(ERREUR, errorFool);

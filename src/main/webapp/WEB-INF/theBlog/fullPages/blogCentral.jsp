@@ -1,12 +1,5 @@
-<%--<!-- Mr. Black IMPORTANT LINE HEREUNDER MUST BE PRESENT AT ALL TIMES, THIS LINKS --%>
-<%--${userBean.userName} TO <<USERBEAN >> -->--%>
-<%--<jsp:userBean id="userBean" scope="session" type="be.intecbrussel.blogProject.beans.UserBean"/>--%>
-<!-- M. Gold : but it's in comments.. how does it help than? -->
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!-- Miss Gold: is this necessary here AND in parts?? -->
-<!-- url for this page is: localhost:8080 or host(www.theblog.com)/theblog/blogcentral -->
 
 <!doctype html>
 <html lang="en">
@@ -20,16 +13,13 @@
 </head>
 
 <body>
-    <div>
-        <%@include file="parts/error.jsp"%>
-    </div>
+<div>
+    <%@include file="parts/error.jsp" %>
+</div>
 
-    <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
-    <div class="header">
-        <%@include file="parts/header.jsp" %>
-    </div>
-<!-- Miss Gold to Mr Black: love what u did here ( above, and under ) and that u got it to work but this needs to be a header functionality.. has nothing to do with body, I will change this after we discuss it -->
-<!-- also, i saw u deleted BlogArticle : we need a new page for that.. you want to add it as a method to BlogPostServlet instead? (and link to new JSP?) what method do u suggest? since doGet and doPost are both already taken.  --->
+<div class="header">
+    <%@include file="parts/header.jsp" %>
+</div>
 
 <div>
     <fieldset style="border-radius: 5px; margin:20px 50px">

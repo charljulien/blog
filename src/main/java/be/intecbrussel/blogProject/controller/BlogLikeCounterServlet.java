@@ -17,6 +17,9 @@ import java.io.IOException;
 import static be.intecbrussel.blogProject.controller.BlogPostServlet.BLOG_POST_SERVICE;
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
+/**
+ * @author Mr. Black
+ */
 @WebServlet("/Like")
 public class BlogLikeCounterServlet extends HttpServlet {
 
@@ -46,6 +49,6 @@ public class BlogLikeCounterServlet extends HttpServlet {
 
         BlogPostBean blog = blogPostService.readBlogPost(Long.parseLong(request.getParameter("blogName")));
         blogPostService.likeBlogPostCountIncrease(blog);
-        response.sendRedirect("./Article?id="+Long.parseLong(request.getParameter("blogName")));
+        response.sendRedirect("./Article?id=" + Long.parseLong(request.getParameter("blogName")));
     }
 }

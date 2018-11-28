@@ -14,12 +14,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-//Miss Gold ;)
+/**
+ * @author Mr. Black
+ */
 @WebServlet("/Article")
 public class BlogArticle extends HttpServlet {
 
-        private static final String BLOG_ARTICLE ="/WEB-INF/theBlog/fullPages/blogArticle.jsp";
-        private BlogPostServiceInterface blogPostService;
+    private static final String BLOG_ARTICLE = "/WEB-INF/theBlog/fullPages/blogArticle.jsp";
+    private BlogPostServiceInterface blogPostService;
 
 
     @Override
@@ -35,7 +37,7 @@ public class BlogArticle extends HttpServlet {
 
         long id = Long.parseLong(request.getParameter("id"));
         BlogPostBean blogPostById = blogPostService.readBlogPost(id);
-        session.setAttribute("all",blogPostById);
+        session.setAttribute("all", blogPostById);
         request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
     }
 }

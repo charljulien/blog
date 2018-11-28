@@ -28,9 +28,9 @@ public interface UserServiceInterface {
     void deleteUserFromDB(long id);
 
     /**
-     * @see be.intecbrussel.blogProject.dao.UserDAO#validateInLog(String, String)
      * @author Mr. Black
-     * */
+     * @see be.intecbrussel.blogProject.dao.UserDAO#validateInLog(String, String)
+     */
     boolean validateInLogFromDB(String userName, String password);
 
 

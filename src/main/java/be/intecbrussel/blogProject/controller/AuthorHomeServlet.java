@@ -21,7 +21,7 @@ import java.util.List;
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
 /**
- * @author Mr. Pink
+ * @author Mr. Pink && Mr. Black
  */
 
 @WebServlet("/AuthorPage")
@@ -42,9 +42,9 @@ public class AuthorHomeServlet extends HttpServlet {
         }
     }
 
-/**
- * Mr. Black this does not fully work yet....
- * */
+    /**
+     * Mr. Black this does not fully work yet....
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -53,6 +53,6 @@ public class AuthorHomeServlet extends HttpServlet {
         List<BlogPostBean> blogPostByUser = blogPostService.readBlogsByPredefinedUser(user.getUserName());
         session.setAttribute("author", blogPostByUser);
         System.out.println(blogPostByUser);
-        request.getRequestDispatcher(AUTHOR_PAGE).forward(request,response);
+        request.getRequestDispatcher(AUTHOR_PAGE).forward(request, response);
     }
 }

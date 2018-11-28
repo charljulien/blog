@@ -41,7 +41,6 @@ public class UserService implements UserServiceInterface {
     }
 
 
-
     public UserBean handlingUser(UserBean user) {
         System.out.println("Handling" + user.getUserName());
         //Iets met sessionDAO om nieuw sessie te creeren ?
@@ -61,7 +60,7 @@ public class UserService implements UserServiceInterface {
     /**
      * @author Mr. Black
      * @see UserDAO#validateInLog(String, String)
-     * */
+     */
     @Override
     public boolean validateInLogFromDB(String userName, String password) {
         System.out.println("Validating Login SERVICE...");
@@ -78,19 +77,19 @@ public class UserService implements UserServiceInterface {
 
     /**
      * @author Mr. Black
-     *
+     * <p>
      * BETA TYPE
-     * */
-    public List<UserBean> getUserByPassword(String password){
+     */
+    public List<UserBean> getUserByPassword(String password) {
         System.out.println("Getting User By Password < SERVICE >");
         return userDAO.getUserByPassword(password);
     }
 
     /**
-    * @author Mr. Black
+     * @author Mr. Black
      * BETA TYPE
-    * */
-    public UserBean getUserByUserName(String userName){
+     */
+    public UserBean getUserByUserName(String userName) {
         System.out.println("Getting User By UserName < SERVICE >");
         return userDAO.getUserByUserName(userName);
     }

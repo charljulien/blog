@@ -7,6 +7,7 @@ import java.util.Date;
 
 /**
  * Singleton EntityManagerFactory && EntityManager
+ *
  * @author Mr. Black
  */
 public class EMProvidor {
@@ -60,7 +61,7 @@ public class EMProvidor {
         }
     }
 
-    public void closeEM(){
+    public void closeEM() {
         System.out.println("CLOSING ENTITY MANAGER");
         getEntityManager().close();
     }

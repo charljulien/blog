@@ -23,9 +23,10 @@ public class MemberAccessService implements MemberAccessServiceInterface {
     }
 
     // Methods
+
     /**
      * @see MemberAccessDAO#createAccessLevel(MemberAccess)
-     * */
+     */
     @Override
     public void saveAccessLevelToDB(MemberAccess memberAccess) {
         System.out.println("Saving Access Level SERVICE...");
@@ -34,9 +35,10 @@ public class MemberAccessService implements MemberAccessServiceInterface {
 
     // OUT OF USE << WAIT TILL DELETE >>
     // Direct via M.A.DAO implemented in UserService.saveUserToDB
+
     /**
      * @see MemberAccessDAO#setReaderAccessLevel(UserBean)
-     * */
+     */
     public void setReaderAccessLevel(UserBean user) {
         System.out.println("Setting READER Access Level to user SERVICE...");
         memberAccessDAO.setReaderAccessLevel(user);

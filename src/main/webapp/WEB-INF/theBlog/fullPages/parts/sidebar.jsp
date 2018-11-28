@@ -1,6 +1,3 @@
-
-
-
 <div class="sidenav">
     <div>
         <a href="#loggedInUsers">${loggedInUserService.listLoggedInUsers.toString}</a>
@@ -16,7 +13,7 @@
 
 
 <div class="topnav">
-Search: <input type="text" value="Search" placeholder="searchTerm"/>
+    Search: <input type="text" value="Search" placeholder="searchTerm"/>
 </div>
 
 

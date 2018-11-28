@@ -37,9 +37,9 @@ public class CommentDAO {
         EMProvidor.getInstance().closeEmf();
     }
 
-    public List<CommentBean> readAllComments(){
+    public List<CommentBean> readAllComments() {
         System.out.println("Reading all Comments DAO...");
-        em =EMProvidor.getEntityManager();
+        em = EMProvidor.getEntityManager();
         return getAllComments();
     }
 
@@ -102,13 +102,16 @@ public class CommentDAO {
     }
 
 
-    private TypedQuery<CommentBean> getAllCommentsQuery(){
+    /**
+     * Query to find all Comments
+     */
+    private TypedQuery<CommentBean> getAllCommentsQuery() {
         em = EMProvidor.getEntityManager();
-        TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean As comment WHERE comment.userComment.blogs",CommentBean.class);
+        TypedQuery<CommentBean> query = em.createQuery("SELECT comment FROM CommentBean As comment WHERE comment.userComment.blogs", CommentBean.class);
         return query;
     }
 
-    public List<CommentBean> getAllComments(){
+    public List<CommentBean> getAllComments() {
         return getAllCommentsQuery().getResultList();
     }
 

@@ -31,13 +31,13 @@ public class UserProfileServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute(USER_BEAN);
 
         UserBean userBean = userService.getUserByUserName(user.getUserName());
         session.setAttribute("userBean", userBean);
-        request.getRequestDispatcher(USER_PROFILE).forward(request,response);
+        request.getRequestDispatcher(USER_PROFILE).forward(request, response);
     }
 }

@@ -16,13 +16,14 @@ public interface CommentServiceInterface {
 
     /**
      * @see be.intecbrussel.blogProject.dao.UserDAO#saveUser(UserBean)
-     * */
+     */
     void saveCommentToDB(CommentBean comment, UserBean user);
+
     /**
      * @see be.intecbrussel.blogProject.dao.CommentDAO#deleteComment(long)
-     * */
+     */
     void deleteCommentToDB(long ig);
 
-     List<CommentBean> readAllComments();
+    List<CommentBean> readAllComments();
 
 }

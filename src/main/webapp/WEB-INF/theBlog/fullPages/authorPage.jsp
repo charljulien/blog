@@ -1,4 +1,3 @@
-<!-- url for this page is: localhost:8080/theblog/author -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>

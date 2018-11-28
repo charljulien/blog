@@ -28,12 +28,12 @@ import static be.intecbrussel.blogProject.listeners.AppContextListener.BLOG_SERV
 public class UserLogoutServlet extends HttpServlet {
 
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
-  private BlogPostServiceInterface blogPostService;
+    private BlogPostServiceInterface blogPostService;
 
     @Override
     public void init() throws ServletException {
-        blogPostService = (BlogPostService)getServletContext().getAttribute(BLOG_SERVICE);
-        if(blogPostService == null){
+        blogPostService = (BlogPostService) getServletContext().getAttribute(BLOG_SERVICE);
+        if (blogPostService == null) {
             throw new ServletException("BlogPost Service not available");
         }
 
@@ -41,15 +41,15 @@ public class UserLogoutServlet extends HttpServlet {
 
 
     @Override
-    public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession(false);
-        if (session !=null){
+        if (session != null) {
             session.invalidate();
         }
         List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
         System.out.println(all);
         request.setAttribute(ALL, all);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
 
     }
 }

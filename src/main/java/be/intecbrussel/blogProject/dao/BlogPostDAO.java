@@ -54,11 +54,11 @@ public class BlogPostDAO {
         return titleUser;
     }
 
-    public BlogPostBean readBlogPost(long id){
+    public BlogPostBean readBlogPost(long id) {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
         BlogPostBean idUser = getBlogWithPredefinedId(id);
-        return  idUser;
+        return idUser;
     }
 
     public List<BlogPostBean> readBlogPost() {
@@ -67,18 +67,17 @@ public class BlogPostDAO {
         return getAllBlogs();
     }
 
-    public List<BlogPostBean> readBlogPostByRecentDate(){
+    public List<BlogPostBean> readBlogPostByRecentDate() {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
         return getBlogsByRecentDate();
     }
 
-    public List<BlogPostBean> readBlogsByPredefinedUser(String user){
+    public List<BlogPostBean> readBlogsByPredefinedUser(String user) {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
         return getBlogsByPredefinedUser(user);
     }
-
 
 
     /**
@@ -96,8 +95,8 @@ public class BlogPostDAO {
         et.begin();
         BlogPostBean blogPost = getListBlogWithPredefinedId(id);
 
-            blogPost.setBlogMessage(blogPost.getBlogMessage() + " " + text);
-            em.merge(blogPost);
+        blogPost.setBlogMessage(blogPost.getBlogMessage() + " " + text);
+        em.merge(blogPost);
 
         et.commit();
         EMProvidor.getInstance().closeEM();
@@ -117,19 +116,23 @@ public class BlogPostDAO {
         et.begin();
         BlogPostBean blogPost = getListBlogWithPredefinedId(id);
 
-            em.remove(blogPost);
+        em.remove(blogPost);
 
         et.commit();
         EMProvidor.getInstance().closeEmf();
     }
 
-    // TEST FASE did not work till now, second one works via intellij
+    /**
+     * To Add likes to BlogPostObjects
+     *
+     * @author Mr. Black
+     */
     public void likeBlogPostCountIncrease(BlogPostBean blog) {
         System.out.println("Liking Blog count +1 DAO...");
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-         blog.likeIncrease();
+        blog.likeIncrease();
         em.merge(blog);
         et.commit();
         EMProvidor.getInstance().closeEM();
@@ -141,7 +144,6 @@ public class BlogPostDAO {
      *
      * @author Mr. Black
      */
-    //Miss Gold: but not when used in browser?? how to fix?
     public void likeBlogPostCountIncrease(long id) {
         System.out.println("Liking Blog count +1 DAO...");
         em = EMProvidor.getEntityManager();
