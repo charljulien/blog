@@ -14,16 +14,18 @@
     <%--</style>--%>
 </head>
 <body>
-<div>
-<form style="border-radius: 5px; margin:20px 50px" class="Blog-comment" action="Comment" method="POST">
 
 
+<form style="border-radius: 5px; margin:20px 50px; float: left" class="Blog-comment" action="Comment" method="POST">
+    <div>
     <textarea cols="50" rows="10" placeholder="Place your comment" name="comment"
               style="float: left; background: lightgreen; border-radius: 5px;"></textarea>
-
-    <input type="submit" value="Submit" style="float: left"><br>
+    </div>
+    <div>
+        <input type="submit" value="Submit" style="float: left">
+    </div>
 </form>
-</div>
+
 
 <div>
     <fieldset style="border-radius: 5px; margin:20px 50px">

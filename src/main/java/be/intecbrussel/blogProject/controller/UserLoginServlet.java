@@ -35,7 +35,7 @@ public class UserLoginServlet extends HttpServlet {
 
     private static final String USER_NAME = "userName";
     private static final String PASSWORD = "password";
-    private static final String ERREUR =  "erreur";
+    private static final String ERREUR = "erreur";
 
     private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
     private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
@@ -56,8 +56,8 @@ public class UserLoginServlet extends HttpServlet {
         if (userService == null) {
             throw new ServletException("User Service not available");
         }
-        blogPostService = (BlogPostService)getServletContext().getAttribute(BLOG_SERVICE);
-        if(blogPostService == null){
+        blogPostService = (BlogPostService) getServletContext().getAttribute(BLOG_SERVICE);
+        if (blogPostService == null) {
             throw new ServletException("BlogPost Service not available");
         }
 
@@ -79,29 +79,36 @@ public class UserLoginServlet extends HttpServlet {
         String password = request.getParameter(PASSWORD);
         HttpSession session = request.getSession();
 
-        if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
+        try {
+            if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
 
-            boolean userNameVal = userService.validateInLogFromDB(userName, password);
-            if (userNameVal) {
-                UserBean userLog = userService.getUserByUserName(userName);
-                System.out.println("USER LOG OK " + userLog.toString());
+                boolean userNameVal = userService.validateInLogFromDB(userName, password);
+                if (userNameVal) {
+                    UserBean userLog = userService.getUserByUserName(userName);
+                    System.out.println("USER LOG OK " + userLog.toString());
 
-                session.setAttribute(USER_BEAN, userLog);
-                List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
-                System.out.println(all);
-                request.setAttribute(ALL, all);
-                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request,response);
+                    session.setAttribute(USER_BEAN, userLog);
+                    List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
+                    System.out.println(all);
+                    request.setAttribute(ALL, all);
+                    request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
 
-            } else if (!userNameVal) {
+                } else if (!userNameVal) {
+                    ErrorFool errorFool = new ErrorFool();
+                    System.out.println("USER LOG INVALID..." + errorFool.getErreur());
+                    request.setAttribute(ERREUR, errorFool);
+                    request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+                }
+            } else {
                 ErrorFool errorFool = new ErrorFool();
                 System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-                session.setAttribute(ERREUR, errorFool);
+                request.setAttribute(ERREUR, errorFool);
                 request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
             }
-        } else {
+        }catch (Exception e){
             ErrorFool errorFool = new ErrorFool();
             System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-            session.setAttribute(ERREUR, errorFool);
+            request.setAttribute(ERREUR, errorFool);
             request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
         }
     }
