@@ -20,8 +20,9 @@
 </head>
 
 <body>
-
-
+    <div>
+        <%@include file="parts/error.jsp"%>
+    </div>
 
     <!-- Mr. Black to get << BlogPostServlet >> to make a post -->
     <div class="header">
