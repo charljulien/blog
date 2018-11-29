@@ -45,7 +45,7 @@
             <div class="text-field"> Password: <br><input type="password" name="password"></div>
             <br>
 
-            <button type="submit" value="SUBMIT"> Submit</button>
+            <button style="margin-top: 15px; margin-bottom: 15px" type="submit" value="SUBMIT"> Submit</button>
 
         </form>
     </div>
