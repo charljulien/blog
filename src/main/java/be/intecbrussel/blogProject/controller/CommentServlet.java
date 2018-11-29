@@ -1,7 +1,9 @@
 package be.intecbrussel.blogProject.controller;
 
+import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.CommentBean;
 import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.dao.BlogPostDAO;
 import be.intecbrussel.blogProject.listeners.AppContextListener;
 import be.intecbrussel.blogProject.service.implementations.CommentService;
 import be.intecbrussel.blogProject.service.implementations.UserService;
@@ -33,6 +35,7 @@ public class CommentServlet extends HttpServlet {
     private CommentServiceInterface commentService;
     private CommentBean commentBean;
     private UserServiceInterface userService;
+    private BlogPostDAO blogPostDAO = new BlogPostDAO();
 
     @Override
     public void init() throws ServletException {
@@ -49,12 +52,17 @@ public class CommentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
 
-        List<UserBean> user = userService.readAllUsers();
+        List<BlogPostBean> blogs = blogPostDAO.getAllBlogs();
         List<CommentBean> commentsByBlog = commentService.readAllComments();
 
-
-        session.setAttribute("comment", commentsByBlog);
-        request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
+        for (CommentBean commentsByUserBlog : commentsByBlog) {
+            for (BlogPostBean blog : blogs) {
+                if (commentsByUserBlog.getUser().getUserName().equalsIgnoreCase(blog.getUser().getUserName())) {
+                    session.setAttribute("comment", commentsByUserBlog);
+                }
+                request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
+            }
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

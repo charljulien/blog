@@ -16,17 +16,7 @@ body {
 
 }
 
-legend{
-    font-size: 40px;
-    font-family: "Trebuchet MS";
-    color: black;
-}
 
-fieldset{
-    margin-top: 20px;
-    background-image: linear-gradient(slategrey,darkgrey);
-    border: none;
-}
 
 
 .text-field {

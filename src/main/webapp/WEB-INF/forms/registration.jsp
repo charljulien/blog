@@ -13,18 +13,17 @@
 </head>
 <body>
 
-<div class="topnav">
-    <a>
-        <a href="theBlog/combinationsAkaPages/blogCentral.jsp">Home</a>
-        <form class="search-box">
-            <input type="text" placeholder="searchTerm..."/></form>
-    </a>
-
+<%--<div class="topnav">--%>
+    <%--<a>--%>
+        <%--<a href="./Home">Home</a>--%>
+        <%--<form class="search-box">--%>
+            <%--<input type="text" placeholder="searchTerm..."/></form>--%>
+    <%--</a>--%>
+<%@include file="../theBlog/fullPages/parts/header.jsp" %>
 </div>
-<fieldset>
-    <legend>Registration Form</legend>
+<fieldset style="border-radius: 5px; margin:20px 50px"><legend><h2 style="text-align: center">Registration Form</h2></legend>
 
-    <div>
+    <div style="margin-left: 100px">
         <form method="post">
 
             <div class="text-field"> First Name: <br><input type="text" name="firstName"></div>
