@@ -77,34 +77,47 @@ public class UserLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
+
         HttpSession session = request.getSession();
+        boolean userNameVal = userService.validateInLogFromDB(userName, password);
+
+        if ((userName == null) && (password == null)) {
+            errorLogin(request, response);
+        }
 
 
-//            if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
+         else if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
 
-                boolean userNameVal = userService.validateInLogFromDB(userName, password);
-                if (userNameVal) {
-                    UserBean userLog = userService.getUserByUserName(userName);
-                    System.out.println("USER LOG OK " + userLog.toString());
 
-                    session.setAttribute(USER_BEAN, userLog);
-                    List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
-                    System.out.println(all);
-                    request.setAttribute(ALL, all);
-                    request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+            if (userNameVal) {
+                UserBean userLog = userService.getUserByUserName(userName);
+                System.out.println("USER LOG OK " + userLog.toString());
 
-                } else if (!userNameVal) {
-                    ErrorFool errorFool = new ErrorFool();
-                    System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-                    request.setAttribute(ERREUR, errorFool);
-                    request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-                }
-//            } else {
-//                ErrorFool errorFool = new ErrorFool();
-//                System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-//                request.setAttribute(ERREUR, errorFool);
-//                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-//            }
+                session.setAttribute(USER_BEAN, userLog);
+                getBlogByRecentDateAndAddToBlogCentralPage(request, response, blogPostService, BLOG_CENTRAL_PAGE);
+
+            } else if (!false) {
+                errorLogin(request, response);
+            }
+        } else {
+            errorLogin(request, response);
+        }
 
     }
+
+    static void getBlogByRecentDateAndAddToBlogCentralPage(HttpServletRequest request, HttpServletResponse response, BlogPostServiceInterface blogPostService, String blogCentralPage) throws ServletException, IOException {
+        List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
+        System.out.println(all);
+        request.setAttribute(ALL, all);
+        request.getRequestDispatcher(blogCentralPage).forward(request, response);
+    }
+
+    private void errorLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ErrorFool errorFool = new ErrorFool();
+        System.out.println("USER LOG INVALID..." + errorFool.getErreur());
+        request.setAttribute(ERREUR, errorFool);
+        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+    }
+
+
 }

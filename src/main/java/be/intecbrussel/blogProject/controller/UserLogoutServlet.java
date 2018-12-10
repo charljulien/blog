@@ -46,10 +46,7 @@ public class UserLogoutServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
-        System.out.println(all);
-        request.setAttribute(ALL, all);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+        UserLoginServlet.getBlogByRecentDateAndAddToBlogCentralPage(request, response, blogPostService, BLOG_CENTRAL_PAGE);
 
     }
 }
