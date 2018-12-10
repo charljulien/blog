@@ -31,10 +31,10 @@
     <fieldset style="border-radius: 5px; margin:20px 50px">
         <legend><h2 style="text-align: center">Comments</h2></legend>
         <table style="margin: 50px 150px 50px 100px">
-            <c:forEach items="${comment}" var="comment" varStatus="status">
+            <c:forEach items="${all.comments}" var="comment" varStatus="status">
                 <tr>
                     <td style="font-weight: bold">${comment.date}</td>
-                    <td style="font-weight: lighter">${comment.userComment.userName}</td>
+                    <td style="font-weight: lighter">${comment.getUser().getUserName()}</td>
                     <td style="font-weight: lighter">${comment.comment}</td>
                 </tr>
             </c:forEach>

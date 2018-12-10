@@ -17,8 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
+
+import static be.intecbrussel.blogProject.controller.BlogArticle.BLOG;
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
 /**
@@ -50,27 +51,16 @@ public class CommentServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        HttpSession session = request.getSession();
-
-        List<BlogPostBean> blogs = blogPostDAO.getAllBlogs();
-        List<CommentBean> commentsByBlog = commentService.readAllComments();
-
-        for (CommentBean commentsByUserBlog : commentsByBlog) {
-            for (BlogPostBean blog : blogs) {
-                if (commentsByUserBlog.getUser().getUserName().equalsIgnoreCase(blog.getUser().getUserName())) {
-                    session.setAttribute("comment", commentsByUserBlog);
-                }
-                request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
-            }
-        }
+        request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute(USER_BEAN);
+        BlogPostBean blog = (BlogPostBean) session.getAttribute(BLOG);
 
         commentBean = new CommentBean(request.getParameter(COMMENT));
-        commentService.saveCommentToDB(commentBean, user);
+        commentService.saveCommentToDB(commentBean, user, blog);
 
         session.setAttribute(COMMENT_SERVICE, commentBean);
 

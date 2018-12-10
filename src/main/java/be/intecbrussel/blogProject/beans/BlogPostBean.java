@@ -3,6 +3,7 @@ package be.intecbrussel.blogProject.beans;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Class creates Blog Post objects
@@ -29,6 +30,8 @@ public class BlogPostBean implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User")
     private UserBean user;
+    @OneToMany(mappedBy = "blogPost", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CommentBean> comments;
 
 
     public BlogPostBean() {
@@ -100,7 +103,22 @@ public class BlogPostBean implements Serializable {
         this.user = user;
     }
 
-    public String toString(){
-        return getTitle()+"\n"+getBlogMessage();
+    public List<CommentBean> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentBean> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(CommentBean comment) {
+        if (comments != null) {
+            comments.add(comment);
+            comment.setBlogPost(this);
+        }
+    }
+
+    public String toString() {
+        return getTitle() + "\n" + getBlogMessage();
     }
 }

@@ -27,14 +27,14 @@ public class CommentDAO {
      * @param comment object
      * @author Mr. Black
      */
-    public void safeComment(CommentBean comment) {
+    public void saveComment(CommentBean comment) {
         System.out.println("Saving Comment DAO...");
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
         em.merge(comment);
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+//        EMProvidor.getInstance().closeEM();
     }
 
     public List<CommentBean> readAllComments() {
@@ -59,7 +59,7 @@ public class CommentDAO {
             em.remove(comment);
         }
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
 

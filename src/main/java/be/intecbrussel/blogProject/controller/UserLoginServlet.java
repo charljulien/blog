@@ -79,8 +79,8 @@ public class UserLoginServlet extends HttpServlet {
         String password = request.getParameter(PASSWORD);
         HttpSession session = request.getSession();
 
-        try {
-            if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
+
+//            if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
 
                 boolean userNameVal = userService.validateInLogFromDB(userName, password);
                 if (userNameVal) {
@@ -99,17 +99,12 @@ public class UserLoginServlet extends HttpServlet {
                     request.setAttribute(ERREUR, errorFool);
                     request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
                 }
-            } else {
-                ErrorFool errorFool = new ErrorFool();
-                System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-                request.setAttribute(ERREUR, errorFool);
-                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-            }
-        } catch (Exception e) {
-            ErrorFool errorFool = new ErrorFool();
-            System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-            request.setAttribute(ERREUR, errorFool);
-            request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
-        }
+//            } else {
+//                ErrorFool errorFool = new ErrorFool();
+//                System.out.println("USER LOG INVALID..." + errorFool.getErreur());
+//                request.setAttribute(ERREUR, errorFool);
+//                request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+//            }
+
     }
 }

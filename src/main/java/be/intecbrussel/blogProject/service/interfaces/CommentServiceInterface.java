@@ -1,5 +1,6 @@
 package be.intecbrussel.blogProject.service.interfaces;
 
+import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.CommentBean;
 import be.intecbrussel.blogProject.beans.UserBean;
 
@@ -15,9 +16,11 @@ import java.util.List;
 public interface CommentServiceInterface {
 
     /**
-     * @see be.intecbrussel.blogProject.dao.UserDAO#saveUser(UserBean)
+     * @see be.intecbrussel.blogProject.dao.CommentDAO#saveComment(CommentBean)
      */
     void saveCommentToDB(CommentBean comment, UserBean user);
+
+     void saveCommentToDB(CommentBean comment, UserBean user, BlogPostBean blog);
 
     /**
      * @see be.intecbrussel.blogProject.dao.CommentDAO#deleteComment(long)

@@ -1,5 +1,7 @@
 package be.intecbrussel.blogProject.beans;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -13,12 +15,16 @@ public class CommentBean implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "Comment")
+
     private String comment;
     @Column(name = "Date")
     private LocalDate date;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "User")
     private UserBean userComment;
+    @ManyToOne
+    @JoinColumn(name = "Blog")
+    private BlogPostBean blogPost;
 
     // Constructor
     public CommentBean() {
@@ -61,6 +67,14 @@ public class CommentBean implements Serializable {
 
     public void setUser(UserBean user) {
         this.userComment = user;
+    }
+
+    public BlogPostBean getBlogPost() {
+        return blogPost;
+    }
+
+    public void setBlogPost(BlogPostBean blogPost) {
+        this.blogPost = blogPost;
     }
 
     @Override
