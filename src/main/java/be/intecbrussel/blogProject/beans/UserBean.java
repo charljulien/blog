@@ -5,11 +5,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class creates Users
+ *
+ * @author Mr. Black
+ * @see be.intecbrussel.blogProject.dao.UserDAO
+ * @see be.intecbrussel.blogProject.service.implementations.UserService
+ * @see be.intecbrussel.blogProject.controller.RegistrationServlet
+ * @see be.intecbrussel.blogProject.controller.UserLoginServlet
+ * @see be.intecbrussel.blogProject.controller.UserProfileServlet
+ */
 @Entity
 @Table(name = "User_Blog")
 public class UserBean implements Serializable {
 
-    // Variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -35,12 +44,12 @@ public class UserBean implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "AccessRight")
     private MemberAccess memberAccess;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BlogPostBean> blogs;
-    @OneToMany(mappedBy = "userComment",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "userComment", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CommentBean> comments;
 
-    // Constructor
+
     public UserBean() {
         this.blogs = new ArrayList<>();
         this.comments = new ArrayList<>();
@@ -62,7 +71,7 @@ public class UserBean implements Serializable {
         this.comments = new ArrayList<>();
     }
 
-    // Methods
+
     public long getId() {
         return id;
     }
@@ -151,8 +160,8 @@ public class UserBean implements Serializable {
         this.memberAccess = memberAccess;
     }
 
-    public void addBlog(BlogPostBean blog){
-        if(blogs != null){
+    public void addBlog(BlogPostBean blog) {
+        if (blogs != null) {
             blogs.add(blog);
             blog.setUser(this);
         }
@@ -166,8 +175,8 @@ public class UserBean implements Serializable {
         this.blogs = blogs;
     }
 
-    public void addComment(CommentBean comment){
-        if(comments != null){
+    public void addComment(CommentBean comment) {
+        if (comments != null) {
             comments.add(comment);
             comment.setUser(this);
         }

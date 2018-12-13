@@ -7,8 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="myscript.js"></script>
+    <title>AuthorPage</title>
     <style>
         <%@include file="/WEB-INF/css/home.css" %>
     </style>
@@ -18,13 +17,13 @@
     <%@include file="parts/header.jsp" %>
 </div>
 
-<fieldset style="border-radius: 5px; margin:20px 50px">
-    <legend><h2 style="text-align: center">${userBean.userName}'s Blog Articles</h2></legend>
-    <table style="margin: 50px 150px 50px 100px">
+<fieldset class="authorPageFieldset">
+    <legend><h2 class="authorPageH2">${userBean.userName}'s Blog Articles</h2></legend>
+    <table class="authorPageTable">
         <c:forEach items="${author}" var="blog" varStatus="status">
             <tr>
-                <td style="font-weight: bold">${blog.title}</td>
-                <td style="font-weight: lighter">${blog.blogMessage}</td>
+                <td class="authorPageTdOne">${blog.title}</td>
+                <td class="authorPageTdTwo">${blog.blogMessage}</td>
             </tr>
         </c:forEach>
     </table>

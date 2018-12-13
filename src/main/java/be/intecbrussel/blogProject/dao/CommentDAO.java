@@ -32,8 +32,9 @@ public class CommentDAO {
         em = EMProvidor.getEntityManager();
         et = em.getTransaction();
         et.begin();
-        em.merge(comment);
+        em.persist(comment);
         et.commit();
+        em.close();
 //        EMProvidor.getInstance().closeEM();
     }
 

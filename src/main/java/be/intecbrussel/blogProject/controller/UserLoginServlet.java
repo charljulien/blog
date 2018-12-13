@@ -18,38 +18,33 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-import static be.intecbrussel.blogProject.controller.HomeServlet.ALL;
 import static be.intecbrussel.blogProject.listeners.AppContextListener.BLOG_SERVICE;
 
 /**
- * Class creates Servlet login for JSP pages
+ * Loges a User into the blogSite
  *
  * @author Mr. Pink && Mr. Black
+ * @see UserService#validateInLogFromDB(String, String)
+ * @see UserService#getUserByUserName(String)
+ * @see BlogPostService#readBlogPostByRecentDate()
+ * @see UserService
+ * @see ErrorFool#getErreur()
  */
 
 @WebServlet("/Login")
 public class UserLoginServlet extends HttpServlet {
 
-    // Variables
-    public static final String USER_BEAN = "userBean";
-
-    private static final String USER_NAME = "userName";
-    private static final String PASSWORD = "password";
-    private static final String ERREUR = "erreur";
-
-    private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
-    private static final String ERROR_LOGIN_PAGE = "WEB-INF/forms/ERRORlogin.jsp";
-
     private UserServiceInterface userService;
     private BlogPostServiceInterface blogPostService;
+    public static final String USER_BEAN = "userBean";
+    private static final String BLOG_ARTICLE = "blogArticle";
+    private static final String USER_NAME = "userName";
+    private static final String PASSWORD = "password";
+    private static final String ERROR = "erreur";
+    private static final String LOGIN_PAGE = "/WEB-INF/forms/login.jsp";
+    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
 
-    // Methods
 
-    /**
-     * @author Mr. Black
-     * getServletContex() cast to UserService by Mr Pink
-     */
     @Override
     public void init() throws ServletException {
         userService = (UserService) getServletContext().getAttribute(AppContextListener.USER_SERVICE);
@@ -60,7 +55,6 @@ public class UserLoginServlet extends HttpServlet {
         if (blogPostService == null) {
             throw new ServletException("BlogPost Service not available");
         }
-
     }
 
     @Override
@@ -68,56 +62,46 @@ public class UserLoginServlet extends HttpServlet {
         request.getRequestDispatcher(LOGIN_PAGE).forward(request, response);
     }
 
-
-    /**
-     * To compare doPost from Mr Black, no need for extra if else normally
-     *
-     * @author Mr. Pink && Mr. Black
-     */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String userName = request.getParameter(USER_NAME);
         String password = request.getParameter(PASSWORD);
-
         HttpSession session = request.getSession();
-        boolean userNameVal = userService.validateInLogFromDB(userName, password);
 
-        if ((userName == null) && (password == null)) {
-            errorLogin(request, response);
-        }
+        try {
+            if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
+                boolean userNameVal = userService.validateInLogFromDB(userName, password);
+                if (userNameVal) {
+                    UserBean userLog = userService.getUserByUserName(userName);
+                    System.out.println("USER LOG OK " + userLog.toString());
 
+                    session.setAttribute(USER_BEAN, userLog);
+                    getBlogByRecentDateAndAddToBlogCentralPage(request, response, blogPostService, BLOG_CENTRAL_PAGE);
 
-         else if ((userName != null && !userName.trim().isEmpty()) && (password != null && !password.trim().isEmpty())) {
-
-
-            if (userNameVal) {
-                UserBean userLog = userService.getUserByUserName(userName);
-                System.out.println("USER LOG OK " + userLog.toString());
-
-                session.setAttribute(USER_BEAN, userLog);
-                getBlogByRecentDateAndAddToBlogCentralPage(request, response, blogPostService, BLOG_CENTRAL_PAGE);
-
-            } else if (!false) {
+                } else {
+                    errorLogin(request, response);
+                }
+            } else {
                 errorLogin(request, response);
             }
-        } else {
+        } catch (NullPointerException npe) {
             errorLogin(request, response);
         }
-
     }
+
 
     static void getBlogByRecentDateAndAddToBlogCentralPage(HttpServletRequest request, HttpServletResponse response, BlogPostServiceInterface blogPostService, String blogCentralPage) throws ServletException, IOException {
         List<BlogPostBean> all = blogPostService.readBlogPostByRecentDate();
         System.out.println(all);
-        request.setAttribute(ALL, all);
+        request.setAttribute(BLOG_ARTICLE, all);
         request.getRequestDispatcher(blogCentralPage).forward(request, response);
     }
 
     private void errorLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ErrorFool errorFool = new ErrorFool();
         System.out.println("USER LOG INVALID..." + errorFool.getErreur());
-        request.setAttribute(ERREUR, errorFool);
-        request.getRequestDispatcher(BLOG_CENTRAL_PAGE).forward(request, response);
+        request.setAttribute(ERROR, errorFool);
+        getBlogByRecentDateAndAddToBlogCentralPage(request, response, blogPostService, BLOG_CENTRAL_PAGE);
     }
-
 
 }

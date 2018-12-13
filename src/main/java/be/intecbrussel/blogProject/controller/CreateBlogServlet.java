@@ -17,25 +17,23 @@ import java.io.IOException;
 import static be.intecbrussel.blogProject.controller.UserLoginServlet.USER_BEAN;
 
 /**
+ * adds a Blog and adds this blog to the HomePage
+ *
  * @author Mr. Black
+ * @see BlogPostService#saveBlogPostToDB(BlogPostBean, UserBean)
+ * @see BlogPostBean
+ * @see UserBean
  */
 @WebServlet("/Post")
-public class BlogPostServlet extends HttpServlet {
-
-    private static final String TITLE_POST = "title";
-    private static final String POST = "postBlog";
-
-    private static final String BLOG_CENTRAL_PAGE = "WEB-INF/theBlog/fullPages/blogCentral.jsp";
-    private static final String BLOG_POST_PAGE = "/WEB-INF/forms/BlogPostInput.jsp";
-
-    public static final String BLOG_POST_SERVICE = "blogPostService";
+public class CreateBlogServlet extends HttpServlet {
 
     private BlogPostServiceInterface blogPostService;
-    private BlogPostBean blogPostBean;
+    private static final String BLOG_POST_SERVICE = "blogPostService";
+    private static final String TITLE_POST = "title";
+    private static final String POST = "postBlog";
+    private static final String BLOG_POST_PAGE = "/WEB-INF/forms/BlogPostInput.jsp";
 
-    /**
-     * @author Mr. Black
-     */
+
     @Override
     public void init() throws ServletException {
         blogPostService = (BlogPostService) getServletContext().getAttribute(AppContextListener.BLOG_SERVICE);
@@ -44,19 +42,21 @@ public class BlogPostServlet extends HttpServlet {
         }
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher(BLOG_POST_PAGE).forward(request, response);
     }
 
-
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         UserBean user = (UserBean) session.getAttribute(USER_BEAN);
 
-        blogPostBean = new BlogPostBean(request.getParameter(TITLE_POST), request.getParameter(POST));
+        BlogPostBean blogPostBean = new BlogPostBean(request.getParameter(TITLE_POST), request.getParameter(POST));
         blogPostService.saveBlogPostToDB(blogPostBean, user);
 
         session.setAttribute(BLOG_POST_SERVICE, blogPostBean);
         response.sendRedirect("./Home");
     }
+
 }

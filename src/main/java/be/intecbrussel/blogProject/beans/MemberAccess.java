@@ -15,7 +15,6 @@ import java.util.List;
 @Table(name = "Member_Access")
 public class MemberAccess implements Serializable {
 
-    // Variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,7 +23,7 @@ public class MemberAccess implements Serializable {
     @OneToMany(mappedBy = "memberAccess", cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<UserBean> users;
 
-    // Constructor
+
     public MemberAccess() {
         this.users = new ArrayList<>();
     }
@@ -34,7 +33,7 @@ public class MemberAccess implements Serializable {
         this.users = new ArrayList<>();
     }
 
-    // Methods
+
     public long getId() {
         return id;
     }

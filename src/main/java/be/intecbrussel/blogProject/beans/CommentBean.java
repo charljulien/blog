@@ -1,32 +1,37 @@
 package be.intecbrussel.blogProject.beans;
 
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+/**
+ * Class creates comments
+ *
+ * @author Mr. Black
+ * @see be.intecbrussel.blogProject.dao.CommentDAO
+ * @see be.intecbrussel.blogProject.service.implementations.CommentService
+ * @see be.intecbrussel.blogProject.controller.CommentServlet
+ * @see be.intecbrussel.blogProject.controller.BlogLikeCounterServlet
+ */
 @Entity
 @Table(name = "Comments")
 public class CommentBean implements Serializable {
 
-    // Variables
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "Comment")
-
     private String comment;
     @Column(name = "Date")
     private LocalDate date;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "User")
     private UserBean userComment;
     @ManyToOne
     @JoinColumn(name = "Blog")
     private BlogPostBean blogPost;
 
-    // Constructor
+
     public CommentBean() {
         setDate(LocalDate.now());
     }
@@ -36,7 +41,7 @@ public class CommentBean implements Serializable {
         setDate(LocalDate.now());
     }
 
-    // Methods
+
     public long getId() {
         return id;
     }

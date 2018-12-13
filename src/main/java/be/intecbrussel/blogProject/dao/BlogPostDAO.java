@@ -16,11 +16,13 @@ import java.util.List;
  * @author Mr. Black
  * @see be.intecbrussel.blogProject.beans.BlogPostBean
  * @see be.intecbrussel.blogProject.service.interfaces.BlogPostServiceInterface
+ * @see be.intecbrussel.blogProject.controller.CreateBlogServlet
  */
 public class BlogPostDAO {
 
     private EntityManager em;
     private EntityTransaction et;
+
 
     /**
      * Saves a Blog post
@@ -36,7 +38,7 @@ public class BlogPostDAO {
         et.begin();
         em.merge(blogPost);
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        em.close();
     }
 
     /**
@@ -50,7 +52,6 @@ public class BlogPostDAO {
         System.out.println("Connecting to read from DB...");
         em = EMProvidor.getEntityManager();
         BlogPostBean titleUser = getBlogWithPredefinedTitle(title);
-        //   System.out.println(idUser);
         return titleUser;
     }
 
@@ -94,10 +95,8 @@ public class BlogPostDAO {
         et = em.getTransaction();
         et.begin();
         BlogPostBean blogPost = getListBlogWithPredefinedId(id);
-
         blogPost.setBlogMessage(blogPost.getBlogMessage() + " " + text);
         em.merge(blogPost);
-
         et.commit();
         EMProvidor.getInstance().closeEM();
     }
@@ -115,11 +114,9 @@ public class BlogPostDAO {
         et = em.getTransaction();
         et.begin();
         BlogPostBean blogPost = getListBlogWithPredefinedId(id);
-
         em.remove(blogPost);
-
         et.commit();
-        EMProvidor.getInstance().closeEmf();
+        EMProvidor.getInstance().closeEM();
     }
 
     /**

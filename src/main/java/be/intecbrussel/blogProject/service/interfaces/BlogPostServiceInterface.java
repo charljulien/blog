@@ -9,6 +9,7 @@ package be.intecbrussel.blogProject.service.interfaces;
 
 import be.intecbrussel.blogProject.beans.BlogPostBean;
 import be.intecbrussel.blogProject.beans.UserBean;
+import be.intecbrussel.blogProject.controller.CreateBlogServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,9 +35,9 @@ public interface BlogPostServiceInterface {
     void saveBlogPostToDB(BlogPostBean blogPost, String userBean);
 
     /**
-     * This Method will be used in Servlet BlogPostServlet to add a BlogPost and Connected with the logged-in User
+     * This Method will be used in Servlet CreateBlogServlet to add a BlogPost and Connected with the logged-in User
      *
-     * @see be.intecbrussel.blogProject.controller.BlogPostServlet#doPost(HttpServletRequest, HttpServletResponse)
+     * @see CreateBlogServlet#doPost(HttpServletRequest, HttpServletResponse)
      * @see be.intecbrussel.blogProject.dao.BlogPostDAO#saveBlogPost(BlogPostBean)
      * @see be.intecbrussel.blogProject.service.implementations.BlogPostService#saveBlogPostToDB(BlogPostBean, UserBean)
      */

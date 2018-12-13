@@ -12,18 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /**
+ * Shows A full BlogArticle, StandAlone Blog of a certain User
+ *
  * @author Mr. Black
+ * @see BlogPostService#readBlogPost(long)
+ * @see BlogPostBean
  */
 @WebServlet("/Article")
 public class BlogArticle extends HttpServlet {
 
-    private static final String BLOG_ARTICLE = "/WEB-INF/theBlog/fullPages/blogArticle.jsp";
     private BlogPostServiceInterface blogPostService;
-
-    public static final String BLOG = "all";
+    static final String BLOG = "blogArticle";
+    private static final String BLOG_ARTICLE = "/WEB-INF/theBlog/fullPages/blogArticle.jsp";
 
 
     @Override
@@ -34,12 +36,15 @@ public class BlogArticle extends HttpServlet {
         }
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-
         long id = Long.parseLong(request.getParameter("id"));
         BlogPostBean blogPostById = blogPostService.readBlogPost(id);
-        session.setAttribute(BLOG, blogPostById);
+        // below deleted session changed request
+
+        request.setAttribute(BLOG, blogPostById);
         request.getRequestDispatcher(BLOG_ARTICLE).forward(request, response);
     }
+
 }

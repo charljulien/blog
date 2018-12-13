@@ -10,6 +10,9 @@ import java.util.List;
  *
  * @author Mr. Black
  * @see be.intecbrussel.blogProject.dao.BlogPostDAO
+ * @see be.intecbrussel.blogProject.service.implementations.BlogPostService
+ * @see be.intecbrussel.blogProject.controller.CreateBlogServlet
+ * @see be.intecbrussel.blogProject.controller.AuthorPageServlet
  */
 @Entity
 @Table(name = "Blog_Post")
@@ -73,18 +76,8 @@ public class BlogPostBean implements Serializable {
         return likeBlogCounter++;
     }
 
-    // Should not be used... (Mr. Black)
-    public int likeDecrease() {
-        return likeBlogCounter--;
-    }
-
     public int getLikeBlogCounter() {
         return likeBlogCounter;
-    }
-
-    // Should not be used... (Mr. Black)
-    public void setLikeBlogCounter(int likeBlogCounter) {
-        this.likeBlogCounter = likeBlogCounter;
     }
 
     public LocalDate getDate() {

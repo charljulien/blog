@@ -8,11 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Error</title>
+    <style>
+        <%@include file="../../../css/home.css" %>
+    </style>
 </head>
 <body>
 <c:if test="${not empty erreur}">
-    <p>Invalid username or password.</p>
+    <p class="errorP">invalid username or password.</p>
 </c:if>
 </body>
 </html>

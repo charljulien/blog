@@ -9,39 +9,32 @@
 <html>
 <head>
     <title>Title</title>
-    <%--<style>--%>
-    <%--<%@include file="/WEB-INF/css/home.css" %>--%>
-    <%--</style>--%>
 </head>
+
 <body>
-
-
-<form style="border-radius: 5px; margin:20px 50px; float: left" class="Blog-comment" action="Comment" method="POST">
+<form class="commentForm" action="Comment" method="POST">
     <div>
-    <textarea cols="50" rows="10" placeholder="Place your comment" name="comment"
-              style="float: left; background: lightgreen; border-radius: 5px;"></textarea>
+        <textarea class="commentTextArea" cols="50" rows="10" placeholder="Place your comment"
+                  name="comment"></textarea>
     </div>
     <div>
-        <input type="submit" value="Submit" style="float: left">
+        <input class="commentInput" type="submit" value="Submit">
     </div>
 </form>
 
-
 <div>
-    <fieldset style="border-radius: 5px; margin:20px 50px">
-        <legend><h2 style="text-align: center">Comments</h2></legend>
-        <table style="margin: 50px 150px 50px 100px">
-            <c:forEach items="${all.comments}" var="comment" varStatus="status">
+    <fieldset class="commentFieldset">
+        <legend><h2 class="commentH2">Comments</h2></legend>
+        <table class="commentTable">
+            <c:forEach items="${blogArticle.comments}" var="comment" varStatus="status">
                 <tr>
-                    <td style="font-weight: bold">${comment.date}</td>
-                    <td style="font-weight: lighter">${comment.getUser().getUserName()}</td>
-                    <td style="font-weight: lighter">${comment.comment}</td>
+                    <td class="commentTdOne">${comment.date}</td>
+                    <td class="commentTdTwo" id="userName">${comment.getUser().getUserName()}</td>
+                    <td class="commentTdTwo">${comment.comment}</td>
                 </tr>
             </c:forEach>
         </table>
     </fieldset>
-
 </div>
-
 </body>
 </html>
